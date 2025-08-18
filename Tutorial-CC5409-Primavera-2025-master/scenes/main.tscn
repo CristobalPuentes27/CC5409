@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyjxojx3jo8wi"]
+
+[ext_resource type="Script" uid="uid://djd6qfqjfysf1" path="res://scenes/main.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://df84bjfdlp4lx" path="res://scenes/player.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bquqisov20t1c" path="res://scenes/dot.tscn" id="3_sugp2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0wfyh"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_o5qli")
+player_scene = ExtResource("2_0wfyh")
+dot_scene = ExtResource("3_sugp2")
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Markers"]
+position = Vector2(362, 391)
+gizmo_extents = 60.0
+
+[node name="Marker2D2" type="Marker2D" parent="Markers"]
+position = Vector2(953, 430)
+gizmo_extents = 60.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(492, 716)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_0wfyh")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bquqisov20t1c")
+spawn_path = NodePath("..")
