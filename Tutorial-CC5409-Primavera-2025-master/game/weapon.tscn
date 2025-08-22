@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmqf8ou7xccdn"]
+
+[ext_resource type="Script" uid="uid://c7c01fmbdpcdr" path="res://ourscripts/weapon.gd" id="1_cix0n"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_hc806"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_cix0n")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.187176, 0.187176, 0.187176, 1)
+position = Vector2(115, 2)
+scale = Vector2(1.75, 0.28125)
+texture = ExtResource("2_hc806")
