@@ -9,5 +9,5 @@
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 0, 1)
-position = Vector2(355, 21)
+position = Vector2(410, 15)
 texture = ExtResource("2_l1rq1")
