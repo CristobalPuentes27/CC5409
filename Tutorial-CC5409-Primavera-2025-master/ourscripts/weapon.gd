@@ -18,6 +18,8 @@ func _physics_process(delta: float) -> void:
 		if abs(rotation - from) < 0.01:
 			attacking = false
 			finalizing_attack = false
+	
+	send_rotation.rpc(rotation)
 
 func attack() -> void:
 	if !attacking:

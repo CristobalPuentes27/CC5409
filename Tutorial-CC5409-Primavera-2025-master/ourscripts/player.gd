@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	send_pos.rpc(position)
-	weapon.send_rotation.rpc(weapon.rotation)
+	#weapon.send_rotation.rpc(weapon.rotation)
 
 @rpc("any_peer", "call_local", "reliable")
 func test() -> void:
