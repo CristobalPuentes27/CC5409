@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://df27ouxfeg32k"]
+
+[ext_resource type="Script" uid="uid://djd6qfqjfysf1" path="res://scenes/main.gd" id="1_gpbrv"]
+[ext_resource type="PackedScene" uid="uid://yct15o1oq06n" path="res://game/player.tscn" id="2_truli"]
+[ext_resource type="PackedScene" uid="uid://bquqisov20t1c" path="res://scenes/dot.tscn" id="3_7r7xy"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="4_ygid4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0wfyh"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_gpbrv")
+player_scene = ExtResource("2_truli")
+dot_scene = ExtResource("3_7r7xy")
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Markers"]
+position = Vector2(83, 98)
+gizmo_extents = 60.0
+
+[node name="Marker2D2" type="Marker2D" parent="Markers"]
+position = Vector2(292, 98)
+gizmo_extents = 60.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(492, 716)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_0wfyh")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bquqisov20t1c")
+spawn_path = NodePath("..")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(516, 207)
+texture = ExtResource("4_ygid4")

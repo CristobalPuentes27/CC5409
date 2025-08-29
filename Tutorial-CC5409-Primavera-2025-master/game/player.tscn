@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://yct15o1oq06n"]
+[gd_scene load_steps=6 format=3 uid="uid://yct15o1oq06n"]
 
 [ext_resource type="Script" uid="uid://dijvwxniujrcv" path="res://ourscripts/player.gd" id="1_dadds"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_w5y0b"]
@@ -6,6 +6,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dadds"]
 radius = 30.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_du4nq"]
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -22,3 +24,6 @@ shape = SubResource("CircleShape2D_dadds")
 
 [node name="Weapon" parent="." instance=ExtResource("3_du4nq")]
 position = Vector2(65, 3)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_du4nq")

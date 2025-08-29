@@ -13,13 +13,12 @@ func _ready() -> void:
 		players.add_child(player_inst)
 		player_inst.global_position = markers.get_child(i).global_position
 		player_inst.setup(player_data)
-		player_inst.dot_spawn_requested.connect(_on_dot_spawn)
 
 
 
 func _on_dot_spawn(pos):
 	spawn_dot.rpc_id(1, pos)
-	
+
 @rpc("any_peer", "call_local", "reliable")
 func spawn_dot(pos):
 	if not dot_scene:

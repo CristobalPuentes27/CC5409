@@ -22,3 +22,11 @@ func _physics_process(delta: float) -> void:
 func attack() -> void:
 	if !attacking:
 		attacking = true
+
+@rpc("authority", "call_remote", "reliable")
+func send_rotation(rot):
+	rotation = rot
+
+func setup(player_data: Statics.PlayerData, multiplayer_synchronizer):
+	set_multiplayer_authority(player_data.id, false)
+	multiplayer_synchronizer.set_multiplayer_authority(player_data.id, false)
