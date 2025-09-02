@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var camera_2d: Camera2D = $Camera2D
 
 @export var SPEED = 500.0
+@export var LIFE: int = 500
+var resta:int=0
 
 func _physics_process(delta: float) -> void:
 	
@@ -26,8 +28,12 @@ func _physics_process(delta: float) -> void:
 	if is_multiplayer_authority():
 		if Input.is_action_just_pressed("test"):
 			test()
-	
+			Debug.log(LIFE)
+	if LIFE<=0:
+		self.modulate = Color(1,0,0,1)
+	updateLive.rpc()
 	move_and_slide()
+	
 	send_pos.rpc(position)
 	#weapon.send_rotation.rpc(weapon.rotation)
 
@@ -45,3 +51,19 @@ func setup(player_data: Statics.PlayerData):
 @rpc("authority", "call_remote", "unreliable_ordered")
 func send_pos(pos):
 	position = pos
+
+func take_damage(damage:int,other_pos:Vector2,punch:float):
+	var dirr: Vector2 =position-other_pos
+	
+	dirr=dirr.normalized()
+	velocity+= dirr*punch
+	Debug.log(dirr)
+	Debug.log(LIFE)
+	resta=damage*-1
+	LIFE-=damage
+@rpc("authority", "call_remote", "reliable")
+func updateLive():
+	LIFE+=resta
+	resta=0
+	if LIFE<=0:
+		self.modulate = Color(1,0,0,1)	
