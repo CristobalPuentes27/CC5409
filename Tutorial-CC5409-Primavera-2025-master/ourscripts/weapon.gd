@@ -24,8 +24,9 @@ func _physics_process(delta: float) -> void:
 			area_2d.monitoring = false
 			finalizing_attack = false
 	if hitting:
-		damage.rpc()
 		hitting=false
+		damage.rpc()
+		
 	send_rotation.rpc(rotation)
 	
 func attack() -> void:
@@ -39,6 +40,7 @@ func send_rotation(rot):
 func setup(player_data: Statics.PlayerData, multiplayer_synchronizer):
 	set_multiplayer_authority(player_data.id, false)
 	multiplayer_synchronizer.set_multiplayer_authority(player_data.id, false)
+	
 @rpc("authority","call_local","reliable")
 func damage():
 	var actual: Vector2= position

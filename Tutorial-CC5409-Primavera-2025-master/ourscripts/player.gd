@@ -27,7 +27,8 @@ func _physics_process(delta: float) -> void:
 	
 	if is_multiplayer_authority():
 		if Input.is_action_just_pressed("test"):
-			test()
+			#test()
+			Debug.log("mi vida")
 			Debug.log(LIFE)
 	if LIFE<=0:
 		self.modulate = Color(1,0,0,1)
@@ -56,7 +57,8 @@ func take_damage(damage:int,other_pos:Vector2,punch:float):
 	var dirr: Vector2 =position-other_pos
 	
 	dirr=dirr.normalized()
-	velocity+= dirr*punch
+	position+= dirr*punch
+	send_pos(position)
 	Debug.log(dirr)
 	Debug.log(LIFE)
 	resta=damage*-1
