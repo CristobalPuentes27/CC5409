@@ -2,13 +2,11 @@ class_name Player
 extends CharacterBody2D
 
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
-
 @onready var weapon: Weapon = $Weapon
 @onready var camera_2d: Camera2D = $Camera2D
 
 @export var SPEED = 500.0
-@export var LIFE: int = 500
-var resta:int=0
+@export var life: int = 500
 
 func _physics_process(delta: float) -> void:
 	
@@ -22,17 +20,17 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 	
 	if Input.is_action_just_pressed("attack"):
-		weapon.attack() 
-		
+		weapon.attack()
 	
-	if is_multiplayer_authority():
-		if Input.is_action_just_pressed("test"):
-			#test()
-			Debug.log("mi vida")
-			Debug.log(LIFE)
-	if LIFE<=0:
+	
+	if Input.is_action_just_pressed("test"):
+		#test()
+		Debug.log("mi vida")
+		Debug.log(life)
+	
+	if life <= 0:
 		self.modulate = Color(1,0,0,1)
-	updateLive.rpc()
+	
 	move_and_slide()
 	
 	send_pos.rpc(position)
@@ -53,19 +51,27 @@ func setup(player_data: Statics.PlayerData):
 func send_pos(pos):
 	position = pos
 
-func take_damage(damage:int,other_pos:Vector2,punch:float):
-	var dirr: Vector2 =position-other_pos
+func take_damage(damage: int, other_pos: Vector2, punch: float):
 	
-	dirr=dirr.normalized()
-	position+= dirr*punch
-	send_pos(position)
+	if !multiplayer.is_server():
+		return
+	
+	life -= damage
+	if life <= 0:
+		death.rpc()
+	Debug.log(life)
+	
+	var dirr: Vector2 = position - other_pos
+	dirr = dirr.normalized()
+	knockback.rpc_id(get_multiplayer_authority(), dirr * punch)
+	#position += dirr * punch
 	Debug.log(dirr)
-	Debug.log(LIFE)
-	resta=damage*-1
-	LIFE-=damage
-@rpc("authority", "call_remote", "reliable")
-func updateLive():
-	LIFE+=resta
-	resta=0
-	if LIFE<=0:
-		self.modulate = Color(1,0,0,1)	
+	send_pos.rpc(position)
+
+@rpc("any_peer", "call_local", "reliable")
+func knockback(impulse: Vector2):
+	velocity += impulse
+
+@rpc("any_peer", "call_local", "reliable")
+func death():
+	self.modulate = Color(1,0,0,1)
