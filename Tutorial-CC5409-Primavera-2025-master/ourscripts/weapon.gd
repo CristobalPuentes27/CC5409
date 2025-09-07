@@ -5,7 +5,6 @@ extends Node2D
 @export var attack_power: int =200
 @export var knockback: float = 20000
 
-var hitting =false
 var attacking := false
 var finalizing_attack := false
 var from := rotation
@@ -29,10 +28,6 @@ func _physics_process(delta: float) -> void:
 			attacking = false
 			enable_collision.rpc_id(1, false)
 			finalizing_attack = false
-	
-	if hitting:
-		hitting = false
-		#damage.rpc()
 	
 	send_rotation.rpc(rotation)
 
@@ -62,4 +57,4 @@ func damage():
 
 @rpc("any_peer", "call_local", "reliable")
 func enable_collision(val: bool):
-	area_2d.monitoring = true
+	area_2d.monitoring = val
