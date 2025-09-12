@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://yct15o1oq06n"]
+[gd_scene load_steps=7 format=3 uid="uid://yct15o1oq06n"]
 
 [ext_resource type="Script" uid="uid://dijvwxniujrcv" path="res://ourscripts/player.gd" id="1_dadds"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_w5y0b"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dadds"]
 radius = 30.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_du4nq"]
+light_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_du4nq"]
 
@@ -32,8 +35,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_w5y0b")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-light_mask = 2
-visibility_layer = 2
+material = SubResource("CanvasItemMaterial_du4nq")
 offset_left = -173.0
 offset_top = -124.0
 offset_right = 179.0
