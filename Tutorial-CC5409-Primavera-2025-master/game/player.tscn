@@ -20,10 +20,29 @@ texture = ExtResource("2_w5y0b")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dadds")
 
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Weapon" parent="Pivot" instance=ExtResource("3_du4nq")]
+position = Vector2(65, 3)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Weapon" parent="." instance=ExtResource("3_du4nq")]
-position = Vector2(65, 3)
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_w5y0b")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+light_mask = 2
+visibility_layer = 2
+offset_left = -173.0
+offset_top = -124.0
+offset_right = 179.0
+offset_bottom = -75.0
+show_percentage = false
+
+[node name="IFrames" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_du4nq")

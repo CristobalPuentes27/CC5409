@@ -2,14 +2,16 @@ class_name Weapon
 extends Node2D
 
 @onready var area_2d: Area2D = $Area2D
-@export var attack_power: int =200
-@export var knockback: float = 20000
+@onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
+@export var attack_power: int = 200
+@export var knockback: float = 10000
 
 var attacking := false
 var finalizing_attack := false
 var from := rotation
 var to := rotation + PI/4
 var player: Player	= null
+#@export var cooldown: bool = false
 
 func _ready() -> void:
 	if multiplayer.is_server():
@@ -28,11 +30,19 @@ func _physics_process(delta: float) -> void:
 			attacking = false
 			enable_collision.rpc_id(1, false)
 			finalizing_attack = false
+			#cooldown = false
+			#Debug.log("cooldown!!!!!!!!!!!!!!!!!!!!!")
 	
 	send_rotation.rpc(rotation)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	#Debug.log("Antes!!!!!!!!!!!!")
+	#if cooldown:
+	#	return
+	#Debug.log("despues!!!!!!!!!!!!!!!!!!")
+	#cooldown = true
 	player = body as Player
+	var cooldown: Timer =  Timer.new()
 	damage()
 
 func attack() -> void:
@@ -44,16 +54,15 @@ func attack() -> void:
 func send_rotation(rot):
 	rotation = rot
 
-func setup(player_data: Statics.PlayerData, multiplayer_synchronizer):
+func setup(player_data: Statics.PlayerData):
 	set_multiplayer_authority(player_data.id, false)
 	multiplayer_synchronizer.set_multiplayer_authority(player_data.id, false)
 
 #@rpc("authority","call_local","reliable")
 func damage():
-	var actual: Vector2 = position
 	if player:
-		player.take_damage(attack_power, actual, knockback)
-		Debug.log("golpeo")
+		player.take_damage(attack_power, global_position, knockback)
+		#Debug.log("golpeo")
 
 @rpc("any_peer", "call_local", "reliable")
 func enable_collision(val: bool):
