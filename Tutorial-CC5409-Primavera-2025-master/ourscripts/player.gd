@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var i_frames: Timer = $IFrames
 @onready var own_light: PointLight2D = $PointLight2D
 var knockback_velocity: Vector2 = Vector2.ZERO
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 @export var SPEED = 500.0
 @export var life: int = 500
@@ -22,6 +23,10 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		pivot.rotation = direction.angle()
 		velocity = direction * SPEED
+		animation_tree.get('parameters/playback').travel('move')
+		animation_tree.set('parameters/move/blend_position',direction)
+	#if direction == Vector2.ZERO:
+	#	animation_tree.get('parameters/playback').travel('stand')
 	else:#elif knockback_velocity != Vector2.ZERO:
 		velocity = Vector2.ZERO
 	
