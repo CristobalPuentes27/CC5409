@@ -11,10 +11,10 @@ extends CharacterBody2D
 var knockback_velocity: Vector2 = Vector2.ZERO
 @onready var animation_tree: AnimationTree = $AnimationTree
 
-@export var SPEED = 500.0
+@export var SPEED = 100
 @export var life: int = 500
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	if not is_multiplayer_authority():
 		return
@@ -23,8 +23,10 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		pivot.rotation = direction.angle()
 		velocity = direction * SPEED
-		animation_tree.get('parameters/playback').travel('move')
-		animation_tree.set('parameters/move/blend_position',direction)
+		#animate.rpc(direction)
+		#animation_tree.get('parameters/playback').travel('move')
+		#animation_tree.set('parameters/move/blend_position', direction)
+		animate.rpc(direction)
 	#if direction == Vector2.ZERO:
 	#	animation_tree.get('parameters/playback').travel('stand')
 	else:#elif knockback_velocity != Vector2.ZERO:
@@ -32,6 +34,9 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("attack"):
 		weapon.attack()
+	
+	if Input.is_action_just_pressed("switch_light"):
+		weapon.switch_light.rpc()
 	
 	if Input.is_action_just_pressed("test"):
 		#test()
@@ -61,8 +66,13 @@ func setup(player_data: Statics.PlayerData):
 	health_bar.visible = is_multiplayer_authority()
 	own_light.visible = is_multiplayer_authority()
 
+@rpc("any_peer", "call_local", "unreliable_ordered")
+func animate(direction: Vector2) -> void:
+	animation_tree.get('parameters/playback').travel('move')
+	animation_tree.set('parameters/move/blend_position', direction)
+
 @rpc("authority", "call_remote", "unreliable_ordered")
-func send_pos(pos, pivot_rotation):
+func send_pos(pos: Vector2, pivot_rotation: float):
 	position = pos
 	pivot.rotation = pivot_rotation
 

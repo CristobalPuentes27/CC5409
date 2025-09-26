@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0k7mka2flmc6"
-path="res://.godot/imported/Character_RollDownRight.png-41dc54e8cf5bb66d503208b342d17e11.ctex"
+uid="uid://do84c67dqljnc"
+path="res://.godot/imported/square_light.jpg-fd05c09b16ba9866e1d4369f20fdec39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Character/Character_RollDownRight.png"
-dest_files=["res://.godot/imported/Character_RollDownRight.png-41dc54e8cf5bb66d503208b342d17e11.ctex"]
+source_file="res://assets/square_light.jpg"
+dest_files=["res://.godot/imported/square_light.jpg-fd05c09b16ba9866e1d4369f20fdec39.ctex"]
 
 [params]
 

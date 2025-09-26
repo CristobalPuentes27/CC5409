@@ -3,6 +3,8 @@ extends Node2D
 
 @onready var area_2d: Area2D = $Area2D
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
+@onready var point_light_2d: PointLight2D = $PointLight2D
+
 @export var attack_power: int = 200
 @export var knockback: float = 10000
 
@@ -10,14 +12,14 @@ var attacking := false
 var finalizing_attack := false
 var from := rotation
 var to := rotation + PI/4
-var player: Player	= null
+var player: Player = null
 #@export var cooldown: bool = false
 
 func _ready() -> void:
 	if multiplayer.is_server():
 		area_2d.body_entered.connect(_on_area_2d_body_entered)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	if attacking and !finalizing_attack:
 		rotation = rotate_toward(rotation, to, .1)
@@ -42,7 +44,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	#Debug.log("despues!!!!!!!!!!!!!!!!!!")
 	#cooldown = true
 	player = body as Player
-	var cooldown: Timer =  Timer.new()
+	#var cooldown: Timer =  Timer.new()
 	damage()
 
 func attack() -> void:
@@ -53,6 +55,10 @@ func attack() -> void:
 @rpc("authority", "call_remote", "reliable")
 func send_rotation(rot):
 	rotation = rot
+
+@rpc("any_peer", "call_local", "reliable")
+func switch_light() -> void:
+	point_light_2d.visible = !point_light_2d.visible
 
 func setup(player_data: Statics.PlayerData):
 	set_multiplayer_authority(player_data.id, false)
