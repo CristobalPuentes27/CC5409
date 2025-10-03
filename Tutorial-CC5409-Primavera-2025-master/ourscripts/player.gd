@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var own_light: PointLight2D = $PointLight2D
 var knockback_velocity: Vector2 = Vector2.ZERO
 @onready var animation_tree: AnimationTree = $AnimationTree
+var damage_enabled: bool = false
 
 @export var SPEED = 100
 @export var life: int = 500
@@ -19,17 +20,21 @@ func _physics_process(_delta: float) -> void:
 	if not is_multiplayer_authority():
 		return
 	
+	if damage_enabled:
+		life -= 2
+		send_life.rpc(life)
+		if life <= 0:
+			death.rpc()
+	
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if direction:
+	if direction and knockback_velocity == Vector2.ZERO:
 		pivot.rotation = direction.angle()
 		velocity = direction * SPEED
-		#animate.rpc(direction)
-		#animation_tree.get('parameters/playback').travel('move')
-		#animation_tree.set('parameters/move/blend_position', direction)
 		animate.rpc(direction)
-	#if direction == Vector2.ZERO:
-	#	animation_tree.get('parameters/playback').travel('stand')
-	else:#elif knockback_velocity != Vector2.ZERO:
+	elif knockback_velocity:
+		velocity = knockback_velocity
+		knockback_velocity = Vector2.ZERO
+	else:
 		velocity = Vector2.ZERO
 	
 	if Input.is_action_just_pressed("attack"):
@@ -65,6 +70,7 @@ func setup(player_data: Statics.PlayerData):
 	health_bar.value = life
 	health_bar.visible = is_multiplayer_authority()
 	own_light.visible = is_multiplayer_authority()
+	if !multiplayer.is_server(): pass
 
 @rpc("any_peer", "call_local", "unreliable_ordered")
 func animate(direction: Vector2) -> void:
@@ -114,3 +120,8 @@ func death():
 @rpc("any_peer", "call_local", "reliable")
 func send_life(new_life) -> void:
 	health_bar.value = new_life
+
+@rpc("any_peer", "call_local", "reliable")
+func damage_enabler(val: bool) -> void:
+	damage_enabled = val
+	Debug.log(val)

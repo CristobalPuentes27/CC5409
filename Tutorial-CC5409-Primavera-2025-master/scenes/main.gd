@@ -5,6 +5,8 @@ extends Node2D
 
 @onready var players: Node2D = $Players
 @onready var markers: Node2D = $Markers
+@onready var timer: Timer = $Timer
+@onready var safe_zone: Area2D = $SafeZone
 
 func _ready() -> void:
 	for i in Game.players.size():
@@ -13,8 +15,8 @@ func _ready() -> void:
 		players.add_child(player_inst)
 		player_inst.global_position = markers.get_child(i).global_position
 		player_inst.setup(player_data)
-
-
+	await timer.timeout
+	safe_zone.shrink()
 
 func _on_dot_spawn(pos):
 	spawn_dot.rpc_id(1, pos)
