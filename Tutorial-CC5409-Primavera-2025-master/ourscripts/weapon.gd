@@ -4,6 +4,8 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 @onready var point_light_2d: PointLight2D = $PointLight2D
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_stream_player_2: AudioStreamPlayer = $AudioStreamPlayer2
 
 @export var attack_power: int = 200
 @export var knockback: float = 10000
@@ -49,6 +51,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func attack() -> void:
 	if !attacking:
+		audio_stream_player.play()
 		attacking = true
 		enable_collision.rpc_id(1, true)
 

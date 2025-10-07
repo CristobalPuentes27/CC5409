@@ -1,5 +1,6 @@
 class_name Player
 extends CharacterBody2D
+@onready var walk_sfx: AudioStreamPlayer = $AudioListener2D
 
 @onready var weapon: Weapon = $Pivot/Weapon
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
@@ -41,6 +42,7 @@ func _physics_process(_delta: float) -> void:
 		weapon.attack()
 	
 	if Input.is_action_just_pressed("switch_light"):
+		weapon.audio_stream_player_2.play()
 		weapon.switch_light.rpc()
 	
 	if Input.is_action_just_pressed("test"):

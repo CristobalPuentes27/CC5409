@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmqf8ou7xccdn"]
+[gd_scene load_steps=8 format=3 uid="uid://cmqf8ou7xccdn"]
 
 [ext_resource type="Script" uid="uid://c7c01fmbdpcdr" path="res://ourscripts/weapon.gd" id="1_cix0n"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_hc806"]
 [ext_resource type="Texture2D" uid="uid://do84c67dqljnc" path="res://assets/square_light.jpg" id="3_w5ktq"]
+[ext_resource type="AudioStream" uid="uid://23uc2qdmjci8" path="res://assets/SFX/07_human_atk_sword_1.wav" id="4_gepo1"]
+[ext_resource type="AudioStream" uid="uid://d3nbqqbdaxe2" path="res://assets/SFX/10_human_special_atk_2.wav" id="5_qw2b6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hc806"]
 size = Vector2(195.5, 20)
@@ -34,3 +36,9 @@ replication_config = SubResource("SceneReplicationConfig_hc806")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 shadow_enabled = true
 texture = ExtResource("3_w5ktq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gepo1")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qw2b6")
