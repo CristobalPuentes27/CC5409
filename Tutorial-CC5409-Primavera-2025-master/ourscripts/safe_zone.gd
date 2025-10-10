@@ -7,7 +7,7 @@ var min_size: Vector2
 var shrinking: bool = false
 
 func _ready() -> void:
-	min_size = scale/4
+	min_size = Vector2(19,19)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
