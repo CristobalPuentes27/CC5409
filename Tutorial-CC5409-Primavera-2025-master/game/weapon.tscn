@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7c01fmbdpcdr" path="res://ourscripts/weapon.gd" id="1_cix0n"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_hc806"]
-[ext_resource type="Texture2D" uid="uid://do84c67dqljnc" path="res://assets/square_light.jpg" id="3_w5ktq"]
+[ext_resource type="Texture2D" uid="uid://baeexkep2okpt" path="res://assets/triangle.png" id="3_gepo1"]
 [ext_resource type="AudioStream" uid="uid://23uc2qdmjci8" path="res://assets/SFX/07_human_atk_sword_1.wav" id="4_gepo1"]
 [ext_resource type="AudioStream" uid="uid://d3nbqqbdaxe2" path="res://assets/SFX/10_human_special_atk_2.wav" id="5_qw2b6"]
 
@@ -18,6 +18,7 @@ properties/0/replication_mode = 1
 script = ExtResource("1_cix0n")
 
 [node name="Icon" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.187176, 0.187176, 0.187176, 1)
 position = Vector2(115, 2)
 scale = Vector2(1.75, 0.28125)
@@ -35,7 +36,8 @@ replication_config = SubResource("SceneReplicationConfig_hc806")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 shadow_enabled = true
-texture = ExtResource("3_w5ktq")
+texture = ExtResource("3_gepo1")
+texture_scale = 0.75
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_gepo1")

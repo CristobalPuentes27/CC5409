@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dijvwxniujrcv" path="res://ourscripts/player.gd" id="1_dadds"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_w5y0b"]
 [ext_resource type="PackedScene" uid="uid://cmqf8ou7xccdn" path="res://game/weapon.tscn" id="3_du4nq"]
+[ext_resource type="Texture2D" uid="uid://dg46bi5mi8wby" path="res://assets/circle.png" id="4_2k1gg"]
 [ext_resource type="Texture2D" uid="uid://cx01igeobga" path="res://assets/Character/Character_Down.png" id="4_4uvqg"]
-[ext_resource type="Texture2D" uid="uid://do84c67dqljnc" path="res://assets/square_light.jpg" id="4_xkjxy"]
 [ext_resource type="Texture2D" uid="uid://8jxw3wp46r0w" path="res://assets/Character/Character_DownLeft.png" id="5_xkjxy"]
 [ext_resource type="Texture2D" uid="uid://ckbv8lhv16t8d" path="res://assets/Character/Character_DownRight.png" id="6_2k1gg"]
 [ext_resource type="Texture2D" uid="uid://dfaro38tk46yf" path="res://assets/Character/Character_Left.png" id="7_ppdnp"]
@@ -934,8 +934,8 @@ zoom = Vector2(4, 4)
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(2, 2)
 shadow_enabled = true
-texture = ExtResource("4_xkjxy")
-texture_scale = 0.3
+texture = ExtResource("4_2k1gg")
+texture_scale = 0.25
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(1, 0, 0, 1)
