@@ -16,6 +16,8 @@ var damage_enabled: bool = false
 @export var SPEED = 100
 @export var life: int = 500
 
+signal death_sign(is_player: bool)
+
 func _physics_process(_delta: float) -> void:
 	
 	if not is_multiplayer_authority():
@@ -46,9 +48,7 @@ func _physics_process(_delta: float) -> void:
 		weapon.switch_light.rpc()
 	
 	if Input.is_action_just_pressed("test"):
-		#test()
-		Debug.log("mi vida")
-		Debug.log(life)
+		test()
 	
 	if life <= 0:
 		self.modulate = Color(1,0,0,1)
@@ -101,13 +101,10 @@ func take_damage(damage: int, other_pos: Vector2, punch: float):
 	send_life.rpc(life)
 	if life <= 0:
 		death.rpc()
-	#Debug.log(life)
 	
 	var dirr: Vector2 = position - other_pos
 	dirr = dirr.normalized()
 	knockback.rpc(dirr * punch)
-	Debug.log(dirr * punch)
-	Debug.log(position)
 	#velocity += dirr * punch
 	#send_vel.rpc(velocity)
 
@@ -118,6 +115,7 @@ func knockback(impulse: Vector2):
 @rpc("any_peer", "call_local", "reliable")
 func death():
 	self.modulate = Color(1,0,0,1)
+	death_sign.emit(is_multiplayer_authority())
 
 @rpc("any_peer", "call_local", "reliable")
 func send_life(new_life) -> void:
@@ -126,4 +124,3 @@ func send_life(new_life) -> void:
 @rpc("any_peer", "call_local", "reliable")
 func damage_enabler(val: bool) -> void:
 	damage_enabled = val
-	Debug.log(val)

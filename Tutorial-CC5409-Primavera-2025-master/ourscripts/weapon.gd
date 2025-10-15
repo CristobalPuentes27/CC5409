@@ -35,15 +35,12 @@ func _physics_process(_delta: float) -> void:
 			enable_collision.rpc_id(1, false)
 			finalizing_attack = false
 			#cooldown = false
-			#Debug.log("cooldown!!!!!!!!!!!!!!!!!!!!!")
 	
 	send_rotation.rpc(rotation)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	#Debug.log("Antes!!!!!!!!!!!!")
 	#if cooldown:
 	#	return
-	#Debug.log("despues!!!!!!!!!!!!!!!!!!")
 	#cooldown = true
 	player = body as Player
 	#var cooldown: Timer =  Timer.new()
@@ -71,7 +68,6 @@ func setup(player_data: Statics.PlayerData):
 func damage():
 	if player:
 		player.take_damage(attack_power, global_position, knockback)
-		#Debug.log("golpeo")
 
 @rpc("any_peer", "call_local", "reliable")
 func enable_collision(val: bool):

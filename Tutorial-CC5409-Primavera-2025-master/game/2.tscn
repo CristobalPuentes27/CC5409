@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://df27ouxfeg32k"]
+[gd_scene load_steps=40 format=4 uid="uid://df27ouxfeg32k"]
 
 [ext_resource type="Script" uid="uid://djd6qfqjfysf1" path="res://scenes/main.gd" id="1_gpbrv"]
 [ext_resource type="PackedScene" uid="uid://yct15o1oq06n" path="res://game/player.tscn" id="2_truli"]
@@ -1820,8 +1820,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_i25cr")
 pattern_0 = SubResource("TileMapPattern_i25cr")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0wfyh"]
-
 [node name="Main" type="Node2D"]
 script = ExtResource("1_gpbrv")
 player_scene = ExtResource("2_truli")
@@ -1847,19 +1845,11 @@ gizmo_extents = 60.0
 position = Vector2(602, 543)
 gizmo_extents = 60.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(492, 716)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_0wfyh")
-
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://bquqisov20t1c")
 spawn_path = NodePath("..")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="SafeZone" parent="." instance=ExtResource("6_q14ly")]
