@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://cmqf8ou7xccdn"]
 
 [ext_resource type="Script" uid="uid://c7c01fmbdpcdr" path="res://ourscripts/weapon.gd" id="1_cix0n"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_hc806"]
+[ext_resource type="Texture2D" uid="uid://c0pagtqumey1g" path="res://assets/weapons/flashlight_01.png" id="2_gepo1"]
 [ext_resource type="Texture2D" uid="uid://baeexkep2okpt" path="res://assets/triangle.png" id="3_gepo1"]
 [ext_resource type="AudioStream" uid="uid://23uc2qdmjci8" path="res://assets/SFX/07_human_atk_sword_1.wav" id="4_gepo1"]
 [ext_resource type="AudioStream" uid="uid://d3nbqqbdaxe2" path="res://assets/SFX/10_human_special_atk_2.wav" id="5_qw2b6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hc806"]
-size = Vector2(195.5, 20)
+size = Vector2(14.5, 10)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hc806"]
 properties/0/path = NodePath(".:cooldown")
@@ -18,23 +18,24 @@ properties/0/replication_mode = 1
 script = ExtResource("1_cix0n")
 
 [node name="Icon" type="Sprite2D" parent="."]
-visible = false
 modulate = Color(0.187176, 0.187176, 0.187176, 1)
-position = Vector2(115, 2)
-scale = Vector2(1.75, 0.28125)
-texture = ExtResource("2_hc806")
+position = Vector2(21.000002, 0)
+rotation = -0.7853982
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_gepo1")
 
 [node name="Area2D" type="Area2D" parent="."]
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(129.25, 1)
+position = Vector2(25.25, 0)
 shape = SubResource("RectangleShape2D_hc806")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_hc806")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(97, 1)
 shadow_enabled = true
 texture = ExtResource("3_gepo1")
 texture_scale = 0.75

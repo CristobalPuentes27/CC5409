@@ -1,7 +1,6 @@
-[gd_scene load_steps=90 format=3 uid="uid://yct15o1oq06n"]
+[gd_scene load_steps=89 format=3 uid="uid://yct15o1oq06n"]
 
 [ext_resource type="Script" uid="uid://dijvwxniujrcv" path="res://ourscripts/player.gd" id="1_dadds"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="2_w5y0b"]
 [ext_resource type="PackedScene" uid="uid://cmqf8ou7xccdn" path="res://game/weapon.tscn" id="3_du4nq"]
 [ext_resource type="Texture2D" uid="uid://dg46bi5mi8wby" path="res://assets/circle.png" id="4_2k1gg"]
 [ext_resource type="Texture2D" uid="uid://cx01igeobga" path="res://assets/Character/Character_Down.png" id="4_4uvqg"]
@@ -916,17 +915,12 @@ motion_mode = 1
 floor_stop_on_slope = false
 script = ExtResource("1_dadds")
 
-[node name="Icon" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_w5y0b")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dadds")
 
 [node name="Pivot" type="Node2D" parent="."]
 
 [node name="Weapon" parent="Pivot" instance=ExtResource("3_du4nq")]
-position = Vector2(65, 3)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)

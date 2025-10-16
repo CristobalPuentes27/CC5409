@@ -7,8 +7,8 @@ extends Node2D
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var audio_stream_player_2: AudioStreamPlayer = $AudioStreamPlayer2
 
-@export var attack_power: int = 200
-@export var knockback: float = 10000
+@export var attack_power: int = 100
+@export var knockback: float = 2000
 
 var attacking := false
 var finalizing_attack := false

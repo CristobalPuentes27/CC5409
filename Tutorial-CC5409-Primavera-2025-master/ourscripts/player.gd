@@ -10,10 +10,12 @@ extends CharacterBody2D
 @onready var i_frames: Timer = $IFrames
 @onready var own_light: PointLight2D = $PointLight2D
 var knockback_velocity: Vector2 = Vector2.ZERO
+const max_knockback_frames: int = 4
+var knockback_frames: int = 0
 @onready var animation_tree: AnimationTree = $AnimationTree
 var damage_enabled: bool = false
 
-@export var SPEED = 100
+@export var SPEED = 125
 @export var life: int = 500
 
 signal death_sign(is_player: bool)
@@ -35,8 +37,11 @@ func _physics_process(_delta: float) -> void:
 		velocity = direction * SPEED
 		animate.rpc(direction)
 	elif knockback_velocity:
-		velocity = knockback_velocity
-		knockback_velocity = Vector2.ZERO
+		velocity = knockback_velocity / 5
+		knockback_frames += 1
+		if knockback_frames == max_knockback_frames:
+			knockback_velocity = Vector2.ZERO
+			knockback_frames = 0
 	else:
 		velocity = Vector2.ZERO
 	

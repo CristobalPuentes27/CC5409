@@ -13,7 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
 	if shrinking:
-		scale = scale.move_toward(min_size, 0.5)
+		scale = scale.move_toward(min_size, 0.2)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
