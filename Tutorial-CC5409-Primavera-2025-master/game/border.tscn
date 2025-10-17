@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://c05yswd73eqex"]
+
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_btubw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2mvdy"]
+
+[node name="Node2D" type="Node2D"]
+material = SubResource("CanvasItemMaterial_2mvdy")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+self_modulate = Color(1, 1, 1, 0.2784314)
+clip_children = 2
+
+[node name="Icon2" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(339, 64)
+texture = ExtResource("1_btubw")
+
+[node name="Icon3" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(557, 259)
+scale = Vector2(3.0234375, 6.15625)
+texture = ExtResource("1_btubw")
+
+[node name="Line2D" type="Line2D" parent="CanvasGroup"]
+texture_repeat = 2
+points = PackedVector2Array(1023, 462, 1069, 106, 607, 89, 607, 447)
+closed = true
+width = 200.0
+texture = ExtResource("1_btubw")
+texture_mode = 1
