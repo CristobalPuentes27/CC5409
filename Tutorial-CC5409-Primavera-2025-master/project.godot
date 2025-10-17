@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="multiplayer_example"
+config/name="Flashlight & Smash"
 run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="uid://pbopl7ou1fmx"
+config/icon="uid://d07njrq4y4ctm"
 
 [autoload]
 
@@ -60,8 +61,7 @@ attack={
 }
 test={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":49,"location":0,"echo":false,"script":null)
-]
+"events": []
 }
 switch_light={
 "deadzone": 0.2,

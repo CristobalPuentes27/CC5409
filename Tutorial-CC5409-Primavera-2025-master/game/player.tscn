@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dijvwxniujrcv" path="res://ourscripts/player.gd" id="1_dadds"]
 [ext_resource type="PackedScene" uid="uid://cmqf8ou7xccdn" path="res://game/weapon.tscn" id="3_du4nq"]
-[ext_resource type="Texture2D" uid="uid://dg46bi5mi8wby" path="res://assets/circle.png" id="4_2k1gg"]
+[ext_resource type="Texture2D" uid="uid://cm0tf7uwqlxt3" path="res://assets/circle.png" id="4_2k1gg"]
 [ext_resource type="Texture2D" uid="uid://cx01igeobga" path="res://assets/Character/Character_Down.png" id="4_4uvqg"]
 [ext_resource type="Texture2D" uid="uid://8jxw3wp46r0w" path="res://assets/Character/Character_DownLeft.png" id="5_xkjxy"]
 [ext_resource type="Texture2D" uid="uid://ckbv8lhv16t8d" path="res://assets/Character/Character_DownRight.png" id="6_2k1gg"]
@@ -927,9 +927,9 @@ zoom = Vector2(4, 4)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(2, 2)
-shadow_enabled = true
+color = Color(0.078431375, 0.3137255, 0.47058824, 1)
 texture = ExtResource("4_2k1gg")
-texture_scale = 0.25
+texture_scale = 0.15
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(1, 0, 0, 1)
