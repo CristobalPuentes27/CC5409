@@ -1,7 +1,9 @@
 class_name Player
 extends CharacterBody2D
-@onready var walk_sfx: AudioStreamPlayer = $AudioListener2D
 
+@onready var rage_quit: Button = $PauseMenu/RageQuit
+@onready var walk_sfx: AudioStreamPlayer = $AudioListener2D
+@onready var pause_menu: VBoxContainer = $PauseMenu
 @onready var weapon: Weapon = $Pivot/Weapon
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 @onready var camera_2d: Camera2D = $Camera2D
@@ -9,10 +11,10 @@ extends CharacterBody2D
 @onready var health_bar: ProgressBar = $ProgressBar
 @onready var i_frames: Timer = $IFrames
 @onready var own_light: PointLight2D = $PointLight2D
+@onready var animation_tree: AnimationTree = $AnimationTree
 var knockback_velocity: Vector2 = Vector2.ZERO
 const max_knockback_frames: int = 4
 var knockback_frames: int = 0
-@onready var animation_tree: AnimationTree = $AnimationTree
 var damage_enabled: bool = false
 
 @export var SPEED = 125
@@ -20,10 +22,17 @@ var damage_enabled: bool = false
 
 signal death_sign(is_player: bool)
 
+func _ready() -> void:
+	rage_quit.pressed.connect(_on_rage_quit)
+
 func _physics_process(_delta: float) -> void:
 	
 	if not is_multiplayer_authority():
 		return
+	
+	if Input.is_action_just_pressed("menu"):
+		pause_menu.visible = !pause_menu.visible
+	var paused = pause_menu.visible
 	
 	if damage_enabled:
 		life -= 2
@@ -32,6 +41,7 @@ func _physics_process(_delta: float) -> void:
 			death.rpc()
 	
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if paused: direction = Vector2.ZERO
 	if direction and knockback_velocity == Vector2.ZERO:
 		pivot.rotation = direction.angle()
 		velocity = direction * SPEED
@@ -45,10 +55,10 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity = Vector2.ZERO
 	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and not paused:
 		weapon.attack()
 	
-	if Input.is_action_just_pressed("switch_light"):
+	if Input.is_action_just_pressed("switch_light") and not paused:
 		weapon.audio_stream_player_2.play()
 		weapon.switch_light.rpc()
 	
@@ -129,3 +139,6 @@ func send_life(new_life) -> void:
 @rpc("any_peer", "call_local", "reliable")
 func damage_enabler(val: bool) -> void:
 	damage_enabled = val
+
+func _on_rage_quit() -> void:
+	death.rpc()

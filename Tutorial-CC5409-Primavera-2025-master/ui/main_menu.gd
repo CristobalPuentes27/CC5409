@@ -4,6 +4,7 @@ extends Control
 
 @onready var host: Button = %Host
 @onready var join: Button = %Join
+@onready var tutorial: Button = %Tutorial
 @onready var credits: Button = %Credits
 @onready var quit: Button = %Quit
 
@@ -15,6 +16,7 @@ func _ready() -> void:
 	
 	quit.pressed.connect(func(): get_tree().quit())
 	host.pressed.connect(func(): get_tree().change_scene_to_file("res://lobby/host_screen.tscn"))
+	tutorial.pressed.connect(func(): get_tree().change_scene_to_file("res://game/tutorial.tscn"))
 	join.pressed.connect(func(): get_tree().change_scene_to_file("res://lobby/join_screen.tscn"))
 	credits.pressed.connect(func(): get_tree().change_scene_to_file("res://ui/credits.tscn"))
 	

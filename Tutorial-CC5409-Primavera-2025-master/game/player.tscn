@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://yct15o1oq06n"]
+[gd_scene load_steps=90 format=3 uid="uid://yct15o1oq06n"]
 
 [ext_resource type="Script" uid="uid://dijvwxniujrcv" path="res://ourscripts/player.gd" id="1_dadds"]
 [ext_resource type="PackedScene" uid="uid://cmqf8ou7xccdn" path="res://game/weapon.tscn" id="3_du4nq"]
@@ -910,6 +910,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xkjxy"]
+light_mode = 1
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 floor_stop_on_slope = false
@@ -965,3 +968,23 @@ animation = &"down"
 
 [node name="AudioListener2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_2k1gg")
+
+[node name="PauseMenu" type="VBoxContainer" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_xkjxy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenu"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "TEST"
+
+[node name="RageQuit" type="Button" parent="PauseMenu"]
+use_parent_material = true
+layout_mode = 2
+text = "RageQuit"
