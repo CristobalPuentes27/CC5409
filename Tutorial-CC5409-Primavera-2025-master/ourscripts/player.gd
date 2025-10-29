@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var rage_quit: Button = $PauseMenu/RageQuit
 @onready var walk_sfx: AudioStreamPlayer = $AudioListener2D
 @onready var pause_menu: VBoxContainer = $PauseMenu
-@onready var weapon: Weapon = $Pivot/Weapon
+@onready var weapon: Weapon = $Pivot/Lantern
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var pivot: Node2D = $Pivot
@@ -59,7 +59,6 @@ func _physics_process(_delta: float) -> void:
 		weapon.attack()
 	
 	if Input.is_action_just_pressed("switch_light") and not paused:
-		weapon.audio_stream_player_2.play()
 		weapon.switch_light.rpc()
 	
 	if Input.is_action_just_pressed("test"):
