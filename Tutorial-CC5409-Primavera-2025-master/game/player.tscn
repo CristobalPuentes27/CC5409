@@ -1,8 +1,8 @@
 [gd_scene load_steps=90 format=3 uid="uid://yct15o1oq06n"]
 
 [ext_resource type="Script" uid="uid://dijvwxniujrcv" path="res://ourscripts/player.gd" id="1_dadds"]
-[ext_resource type="PackedScene" uid="uid://c7l1q5e378kqe" path="res://game/lantern.tscn" id="2_xkjxy"]
-[ext_resource type="Texture2D" uid="uid://cm0tf7uwqlxt3" path="res://assets/circle.png" id="4_2k1gg"]
+[ext_resource type="PackedScene" uid="uid://c7l1q5e378kqe" path="res://game/weapon/lantern.tscn" id="2_xkjxy"]
+[ext_resource type="Texture2D" uid="uid://cm0tf7uwqlxt3" path="res://assets/lights/circle.png" id="4_2k1gg"]
 [ext_resource type="Texture2D" uid="uid://cx01igeobga" path="res://assets/Character/Character_Down.png" id="4_4uvqg"]
 [ext_resource type="Texture2D" uid="uid://8jxw3wp46r0w" path="res://assets/Character/Character_DownLeft.png" id="5_xkjxy"]
 [ext_resource type="Texture2D" uid="uid://ckbv8lhv16t8d" path="res://assets/Character/Character_DownRight.png" id="6_2k1gg"]

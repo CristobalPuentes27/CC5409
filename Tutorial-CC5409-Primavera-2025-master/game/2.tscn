@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://df27ouxfeg32k"]
+[gd_scene load_steps=41 format=4 uid="uid://df27ouxfeg32k"]
 
 [ext_resource type="Script" uid="uid://djd6qfqjfysf1" path="res://scenes/main.gd" id="1_gpbrv"]
 [ext_resource type="PackedScene" uid="uid://yct15o1oq06n" path="res://game/player.tscn" id="2_truli"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://frnf70urkks6" path="res://assets/FG_Cellar.png" id="5_nghfh"]
 [ext_resource type="PackedScene" uid="uid://cg45jrcau0npi" path="res://game/safe_zone.tscn" id="6_q14ly"]
 [ext_resource type="AudioStream" uid="uid://2ke1p2hu1vl" path="res://assets/Minifantasy_Dungeon_Music/Music/Goblins_Dance_(Battle).wav" id="7_vcn5b"]
+[ext_resource type="PackedScene" uid="uid://dbk3xxs5p7skb" path="res://game/weapon/green_ls.tscn" id="8_271y2"]
 [ext_resource type="AudioStream" uid="uid://bycju7d4ukdvo" path="res://assets/Minifantasy_Dungeon_Music/Music/Goblins_Den_(Regular).wav" id="8_i25cr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q14ly"]
@@ -1838,7 +1839,7 @@ tile_set = SubResource("TileSet_271y2")
 [node name="Markers" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Markers"]
-position = Vector2(83, 98)
+position = Vector2(402, 402)
 gizmo_extents = 60.0
 
 [node name="Marker2D2" type="Marker2D" parent="Markers"]
@@ -1869,3 +1870,6 @@ volume_db = 1.0
 stream = ExtResource("8_i25cr")
 volume_db = 1.0
 autoplay = true
+
+[node name="GreenLS" parent="." instance=ExtResource("8_271y2")]
+position = Vector2(473, 495)

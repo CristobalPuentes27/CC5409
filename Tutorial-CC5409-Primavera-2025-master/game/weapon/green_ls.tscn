@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbk3xxs5p7skb"]
+
+[ext_resource type="PackedScene" uid="uid://btpe6wrrdj1yg" path="res://game/weapon.tscn" id="1_83adx"]
+[ext_resource type="Texture2D" uid="uid://dmwpi6eea66lm" path="res://assets/weapons/Sabers-02.png" id="2_r3xqj"]
+[ext_resource type="Texture2D" uid="uid://cm0tf7uwqlxt3" path="res://assets/lights/circle.png" id="3_r3xqj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83adx"]
+
+[node name="GreenLS" instance=ExtResource("1_83adx")]
+attack_power = 200
+attack_speed = 0.5
+rotation_cone = 0.785
+
+[node name="Icon" parent="." index="0"]
+position = Vector2(35, 0)
+rotation = 1.5707964
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_r3xqj")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(40, 0)
+scale = Vector2(2, 0.2)
+shape = SubResource("RectangleShape2D_83adx")
+
+[node name="PointLight2D" parent="." index="4"]
+position = Vector2(40, 0)
+scale = Vector2(1, 0.75)
+color = Color(0.19607843, 0.78431374, 0.19607843, 1)
+texture = ExtResource("3_r3xqj")

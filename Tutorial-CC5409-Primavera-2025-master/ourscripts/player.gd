@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+var stored_data
+
 @onready var rage_quit: Button = $PauseMenu/RageQuit
 @onready var walk_sfx: AudioStreamPlayer = $AudioListener2D
 @onready var pause_menu: VBoxContainer = $PauseMenu
@@ -23,6 +25,7 @@ var damage_enabled: bool = false
 signal death_sign(is_player: bool)
 
 func _ready() -> void:
+	weapon.picked_up.rpc()
 	rage_quit.pressed.connect(_on_rage_quit)
 
 func _physics_process(_delta: float) -> void:
@@ -87,6 +90,7 @@ func setup(player_data: Statics.PlayerData):
 	health_bar.visible = is_multiplayer_authority()
 	own_light.visible = is_multiplayer_authority()
 	if !multiplayer.is_server(): pass
+	stored_data = player_data
 
 @rpc("any_peer", "call_local", "unreliable_ordered")
 func animate(direction: Vector2) -> void:
@@ -141,3 +145,12 @@ func damage_enabler(val: bool) -> void:
 
 func _on_rage_quit() -> void:
 	death.rpc()
+
+@rpc("any_peer", "call_local", "reliable")
+func change_weapon(new_weapon: String) -> void:
+	Debug.log(new_weapon)
+	pivot.remove_child(weapon)
+	weapon = load(new_weapon).instantiate()
+	pivot.add_child(weapon)
+	if is_multiplayer_authority(): weapon.setup(stored_data)
+	weapon.picked_up()

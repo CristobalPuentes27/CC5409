@@ -1,6 +1,7 @@
 class_name Weapon
 extends Node2D
 
+@onready var pick_up_area: Area2D = $PickUpArea
 @onready var area_2d: Area2D = $Area2D
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 @onready var point_light_2d: PointLight2D = $PointLight2D
@@ -18,8 +19,10 @@ var player: Player = null
 var change_collision := false
 
 func _ready() -> void:
-	if multiplayer.is_server():
-		area_2d.body_entered.connect(_on_area_2d_body_entered)
+	if not multiplayer.is_server(): return
+
+	area_2d.body_entered.connect(_on_area_2d_body_entered)
+	pick_up_area.body_entered.connect(_on_pick_up_area_entered)
 
 func _physics_process(_delta: float) -> void:
 	send_rotation.rpc(rotation)
@@ -27,6 +30,12 @@ func _physics_process(_delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	player = body as Player
 	damage()
+
+func _on_pick_up_area_entered(body: Node2D) -> void:
+	player = body as Player
+	Debug.log(player)
+	if player:
+		player.change_weapon.rpc(self.scene_file_path)
 
 func attack() -> void:
 	
@@ -57,6 +66,7 @@ func switch_light() -> void:
 func setup(player_data: Statics.PlayerData):
 	set_multiplayer_authority(player_data.id, false)
 	multiplayer_synchronizer.set_multiplayer_authority(player_data.id, false)
+	switch_light()
 
 func damage() -> void:
 	if player:
@@ -68,3 +78,7 @@ func enable_collision(val: bool) -> void:
 
 func rpc_enable_collision(val: bool) -> void:
 	enable_collision.rpc(val)
+
+@rpc("authority", "call_local", "reliable")
+func picked_up() -> void:
+	pick_up_area.monitoring = false

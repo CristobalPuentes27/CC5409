@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7c01fmbdpcdr" path="res://ourscripts/weapon_old.gd" id="1_aqcq7"]
 [ext_resource type="Texture2D" uid="uid://c0pagtqumey1g" path="res://assets/weapons/flashlight_01.png" id="2_jwcaa"]
-[ext_resource type="Texture2D" uid="uid://b31jf8xjb5p5l" path="res://assets/triangle.png" id="3_ckr7q"]
+[ext_resource type="Texture2D" uid="uid://b31jf8xjb5p5l" path="res://assets/lights/triangle.png" id="3_ckr7q"]
 [ext_resource type="AudioStream" uid="uid://23uc2qdmjci8" path="res://assets/SFX/07_human_atk_sword_1.wav" id="4_bpwxv"]
 [ext_resource type="AudioStream" uid="uid://d3nbqqbdaxe2" path="res://assets/SFX/10_human_special_atk_2.wav" id="5_k7eef"]
 

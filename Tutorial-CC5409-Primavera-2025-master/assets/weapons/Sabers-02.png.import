@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b31jf8xjb5p5l"
-path="res://.godot/imported/triangle.png-81d9911a043b3b982b4bbd30d008317a.ctex"
+uid="uid://dmwpi6eea66lm"
+path="res://.godot/imported/Sabers-02.png-bcc6267924bf0165e104846f8203abb0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/triangle.png"
-dest_files=["res://.godot/imported/triangle.png-81d9911a043b3b982b4bbd30d008317a.ctex"]
+source_file="res://assets/weapons/Sabers-02.png"
+dest_files=["res://.godot/imported/Sabers-02.png-bcc6267924bf0165e104846f8203abb0.ctex"]
 
 [params]
 

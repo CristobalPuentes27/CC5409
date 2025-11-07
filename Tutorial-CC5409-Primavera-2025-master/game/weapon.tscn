@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://btpe6wrrdj1yg"]
+[gd_scene load_steps=5 format=3 uid="uid://btpe6wrrdj1yg"]
 
 [ext_resource type="Script" uid="uid://cx18gh202huoc" path="res://ourscripts/weapon.gd" id="1_cix0n"]
 [ext_resource type="AudioStream" uid="uid://d3nbqqbdaxe2" path="res://assets/SFX/10_human_special_atk_2.wav" id="2_hc806"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hc806"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hc806"]
 properties/0/path = NodePath(".:cooldown")
@@ -12,17 +14,22 @@ properties/0/replication_mode = 1
 script = ExtResource("1_cix0n")
 
 [node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0.187176, 0.187176, 0.187176, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
+[node name="PickUpArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
+shape = SubResource("CircleShape2D_hc806")
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_hc806")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 shadow_enabled = true
 shadow_filter = 1
 
