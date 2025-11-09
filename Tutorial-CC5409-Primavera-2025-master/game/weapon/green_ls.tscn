@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbk3xxs5p7skb"]
+[gd_scene load_steps=7 format=3 uid="uid://dbk3xxs5p7skb"]
 
 [ext_resource type="PackedScene" uid="uid://btpe6wrrdj1yg" path="res://game/weapon.tscn" id="1_83adx"]
 [ext_resource type="Texture2D" uid="uid://dmwpi6eea66lm" path="res://assets/weapons/Sabers-02.png" id="2_r3xqj"]
@@ -6,6 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://23uc2qdmjci8" path="res://assets/SFX/07_human_atk_sword_1.wav" id="4_y4vdr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83adx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4vdr"]
+radius = 25.0
 
 [node name="GreenLS" instance=ExtResource("1_83adx")]
 attack_power = 200
@@ -22,6 +25,10 @@ texture = ExtResource("2_r3xqj")
 position = Vector2(40, 0)
 scale = Vector2(2, 0.2)
 shape = SubResource("RectangleShape2D_83adx")
+
+[node name="CollisionShape2D" parent="PickUpArea" index="0"]
+position = Vector2(35, 0)
+shape = SubResource("CircleShape2D_y4vdr")
 
 [node name="PointLight2D" parent="." index="4"]
 position = Vector2(40, 0)

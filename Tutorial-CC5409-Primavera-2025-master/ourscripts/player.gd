@@ -26,7 +26,6 @@ var pickable_weapon: Weapon
 signal death_sign(is_player: bool)
 
 func _ready() -> void:
-	weapon.picked_up.rpc()
 	rage_quit.pressed.connect(_on_rage_quit)
 
 func _physics_process(_delta: float) -> void:
@@ -155,15 +154,14 @@ func change_weapon(new_weapon: String) -> void:
 	pivot.remove_child(weapon)
 	weapon = load(new_weapon).instantiate()
 	pivot.add_child(weapon)
-	if is_multiplayer_authority(): weapon.setup(stored_data)
-	weapon.picked_up()
+	weapon.setup(stored_data)
 
 func weapon_in_range(new_weapon: Weapon) -> void:
 	if !is_multiplayer_authority(): return
 	pickable_weapon = new_weapon
-	new_weapon.show_stats()
+	new_weapon.show_pick_up_action()
 
 func weapon_off_range(new_weapon: Weapon) -> void:
 	if !is_multiplayer_authority(): return
 	if pickable_weapon == new_weapon: pickable_weapon = null
-	new_weapon.hide_stats()
+	new_weapon.hide_pick_up_action()

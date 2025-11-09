@@ -9,8 +9,9 @@ extends Node2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var switch_light_sound: AudioStreamPlayer2D = $SwitchLightSound
-@onready var stats_display_background: Panel = $Panel
-@onready var stats_display: RichTextLabel = $Panel/RichTextLabel
+@onready var stats_display_background: Panel = $StatsPanel
+@onready var stats_display: RichTextLabel = $StatsPanel/RichTextLabel
+@onready var pick_up_panel: Panel = $PickUpPanel
 
 @export var attack_power: int = 100
 @export var knockback: float = 2000
@@ -51,11 +52,11 @@ func _on_pick_up_area_exited(body: Node2D) -> void:
 	if player:
 		player.weapon_off_range(self)
 
-func show_stats() -> void:
-	stats_display_background.visible = true
+func show_pick_up_action() -> void:
+	pick_up_panel.visible = true
 
-func hide_stats() -> void:
-	stats_display_background.visible = false
+func hide_pick_up_action() -> void:
+	pick_up_panel.visible = false
 
 @rpc("any_peer", "call_local", "reliable")
 func attack_sound() -> void:
@@ -88,7 +89,8 @@ func switch_light() -> void:
 func setup(player_data: Statics.PlayerData):
 	set_multiplayer_authority(player_data.id, false)
 	multiplayer_synchronizer.set_multiplayer_authority(player_data.id, false)
-	pick_up_area.body_exited.disconnect(_on_pick_up_area_exited)
+	pick_up_area.monitoring = false
+	stats_display_background.visible = false
 	if not is_multiplayer_authority(): return
 	switch_light.rpc()
 
@@ -101,7 +103,3 @@ func enable_collision(val: bool) -> void:
 
 func rpc_enable_collision(val: bool) -> void:
 	enable_collision.rpc(val)
-
-@rpc("authority", "call_local", "reliable")
-func picked_up() -> void:
-	pick_up_area.monitoring = false

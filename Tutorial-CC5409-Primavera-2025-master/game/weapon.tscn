@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://btpe6wrrdj1yg"]
+[gd_scene load_steps=4 format=3 uid="uid://btpe6wrrdj1yg"]
 
 [ext_resource type="Script" uid="uid://cx18gh202huoc" path="res://ourscripts/weapon.gd" id="1_cix0n"]
 [ext_resource type="AudioStream" uid="uid://d3nbqqbdaxe2" path="res://assets/SFX/10_human_special_atk_2.wav" id="2_hc806"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hc806"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hc806"]
 properties/0/path = NodePath(".:cooldown")
@@ -23,7 +21,6 @@ monitoring = false
 [node name="PickUpArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
-shape = SubResource("CircleShape2D_hc806")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_hc806")
@@ -40,12 +37,12 @@ attenuation = 10.0
 stream = ExtResource("2_hc806")
 attenuation = 10.0
 
-[node name="Panel" type="Panel" parent="."]
-visible = false
+[node name="StatsPanel" type="Panel" parent="."]
+offset_top = 5.0
 offset_right = 82.0
-offset_bottom = 17.0
+offset_bottom = 22.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel"]
 layout_mode = 0
 offset_right = 472.0
 offset_bottom = 128.0
@@ -53,5 +50,20 @@ scale = Vector2(0.18, 0.18)
 bbcode_enabled = true
 text = "[b]Attack:[/b] {attack}
 [b]Attack Speed:[/b] {attack_speed}"
+fit_content = true
+scroll_active = false
+
+[node name="PickUpPanel" type="Panel" parent="."]
+visible = false
+offset_top = -10.0
+offset_right = 30.0
+offset_bottom = -1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PickUpPanel"]
+layout_mode = 0
+offset_right = 472.0
+offset_bottom = 128.0
+scale = Vector2(0.18, 0.18)
+text = "Pick Up (R)"
 fit_content = true
 scroll_active = false

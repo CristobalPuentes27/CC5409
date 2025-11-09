@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7l1q5e378kqe"]
+[gd_scene load_steps=7 format=3 uid="uid://c7l1q5e378kqe"]
 
 [ext_resource type="PackedScene" uid="uid://btpe6wrrdj1yg" path="res://game/weapon.tscn" id="1_jpuaw"]
 [ext_resource type="Texture2D" uid="uid://c0pagtqumey1g" path="res://assets/weapons/flashlight_01.png" id="2_7siu5"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpuaw"]
 size = Vector2(14.5, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w24kw"]
+radius = 25.0
 
 [node name="Lantern" instance=ExtResource("1_jpuaw")]
 attack_speed = 0.45
@@ -20,6 +23,10 @@ texture = ExtResource("2_7siu5")
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(25.25, 0)
 shape = SubResource("RectangleShape2D_jpuaw")
+
+[node name="CollisionShape2D" parent="PickUpArea" index="0"]
+position = Vector2(20, 0)
+shape = SubResource("CircleShape2D_w24kw")
 
 [node name="PointLight2D" parent="." index="4"]
 position = Vector2(0, 1)
