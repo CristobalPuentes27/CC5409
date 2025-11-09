@@ -6,8 +6,11 @@ extends Node2D
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var switch_light_sound: AudioStreamPlayer = $SwitchLightSound
+@onready var switch_light_sound: AudioStreamPlayer2D = $SwitchLightSound
+@onready var stats_display_background: Panel = $Panel
+@onready var stats_display: RichTextLabel = $Panel/RichTextLabel
 
 @export var attack_power: int = 100
 @export var knockback: float = 2000
@@ -15,34 +18,54 @@ extends Node2D
 @export var rotation_cone := PI/2
 
 var attacking := false
-var player: Player = null
 var change_collision := false
 
 func _ready() -> void:
-	if not multiplayer.is_server(): return
-
-	area_2d.body_entered.connect(_on_area_2d_body_entered)
+	
+	stats_display.text = stats_display.text.format({
+		"attack": attack_power,
+		"attack_speed": attack_speed
+	})
+	
 	pick_up_area.body_entered.connect(_on_pick_up_area_entered)
+	pick_up_area.body_exited.connect(_on_pick_up_area_exited)
+	
+	if not multiplayer.is_server(): return
+	
+	area_2d.body_entered.connect(_on_area_2d_body_entered)
 
 func _physics_process(_delta: float) -> void:
 	send_rotation.rpc(rotation)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	player = body as Player
-	damage()
+	var player = body as Player
+	if player: damage(player)
 
 func _on_pick_up_area_entered(body: Node2D) -> void:
-	player = body as Player
-	Debug.log(player)
+	var player = body as Player
 	if player:
-		player.change_weapon.rpc(self.scene_file_path)
+		player.weapon_in_range(self)
+
+func _on_pick_up_area_exited(body: Node2D) -> void:
+	var player = body as Player
+	if player:
+		player.weapon_off_range(self)
+
+func show_stats() -> void:
+	stats_display_background.visible = true
+
+func hide_stats() -> void:
+	stats_display_background.visible = false
+
+@rpc("any_peer", "call_local", "reliable")
+func attack_sound() -> void:
+	audio_stream_player_2d.play()
 
 func attack() -> void:
 	
 	if attacking: return
 	
-	#enable_collision.rpc_id(1, true)
-	audio_stream_player.play()
+	attack_sound.rpc()
 	var tween := create_tween()
 	tween.tween_callback(Callable(self, "rpc_enable_collision").bind(true))
 	tween.tween_property(self, "attacking", true, 0)
@@ -52,7 +75,6 @@ func attack() -> void:
 	tween.tween_property(self, "rotation", 0, attack_speed/4)
 	tween.tween_callback(Callable(self, "rpc_enable_collision").bind(false))
 	tween.tween_property(self, "attacking", false, 0)
-	#enable_collision.rpc_id(1, false)
 
 @rpc("authority", "call_remote", "reliable")
 func send_rotation(rot):
@@ -66,11 +88,12 @@ func switch_light() -> void:
 func setup(player_data: Statics.PlayerData):
 	set_multiplayer_authority(player_data.id, false)
 	multiplayer_synchronizer.set_multiplayer_authority(player_data.id, false)
-	switch_light()
+	pick_up_area.body_exited.disconnect(_on_pick_up_area_exited)
+	if not is_multiplayer_authority(): return
+	switch_light.rpc()
 
-func damage() -> void:
-	if player:
-		player.take_damage(attack_power, global_position, knockback)
+func damage(player: Player) -> void:
+	player.take_damage(attack_power, global_position, knockback)
 
 @rpc("any_peer", "call_local", "reliable")
 func enable_collision(val: bool) -> void:

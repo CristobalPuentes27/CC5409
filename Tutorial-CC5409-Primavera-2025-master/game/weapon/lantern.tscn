@@ -21,12 +21,12 @@ texture = ExtResource("2_7siu5")
 position = Vector2(25.25, 0)
 shape = SubResource("RectangleShape2D_jpuaw")
 
-[node name="PointLight2D" parent="." index="3"]
+[node name="PointLight2D" parent="." index="4"]
 position = Vector2(0, 1)
 color = Color(0.5882353, 0.74509805, 0.5882353, 1)
 texture = ExtResource("3_7siu5")
 offset = Vector2(80, 0)
 texture_scale = 0.5
 
-[node name="AudioStreamPlayer" parent="." index="4"]
+[node name="AudioStreamPlayer2D" parent="." index="5"]
 stream = ExtResource("4_cago6")

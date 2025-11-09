@@ -1,8 +1,6 @@
 class_name Player
 extends CharacterBody2D
 
-var stored_data
-
 @onready var rage_quit: Button = $PauseMenu/RageQuit
 @onready var walk_sfx: AudioStreamPlayer = $AudioListener2D
 @onready var pause_menu: VBoxContainer = $PauseMenu
@@ -14,13 +12,16 @@ var stored_data
 @onready var i_frames: Timer = $IFrames
 @onready var own_light: PointLight2D = $PointLight2D
 @onready var animation_tree: AnimationTree = $AnimationTree
+
+@export var SPEED = 125
+@export var life: int = 500
+
+var stored_data
 var knockback_velocity: Vector2 = Vector2.ZERO
 const max_knockback_frames: int = 4
 var knockback_frames: int = 0
 var damage_enabled: bool = false
-
-@export var SPEED = 125
-@export var life: int = 500
+var pickable_weapon: Weapon
 
 signal death_sign(is_player: bool)
 
@@ -61,6 +62,10 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and not paused:
 		weapon.attack()
 	
+	if Input.is_action_just_pressed("pick_object") and pickable_weapon and not weapon.attacking:
+		change_weapon.rpc(pickable_weapon.scene_file_path)
+		pickable_weapon = null
+	
 	if Input.is_action_just_pressed("switch_light") and not paused:
 		weapon.switch_light.rpc()
 	
@@ -73,7 +78,6 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	send_pos.rpc(position, pivot.rotation)
-	#weapon.send_rotation.rpc(weapon.rotation)
 
 @rpc("any_peer", "call_local", "reliable")
 func test() -> void:
@@ -89,7 +93,6 @@ func setup(player_data: Statics.PlayerData):
 	health_bar.value = life
 	health_bar.visible = is_multiplayer_authority()
 	own_light.visible = is_multiplayer_authority()
-	if !multiplayer.is_server(): pass
 	stored_data = player_data
 
 @rpc("any_peer", "call_local", "unreliable_ordered")
@@ -154,3 +157,13 @@ func change_weapon(new_weapon: String) -> void:
 	pivot.add_child(weapon)
 	if is_multiplayer_authority(): weapon.setup(stored_data)
 	weapon.picked_up()
+
+func weapon_in_range(new_weapon: Weapon) -> void:
+	if !is_multiplayer_authority(): return
+	pickable_weapon = new_weapon
+	new_weapon.show_stats()
+
+func weapon_off_range(new_weapon: Weapon) -> void:
+	if !is_multiplayer_authority(): return
+	if pickable_weapon == new_weapon: pickable_weapon = null
+	new_weapon.hide_stats()
