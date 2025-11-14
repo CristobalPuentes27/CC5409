@@ -13,6 +13,8 @@ extends CharacterBody2D
 @onready var own_light: PointLight2D = $PointLight2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var pick_up_panel: Panel = $PickUpPanel
+@onready var stats_panel: Panel = $StatsPanel
+@onready var rich_text_label: RichTextLabel = $StatsPanel/RichTextLabel
 
 @export var SPEED = 125
 @export var life: int = 500
@@ -25,6 +27,7 @@ var damage_enabled: bool = false
 var pickable_weapon: Weapon
 var pickable_weapon_position: Vector2
 var pickable_weapon_light: bool
+@onready var stats_template: String = rich_text_label.text
 
 signal death_sign(is_player: bool)
 
@@ -162,6 +165,11 @@ func weapon_in_range(new_weapon: Weapon, pos: Vector2, light_on: bool) -> void:
 	pickable_weapon = new_weapon
 	pickable_weapon_position = pos
 	pickable_weapon_light = light_on
+	stats_panel.visible = true
+	rich_text_label.text = stats_template.format({
+		"attack": new_weapon.attack_power,
+		"attack_speed": new_weapon.attack_speed
+	})
 	pick_up_panel.visible = true
 
 func weapon_off_range(new_weapon: Weapon) -> void:
@@ -169,6 +177,7 @@ func weapon_off_range(new_weapon: Weapon) -> void:
 	if pickable_weapon == new_weapon:
 		pickable_weapon = null
 		pick_up_panel.visible = false
+		stats_panel.visible = false
 
 @rpc("any_peer", "call_local", "reliable")
 func _create_new_weapon(scene: String, pos:Vector2, light_on: bool) -> void:

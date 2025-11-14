@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbk3xxs5p7skb"]
+
+[ext_resource type="PackedScene" uid="uid://btpe6wrrdj1yg" path="res://game/weapon/weapon.tscn" id="1_s5ds4"]
+[ext_resource type="Texture2D" uid="uid://dmwpi6eea66lm" path="res://assets/weapons/Sabers-02.png" id="2_cnnxl"]
+[ext_resource type="Texture2D" uid="uid://cm0tf7uwqlxt3" path="res://assets/lights/circle.png" id="3_2noew"]
+[ext_resource type="AudioStream" uid="uid://23uc2qdmjci8" path="res://assets/SFX/07_human_atk_sword_1.wav" id="4_3015e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83adx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y4vdr"]
+radius = 20.0
+height = 70.0
+
+[node name="LS" instance=ExtResource("1_s5ds4")]
+
+[node name="Icon" parent="." index="0"]
+position = Vector2(35, 0)
+rotation = 1.5707964
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_cnnxl")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(40, 0)
+scale = Vector2(2, 0.2)
+shape = SubResource("RectangleShape2D_83adx")
+
+[node name="CollisionShape2D" parent="PickUpArea" index="0"]
+position = Vector2(35, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_y4vdr")
+
+[node name="PointLight2D" parent="." index="4"]
+position = Vector2(40, 0)
+scale = Vector2(1, 0.75)
+texture = ExtResource("3_2noew")
+
+[node name="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("4_3015e")

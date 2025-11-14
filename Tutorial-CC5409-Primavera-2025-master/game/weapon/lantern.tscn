@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7l1q5e378kqe"]
 
-[ext_resource type="PackedScene" uid="uid://btpe6wrrdj1yg" path="res://game/weapon.tscn" id="1_jpuaw"]
+[ext_resource type="PackedScene" uid="uid://btpe6wrrdj1yg" path="res://game/weapon/weapon.tscn" id="1_jpuaw"]
 [ext_resource type="Texture2D" uid="uid://c0pagtqumey1g" path="res://assets/weapons/flashlight_01.png" id="2_7siu5"]
 [ext_resource type="Texture2D" uid="uid://b31jf8xjb5p5l" path="res://assets/lights/triangle.png" id="3_7siu5"]
 [ext_resource type="AudioStream" uid="uid://23uc2qdmjci8" path="res://assets/SFX/07_human_atk_sword_1.wav" id="4_cago6"]
@@ -12,10 +12,7 @@ size = Vector2(14.5, 10)
 radius = 25.0
 
 [node name="Lantern" instance=ExtResource("1_jpuaw")]
-attack_power = null
-knockback = null
 attack_speed = 0.45
-rotation_cone = null
 
 [node name="Icon" parent="." index="0"]
 position = Vector2(21, 0)

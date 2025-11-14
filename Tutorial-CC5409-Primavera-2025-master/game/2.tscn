@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://df27ouxfeg32k"]
+[gd_scene load_steps=43 format=4 uid="uid://df27ouxfeg32k"]
 
 [ext_resource type="Script" uid="uid://djd6qfqjfysf1" path="res://scenes/main.gd" id="1_gpbrv"]
 [ext_resource type="PackedScene" uid="uid://yct15o1oq06n" path="res://game/player.tscn" id="2_truli"]
@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://frnf70urkks6" path="res://assets/FG_Cellar.png" id="5_nghfh"]
 [ext_resource type="PackedScene" uid="uid://cg45jrcau0npi" path="res://game/safe_zone.tscn" id="6_q14ly"]
 [ext_resource type="AudioStream" uid="uid://2ke1p2hu1vl" path="res://assets/Minifantasy_Dungeon_Music/Music/Goblins_Dance_(Battle).wav" id="7_vcn5b"]
-[ext_resource type="PackedScene" uid="uid://dbk3xxs5p7skb" path="res://game/weapon/green_ls.tscn" id="8_271y2"]
+[ext_resource type="PackedScene" uid="uid://bbxfsj6xacory" path="res://game/weapon/green_ls.tscn" id="8_271y2"]
 [ext_resource type="AudioStream" uid="uid://bycju7d4ukdvo" path="res://assets/Minifantasy_Dungeon_Music/Music/Goblins_Den_(Regular).wav" id="8_i25cr"]
 [ext_resource type="PackedScene" uid="uid://c7l1q5e378kqe" path="res://game/weapon/lantern.tscn" id="9_271y2"]
+[ext_resource type="PackedScene" uid="uid://0exddmve6jfu" path="res://game/weapon/blue_ls.tscn" id="10_f1ina"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q14ly"]
 texture = ExtResource("5_nghfh")
@@ -1852,6 +1853,7 @@ _spawnable_scenes = PackedStringArray("uid://bquqisov20t1c")
 spawn_path = NodePath("..")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="SafeZone" parent="." instance=ExtResource("6_q14ly")]
@@ -1872,8 +1874,11 @@ stream = ExtResource("8_i25cr")
 volume_db = 1.0
 autoplay = true
 
-[node name="GreenLS" parent="." instance=ExtResource("8_271y2")]
-position = Vector2(473, 495)
-
 [node name="Lantern" parent="." instance=ExtResource("9_271y2")]
 position = Vector2(482, 447)
+
+[node name="GreenLS" parent="." instance=ExtResource("8_271y2")]
+position = Vector2(405, 490)
+
+[node name="BlueLS" parent="." instance=ExtResource("10_f1ina")]
+position = Vector2(552, 489)

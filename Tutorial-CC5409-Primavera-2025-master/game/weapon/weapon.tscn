@@ -33,19 +33,3 @@ attenuation = 10.0
 [node name="SwitchLightSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_hc806")
 attenuation = 10.0
-
-[node name="StatsPanel" type="Panel" parent="."]
-offset_top = 5.0
-offset_right = 82.0
-offset_bottom = 22.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel"]
-layout_mode = 0
-offset_right = 472.0
-offset_bottom = 128.0
-scale = Vector2(0.18, 0.18)
-bbcode_enabled = true
-text = "[b]Attack:[/b] {attack}
-[b]Attack Speed:[/b] {attack_speed}"
-fit_content = true
-scroll_active = false

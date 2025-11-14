@@ -8,8 +8,6 @@ extends Node2D
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var switch_light_sound: AudioStreamPlayer2D = $SwitchLightSound
-@onready var stats_display_background: Panel = $StatsPanel
-@onready var stats_display: RichTextLabel = $StatsPanel/RichTextLabel
 
 @export var attack_power: int = 100
 @export var knockback: float = 2000
@@ -20,11 +18,6 @@ var attacking := false
 var change_collision := false
 
 func _ready() -> void:
-	
-	stats_display.text = stats_display.text.format({
-		"attack": attack_power,
-		"attack_speed": attack_speed
-	})
 	
 	pick_up_area.body_entered.connect(_on_pick_up_area_entered)
 	pick_up_area.body_exited.connect(_on_pick_up_area_exited)
@@ -83,7 +76,6 @@ func setup(player_data: Statics.PlayerData, light_on: bool):
 	set_multiplayer_authority(player_data.id, false)
 	multiplayer_synchronizer.set_multiplayer_authority(player_data.id, false)
 	pick_up_area.monitoring = false
-	stats_display_background.visible = false
 	point_light_2d.visible = light_on
 
 func damage(player: Player) -> void:
