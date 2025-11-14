@@ -12,7 +12,10 @@ size = Vector2(14.5, 10)
 radius = 25.0
 
 [node name="Lantern" instance=ExtResource("1_jpuaw")]
+attack_power = null
+knockback = null
 attack_speed = 0.45
+rotation_cone = null
 
 [node name="Icon" parent="." index="0"]
 position = Vector2(21, 0)

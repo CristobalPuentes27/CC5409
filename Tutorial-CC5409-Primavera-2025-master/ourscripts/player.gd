@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var i_frames: Timer = $IFrames
 @onready var own_light: PointLight2D = $PointLight2D
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var pick_up_panel: Panel = $PickUpPanel
 
 @export var SPEED = 125
 @export var life: int = 500
@@ -22,10 +23,13 @@ const max_knockback_frames: int = 4
 var knockback_frames: int = 0
 var damage_enabled: bool = false
 var pickable_weapon: Weapon
+var pickable_weapon_position: Vector2
+var pickable_weapon_light: bool
 
 signal death_sign(is_player: bool)
 
 func _ready() -> void:
+	weapon.point_light_2d.visible = true
 	rage_quit.pressed.connect(_on_rage_quit)
 
 func _physics_process(_delta: float) -> void:
@@ -62,14 +66,10 @@ func _physics_process(_delta: float) -> void:
 		weapon.attack()
 	
 	if Input.is_action_just_pressed("pick_object") and pickable_weapon and not weapon.attacking:
-		change_weapon.rpc(pickable_weapon.scene_file_path)
-		pickable_weapon = null
+		change_weapon.rpc(pickable_weapon.scene_file_path, pickable_weapon_light)
 	
 	if Input.is_action_just_pressed("switch_light") and not paused:
 		weapon.switch_light.rpc()
-	
-	if Input.is_action_just_pressed("test"):
-		test()
 	
 	if life <= 0:
 		self.modulate = Color(1,0,0,1)
@@ -78,15 +78,11 @@ func _physics_process(_delta: float) -> void:
 	
 	send_pos.rpc(position, pivot.rotation)
 
-@rpc("any_peer", "call_local", "reliable")
-func test() -> void:
-	Debug.log("HOLA")
-
 func setup(player_data: Statics.PlayerData):
 	name = str(player_data.id)
 	set_multiplayer_authority(player_data.id, false)
 	multiplayer_synchronizer.set_multiplayer_authority(player_data.id, false)
-	weapon.setup(player_data)
+	weapon.setup(player_data, true)
 	camera_2d.enabled = is_multiplayer_authority()
 	health_bar.max_value = life
 	health_bar.value = life
@@ -149,19 +145,34 @@ func _on_rage_quit() -> void:
 	death.rpc()
 
 @rpc("any_peer", "call_local", "reliable")
-func change_weapon(new_weapon: String) -> void:
-	Debug.log(new_weapon)
-	pivot.remove_child(weapon)
+func change_weapon(new_weapon: String, light_on: bool) -> void:
+	if is_multiplayer_authority():
+		_create_new_weapon.rpc(weapon.scene_file_path, pickable_weapon_position, weapon.point_light_2d.visible)
+		pickable_weapon.rpc_queue_free.rpc()
+		weapon.rpc_server_queue_free.rpc_id(1)
 	weapon = load(new_weapon).instantiate()
-	pivot.add_child(weapon)
-	weapon.setup(stored_data)
+	Debug.log("change_weapon")
+	pivot.add_child(weapon, true)
+	weapon.setup(stored_data, light_on)
+	pick_up_panel.visible = false
+	pickable_weapon = null
 
-func weapon_in_range(new_weapon: Weapon) -> void:
+func weapon_in_range(new_weapon: Weapon, pos: Vector2, light_on: bool) -> void:
 	if !is_multiplayer_authority(): return
 	pickable_weapon = new_weapon
-	new_weapon.show_pick_up_action()
+	pickable_weapon_position = pos
+	pickable_weapon_light = light_on
+	pick_up_panel.visible = true
 
 func weapon_off_range(new_weapon: Weapon) -> void:
 	if !is_multiplayer_authority(): return
-	if pickable_weapon == new_weapon: pickable_weapon = null
-	new_weapon.hide_pick_up_action()
+	if pickable_weapon == new_weapon:
+		pickable_weapon = null
+		pick_up_panel.visible = false
+
+@rpc("any_peer", "call_local", "reliable")
+func _create_new_weapon(scene: String, pos:Vector2, light_on: bool) -> void:
+	var new_weapon: Weapon = load(scene).instantiate()
+	get_parent().add_child(new_weapon, true)
+	new_weapon.global_position = pos
+	new_weapon.point_light_2d.visible = light_on

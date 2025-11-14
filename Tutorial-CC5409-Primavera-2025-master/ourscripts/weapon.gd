@@ -7,11 +7,9 @@ extends Node2D
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var switch_light_sound: AudioStreamPlayer2D = $SwitchLightSound
 @onready var stats_display_background: Panel = $StatsPanel
 @onready var stats_display: RichTextLabel = $StatsPanel/RichTextLabel
-@onready var pick_up_panel: Panel = $PickUpPanel
 
 @export var attack_power: int = 100
 @export var knockback: float = 2000
@@ -36,6 +34,7 @@ func _ready() -> void:
 	area_2d.body_entered.connect(_on_area_2d_body_entered)
 
 func _physics_process(_delta: float) -> void:
+	if not is_multiplayer_authority(): return
 	send_rotation.rpc(rotation)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -45,18 +44,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_pick_up_area_entered(body: Node2D) -> void:
 	var player = body as Player
 	if player:
-		player.weapon_in_range(self)
+		player.weapon_in_range(self, position, point_light_2d.visible)
 
 func _on_pick_up_area_exited(body: Node2D) -> void:
 	var player = body as Player
 	if player:
 		player.weapon_off_range(self)
-
-func show_pick_up_action() -> void:
-	pick_up_panel.visible = true
-
-func hide_pick_up_action() -> void:
-	pick_up_panel.visible = false
 
 @rpc("any_peer", "call_local", "reliable")
 func attack_sound() -> void:
@@ -86,13 +79,12 @@ func switch_light() -> void:
 	point_light_2d.visible = !point_light_2d.visible
 	switch_light_sound.play()
 
-func setup(player_data: Statics.PlayerData):
+func setup(player_data: Statics.PlayerData, light_on: bool):
 	set_multiplayer_authority(player_data.id, false)
 	multiplayer_synchronizer.set_multiplayer_authority(player_data.id, false)
 	pick_up_area.monitoring = false
 	stats_display_background.visible = false
-	if not is_multiplayer_authority(): return
-	switch_light.rpc()
+	point_light_2d.visible = light_on
 
 func damage(player: Player) -> void:
 	player.take_damage(attack_power, global_position, knockback)
@@ -103,3 +95,14 @@ func enable_collision(val: bool) -> void:
 
 func rpc_enable_collision(val: bool) -> void:
 	enable_collision.rpc(val)
+
+@rpc("any_peer", "call_local", "reliable")
+func rpc_server_queue_free() -> void:
+	if not multiplayer.is_server(): return
+	Debug.log(attack_power)
+	queue_free()
+	rpc_queue_free.rpc()
+
+@rpc("any_peer", "call_local", "reliable")
+func rpc_queue_free() -> void:
+	queue_free()

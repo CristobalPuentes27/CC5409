@@ -969,12 +969,32 @@ animation = &"down"
 [node name="AudioListener2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_2k1gg")
 
+[node name="PickUpPanel" type="Panel" parent="."]
+visible = false
+offset_left = -13.0
+offset_top = 10.0
+offset_right = 17.0
+offset_bottom = 19.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PickUpPanel"]
+layout_mode = 0
+offset_right = 166.66667
+offset_bottom = 55.555557
+scale = Vector2(0.18, 0.18)
+text = "Pick Up (R)"
+fit_content = true
+scroll_active = false
+
 [node name="PauseMenu" type="VBoxContainer" parent="."]
 visible = false
 material = SubResource("CanvasItemMaterial_xkjxy")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -51.0
+offset_right = 75.0
+offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -982,7 +1002,7 @@ grow_vertical = 2
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "TEST"
+text = "Paused"
 
 [node name="RageQuit" type="Button" parent="PauseMenu"]
 use_parent_material = true
