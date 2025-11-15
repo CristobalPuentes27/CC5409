@@ -37,7 +37,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_pick_up_area_entered(body: Node2D) -> void:
 	var player = body as Player
 	if player:
-		player.weapon_in_range(self, position, point_light_2d.visible)
+		player.weapon_in_range(self, point_light_2d.visible)
 
 func _on_pick_up_area_exited(body: Node2D) -> void:
 	var player = body as Player

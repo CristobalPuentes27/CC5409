@@ -25,7 +25,6 @@ const max_knockback_frames: int = 4
 var knockback_frames: int = 0
 var damage_enabled: bool = false
 var pickable_weapon: Weapon
-var pickable_weapon_position: Vector2
 var pickable_weapon_light: bool
 @onready var stats_template: String = rich_text_label.text
 
@@ -150,7 +149,7 @@ func _on_rage_quit() -> void:
 @rpc("any_peer", "call_local", "reliable")
 func change_weapon(new_weapon: String, light_on: bool) -> void:
 	if is_multiplayer_authority():
-		_create_new_weapon.rpc(weapon.scene_file_path, pickable_weapon_position, weapon.point_light_2d.visible)
+		_create_new_weapon.rpc(weapon.scene_file_path, weapon.point_light_2d.visible)
 		pickable_weapon.rpc_queue_free.rpc()
 		weapon.rpc_server_queue_free.rpc_id(1)
 	weapon = load(new_weapon).instantiate()
@@ -160,10 +159,9 @@ func change_weapon(new_weapon: String, light_on: bool) -> void:
 	pick_up_panel.visible = false
 	pickable_weapon = null
 
-func weapon_in_range(new_weapon: Weapon, pos: Vector2, light_on: bool) -> void:
+func weapon_in_range(new_weapon: Weapon, light_on: bool) -> void:
 	if !is_multiplayer_authority(): return
 	pickable_weapon = new_weapon
-	pickable_weapon_position = pos
 	pickable_weapon_light = light_on
 	stats_panel.visible = true
 	rich_text_label.text = stats_template.format({
@@ -180,8 +178,9 @@ func weapon_off_range(new_weapon: Weapon) -> void:
 		stats_panel.visible = false
 
 @rpc("any_peer", "call_local", "reliable")
-func _create_new_weapon(scene: String, pos:Vector2, light_on: bool) -> void:
+func _create_new_weapon(scene: String, light_on: bool) -> void:
 	var new_weapon: Weapon = load(scene).instantiate()
 	get_parent().add_child(new_weapon, true)
-	new_weapon.global_position = pos
+	new_weapon.global_position = position
 	new_weapon.point_light_2d.visible = light_on
+	new_weapon.rotation = pivot.rotation

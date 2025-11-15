@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://btpe6wrrdj1yg"]
 
-[ext_resource type="Script" uid="uid://cx18gh202huoc" path="res://ourscripts/weapon.gd" id="1_cix0n"]
-[ext_resource type="AudioStream" uid="uid://d3nbqqbdaxe2" path="res://assets/SFX/10_human_special_atk_2.wav" id="2_hc806"]
+[ext_resource type="Script" uid="uid://cx18gh202huoc" path="res://ourscripts/weapon.gd" id="1_xo5fp"]
+[ext_resource type="AudioStream" uid="uid://d3nbqqbdaxe2" path="res://assets/SFX/10_human_special_atk_2.wav" id="2_2ogej"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hc806"]
 
 [node name="Weapon" type="Node2D"]
-script = ExtResource("1_cix0n")
+script = ExtResource("1_xo5fp")
 
 [node name="Icon" type="Sprite2D" parent="."]
 
@@ -31,5 +31,5 @@ shadow_filter = 1
 attenuation = 10.0
 
 [node name="SwitchLightSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_hc806")
+stream = ExtResource("2_2ogej")
 attenuation = 10.0
