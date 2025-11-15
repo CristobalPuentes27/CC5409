@@ -91,7 +91,6 @@ func rpc_enable_collision(val: bool) -> void:
 @rpc("any_peer", "call_local", "reliable")
 func rpc_server_queue_free() -> void:
 	if not multiplayer.is_server(): return
-	Debug.log(attack_power)
 	queue_free()
 	rpc_queue_free.rpc()
 

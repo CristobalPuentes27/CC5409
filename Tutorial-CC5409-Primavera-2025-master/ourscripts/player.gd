@@ -153,7 +153,6 @@ func change_weapon(new_weapon: String, light_on: bool) -> void:
 		pickable_weapon.rpc_queue_free.rpc()
 		weapon.rpc_server_queue_free.rpc_id(1)
 	weapon = load(new_weapon).instantiate()
-	Debug.log("change_weapon")
 	pivot.add_child(weapon, true)
 	weapon.setup(stored_data, light_on)
 	pick_up_panel.visible = false
