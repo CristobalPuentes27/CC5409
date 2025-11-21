@@ -1,0 +1,18 @@
+class_name Pickable
+extends Node2D
+
+@onready var area_2d: Area2D = $Area2D
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	var player = body as Player
+	if player:
+		player.pickable_in_range(self)
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	var player = body as Player
+	if player:
+		player.pickable_off_range(self)
+
+@rpc("any_peer", "call_local", "reliable")
+func rpc_queue_free() -> void:
+	queue_free()

@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c0nxbv1s01ull" path="res://assets/Character/Character_Up.png" id="9_qdgg6"]
 [ext_resource type="Texture2D" uid="uid://dpfyuemvqrdxy" path="res://assets/Character/Character_UpLeft.png" id="10_8kp1l"]
 [ext_resource type="Texture2D" uid="uid://bsgywsns8kq6n" path="res://assets/Character/Character_UpRight.png" id="11_hobtg"]
-[ext_resource type="AudioStream" uid="uid://c00fu66raia0j" path="res://assets/SFX/16_human_walk_stone_2.wav" id="13_2k1gg"]
+[ext_resource type="AudioStream" uid="uid://b738cwvth5icn" path="res://assets/SFX/16_human_walk_stone_1.wav" id="12_xkjxy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dadds"]
 radius = 8.0
@@ -930,9 +930,6 @@ shape = SubResource("CircleShape2D_dadds")
 [node name="Pivot" type="Node2D" parent="."]
 
 [node name="Lantern" parent="Pivot" instance=ExtResource("2_xkjxy")]
-attack_power = 100
-knockback = 2000.0
-rotation_cone = 1.5707963267948966
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -975,8 +972,10 @@ position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_chf8j")
 animation = &"down"
 
-[node name="AudioListener2D" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_2k1gg")
+[node name="FootSteps" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_xkjxy")
+max_distance = 1000.0
+attenuation = 6.0
 
 [node name="PauseMenu" type="VBoxContainer" parent="."]
 visible = false

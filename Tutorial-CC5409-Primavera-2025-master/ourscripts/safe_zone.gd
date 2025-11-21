@@ -1,8 +1,6 @@
 class_name SafeZone
 extends Area2D
 
-@onready var timer: Timer = $Timer
-
 var min_size: Vector2
 var shrinking: bool = false
 

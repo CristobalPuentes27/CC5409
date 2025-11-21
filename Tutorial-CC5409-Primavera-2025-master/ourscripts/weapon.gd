@@ -5,7 +5,6 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 @onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 @onready var point_light_2d: PointLight2D = $PointLight2D
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var switch_light_sound: AudioStreamPlayer2D = $SwitchLightSound
 

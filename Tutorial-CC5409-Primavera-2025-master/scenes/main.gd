@@ -5,7 +5,6 @@ extends Node2D
 
 @onready var battle_music: AudioStreamPlayer = $BattleMusic
 @onready var regular_music: AudioStreamPlayer = $RegularMusic
-@onready var label: Label = $Label
 @onready var players: Node2D = $Players
 @onready var markers: Node2D = $Markers
 @onready var timer: Timer = $Timer

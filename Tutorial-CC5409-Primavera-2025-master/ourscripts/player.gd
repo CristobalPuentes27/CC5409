@@ -15,6 +15,7 @@ extends CharacterBody2D
 @onready var pick_up_panel: Panel = $PickUpPanel
 @onready var stats_panel: Panel = $StatsPanel
 @onready var rich_text_label: RichTextLabel = $StatsPanel/RichTextLabel
+@onready var foot_steps: AudioStreamPlayer2D = $FootSteps
 
 @export var SPEED = 125
 @export var life: int = 500
@@ -27,6 +28,10 @@ var damage_enabled: bool = false
 var pickable_weapon: Weapon
 var pickable_weapon_light: bool
 @onready var stats_template: String = rich_text_label.text
+var pickable: Pickable
+var pickable_template: String = "[b]Attack:[/b] {attack}
+[b]Attack Speed:[/b] {attack_speed}"
+var item: String
 
 signal death_sign(is_player: bool)
 
@@ -67,8 +72,17 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and not paused:
 		weapon.attack()
 	
-	if Input.is_action_just_pressed("pick_object") and pickable_weapon and not weapon.attacking:
-		change_weapon.rpc(pickable_weapon.scene_file_path, pickable_weapon_light)
+	if Input.is_action_just_pressed("use_item") and not paused:
+		Debug.log(item)
+	
+	if Input.is_action_just_pressed("pick_object") and not weapon.attacking and not paused:
+		
+		if pickable_weapon:
+			change_weapon.rpc(pickable_weapon.scene_file_path, pickable_weapon_light)
+		
+		elif pickable:
+			Debug.log("picking")
+			pick_item.rpc(pickable.scene_file_path)
 	
 	if Input.is_action_just_pressed("switch_light") and not paused:
 		weapon.switch_light.rpc()
@@ -96,6 +110,7 @@ func setup(player_data: Statics.PlayerData):
 func animate(direction: Vector2) -> void:
 	animation_tree.get('parameters/playback').travel('move')
 	animation_tree.set('parameters/move/blend_position', direction)
+	if !foot_steps.playing: foot_steps.play()
 
 @rpc("authority", "call_remote", "unreliable_ordered")
 func send_pos(pos: Vector2, pivot_rotation: float):
@@ -183,3 +198,26 @@ func _create_new_weapon(scene: String, light_on: bool) -> void:
 	new_weapon.global_position = position
 	new_weapon.point_light_2d.visible = light_on
 	new_weapon.rotation = pivot.rotation
+
+func pickable_in_range(new_pickable: Pickable) -> void:
+	if !is_multiplayer_authority(): return
+	pickable = new_pickable
+	stats_panel.visible = true
+	rich_text_label.text = pickable_template.format({
+
+	})
+	pick_up_panel.visible = true
+
+func pickable_off_range(new_pickable: Pickable) -> void:
+	if !is_multiplayer_authority(): return
+	if pickable == new_pickable:
+		pickable_weapon = null
+		pick_up_panel.visible = false
+		stats_panel.visible = false
+
+@rpc("any_peer", "call_local", "reliable")
+func pick_item(new_pickable: String) -> void:
+	if is_multiplayer_authority():
+	#	_create_new_weapon.rpc(weapon.scene_file_path, weapon.point_light_2d.visible)
+		pickable.rpc_queue_free.rpc()
+	item = new_pickable
