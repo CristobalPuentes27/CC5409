@@ -28,9 +28,9 @@ var damage_enabled: bool = false
 var pickable_weapon: Weapon
 var pickable_weapon_light: bool
 @onready var stats_template: String = rich_text_label.text
-var pickable: Pickable
-var pickable_template: String = "[b]Attack:[/b] {attack}
-[b]Attack Speed:[/b] {attack_speed}"
+var pickable_item: Item
+var pickable_item_template: String = "[b]Item[/b] 
+[b]Use:[/b] {use}"
 var item: String
 
 signal death_sign(is_player: bool)
@@ -74,15 +74,16 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("use_item") and not paused:
 		Debug.log(item)
+		_use_new_item.rpc(item)
+		item = ""
 	
 	if Input.is_action_just_pressed("pick_object") and not weapon.attacking and not paused:
 		
 		if pickable_weapon:
 			change_weapon.rpc(pickable_weapon.scene_file_path, pickable_weapon_light)
 		
-		elif pickable:
-			Debug.log("picking")
-			pick_item.rpc(pickable.scene_file_path)
+		elif pickable_item:
+			pick_item.rpc(pickable_item.scene_file_path)
 	
 	if Input.is_action_just_pressed("switch_light") and not paused:
 		weapon.switch_light.rpc()
@@ -199,25 +200,40 @@ func _create_new_weapon(scene: String, light_on: bool) -> void:
 	new_weapon.point_light_2d.visible = light_on
 	new_weapon.rotation = pivot.rotation
 
-func pickable_in_range(new_pickable: Pickable) -> void:
+func item_in_range(new_item: Item) -> void:
 	if !is_multiplayer_authority(): return
-	pickable = new_pickable
+	pickable_item = new_item
 	stats_panel.visible = true
-	rich_text_label.text = pickable_template.format({
+	rich_text_label.text = pickable_item_template.format({
 
 	})
 	pick_up_panel.visible = true
 
-func pickable_off_range(new_pickable: Pickable) -> void:
+func item_off_range(new_item: Item) -> void:
 	if !is_multiplayer_authority(): return
-	if pickable == new_pickable:
+	if pickable_item == new_item:
 		pickable_weapon = null
 		pick_up_panel.visible = false
 		stats_panel.visible = false
 
 @rpc("any_peer", "call_local", "reliable")
-func pick_item(new_pickable: String) -> void:
+func pick_item(new_item: String) -> void:
 	if is_multiplayer_authority():
-	#	_create_new_weapon.rpc(weapon.scene_file_path, weapon.point_light_2d.visible)
-		pickable.rpc_queue_free.rpc()
-	item = new_pickable
+		if item: _create_new_item.rpc(item)
+		pickable_item.rpc_queue_free.rpc()
+	item = new_item
+
+@rpc("any_peer", "call_local", "reliable")
+func _create_new_item(scene: String) -> void:
+	var new_item: Item = load(scene).instantiate()
+	get_parent().add_child(new_item, true)
+	new_item.global_position = position
+	new_item.rotation = pivot.rotation
+
+@rpc("any_peer", "call_local", "reliable")
+func _use_new_item(scene: String) -> void:
+	var new_item: Item = load(scene).instantiate()
+	get_parent().add_child(new_item, true)
+	new_item.global_position = position
+	new_item.rotation = pivot.rotation
+	new_item.use()

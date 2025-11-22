@@ -1044,7 +1044,8 @@ offset_right = 472.0
 offset_bottom = 128.0
 scale = Vector2(0.18, 0.18)
 bbcode_enabled = true
-text = "[b]Attack:[/b] {attack}
+text = "[b]Weapon[/b] 
+[b]Attack:[/b] {attack}
 [b]Attack Speed:[/b] {attack_speed}"
 fit_content = true
 scroll_active = false

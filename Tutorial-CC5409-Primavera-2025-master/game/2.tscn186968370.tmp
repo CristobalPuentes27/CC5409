@@ -1062,6 +1062,3 @@ position = Vector2(405, 490)
 
 [node name="BlueLS" parent="." instance=ExtResource("10_f1ina")]
 position = Vector2(552, 489)
-
-[node name="Torch" parent="." instance=ExtResource("5_8n0rt")]
-position = Vector2(501, 538)
