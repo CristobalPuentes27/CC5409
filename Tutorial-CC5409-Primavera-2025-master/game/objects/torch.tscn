@@ -21,4 +21,5 @@ shape = SubResource("CircleShape2D_weoi7")
 [node name="PointLight2D" type="PointLight2D" parent="." index="3"]
 visible = false
 color = Color(1, 0.50980395, 0.078431375, 1)
+shadow_enabled = true
 texture = ExtResource("3_x6x5j")
