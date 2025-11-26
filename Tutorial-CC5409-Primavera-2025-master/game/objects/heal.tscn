@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7wvrgijbr6ek"]
+
+[ext_resource type="PackedScene" uid="uid://dr8trie37xqja" path="res://game/objects/item.tscn" id="1_e275j"]
+[ext_resource type="Script" uid="uid://bukr1eemupv3b" path="res://game/objects/heal.gd" id="1_ls7ab"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="3_bg68t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5n74o"]
+radius = 144.22205
+
+[node name="Heal" instance=ExtResource("1_e275j")]
+script = ExtResource("1_ls7ab")
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(0.050980393, 1, 0.043137256, 1)
+scale = Vector2(0.2, 0.186)
+texture = ExtResource("3_bg68t")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+scale = Vector2(0.3, 0.3)
+shape = SubResource("CircleShape2D_5n74o")

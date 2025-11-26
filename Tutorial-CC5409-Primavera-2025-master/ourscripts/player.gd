@@ -19,7 +19,7 @@ extends CharacterBody2D
 
 @export var SPEED = 125
 @export var life: int = 500
-
+@export var max_life: int = 500
 var stored_data
 var knockback_velocity: Vector2 = Vector2.ZERO
 const max_knockback_frames: int = 4
@@ -131,7 +131,10 @@ func take_damage(damage: int, other_pos: Vector2, punch: float):
 		return
 	
 	i_frames.start()
-	life -= damage
+	if life - damage >max_life:
+		life=max_life
+	else:
+		life -= damage
 	send_life.rpc(life)
 	if life <= 0:
 		death.rpc()
@@ -232,8 +235,14 @@ func _create_new_item(scene: String) -> void:
 
 @rpc("any_peer", "call_local", "reliable")
 func _use_new_item(scene: String) -> void:
+	if not scene:
+		return
 	var new_item: Item = load(scene).instantiate()
-	get_parent().add_child(new_item, true)
-	new_item.global_position = position
-	new_item.rotation = pivot.rotation
+	if new_item.spawnable==true:
+		get_parent().add_child(new_item, true)
+		new_item.global_position = position
+		new_item.rotation = pivot.rotation
+	else:
+		if !is_multiplayer_authority(): return
+		self.add_child(new_item, true)
 	new_item.use()
