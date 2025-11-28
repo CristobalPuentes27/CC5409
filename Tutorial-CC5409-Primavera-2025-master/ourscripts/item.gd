@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var area_2d: Area2D = $Area2D
 var spawnable=false
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	var player = body as Player
 	if player:

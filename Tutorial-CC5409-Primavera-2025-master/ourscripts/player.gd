@@ -16,7 +16,11 @@ extends CharacterBody2D
 @onready var stats_panel: Panel = $StatsPanel
 @onready var rich_text_label: RichTextLabel = $StatsPanel/RichTextLabel
 @onready var foot_steps: AudioStreamPlayer2D = $FootSteps
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var h_box_container: HBoxContainer = $CanvasLayer/MarginContainer/HBoxContainer
 
+@export var selected_slot: StyleBoxFlat
+@export var unselected_slot: StyleBoxFlat
 @export var SPEED = 125
 @export var life: int = 500
 @export var max_life: int = 500
@@ -31,7 +35,9 @@ var pickable_weapon_light: bool
 var pickable_item: Item
 var pickable_item_template: String = "[b]Item[/b] 
 [b]Use:[/b] {use}"
-var item: String
+#var item: String
+var item_bag: Array[String] = ["", "", ""]
+var index := 0
 
 signal death_sign(is_player: bool)
 
@@ -73,9 +79,10 @@ func _physics_process(_delta: float) -> void:
 		weapon.attack()
 	
 	if Input.is_action_just_pressed("use_item") and not paused:
-		Debug.log(item)
-		_use_new_item.rpc(item)
-		item = ""
+		Debug.log(item_bag[index])
+		_use_new_item.rpc(item_bag[index])
+		
+		item_bag[index] = ""
 	
 	if Input.is_action_just_pressed("pick_object") and not weapon.attacking and not paused:
 		
@@ -87,6 +94,15 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("switch_light") and not paused:
 		weapon.switch_light.rpc()
+	
+	if Input.is_action_just_pressed("1") and not paused:
+		_change_slot(0)
+	
+	if Input.is_action_just_pressed("2") and not paused:
+		_change_slot(1)
+	
+	if Input.is_action_just_pressed("3") and not paused:
+		_change_slot(2)
 	
 	if life <= 0:
 		self.modulate = Color(1,0,0,1)
@@ -105,6 +121,7 @@ func setup(player_data: Statics.PlayerData):
 	health_bar.value = life
 	health_bar.visible = is_multiplayer_authority()
 	own_light.visible = is_multiplayer_authority()
+	canvas_layer.visible = is_multiplayer_authority()
 	stored_data = player_data
 
 @rpc("any_peer", "call_local", "unreliable_ordered")
@@ -222,9 +239,21 @@ func item_off_range(new_item: Item) -> void:
 @rpc("any_peer", "call_local", "reliable")
 func pick_item(new_item: String) -> void:
 	if is_multiplayer_authority():
-		if item: _create_new_item.rpc(item)
+		var new_index = -1
+		for i in range(len(item_bag)):
+			if item_bag[i] == "":
+				new_index = i
+				item_bag[i] = new_item
+				_change_inventory(new_index)
+				break
+		
+		if new_index == -1:
+			_create_new_item.rpc(item_bag[index])
+			item_bag[index] = new_item
+			_change_inventory(index)
+		
 		pickable_item.rpc_queue_free.rpc()
-	item = new_item
+	#item = new_item
 
 @rpc("any_peer", "call_local", "reliable")
 func _create_new_item(scene: String) -> void:
@@ -237,6 +266,8 @@ func _create_new_item(scene: String) -> void:
 func _use_new_item(scene: String) -> void:
 	if not scene:
 		return
+	
+	h_box_container.get_children()[index].get_children()[0].visible = false
 	var new_item: Item = load(scene).instantiate()
 	if new_item.spawnable==true:
 		get_parent().add_child(new_item, true)
@@ -246,3 +277,16 @@ func _use_new_item(scene: String) -> void:
 		if !is_multiplayer_authority(): return
 		self.add_child(new_item, true)
 	new_item.use()
+
+func _change_inventory(c_index: int) -> void:
+	var panel = h_box_container.get_children()[c_index]
+	panel.get_children()[0].queue_free()
+	var new_item: Item = load(item_bag[c_index]).instantiate()
+	panel.add_child(new_item, true)
+
+func _change_slot(new_index: int) -> void:
+	var child = h_box_container.get_children()[index] as Panel
+	child["theme_override_styles/panel"] = unselected_slot
+	var new_child = h_box_container.get_children()[new_index] as Panel
+	new_child["theme_override_styles/panel"] = selected_slot
+	index = new_index

@@ -1015,10 +1015,19 @@ tile_set = SubResource("TileSet_271y2")
 
 [node name="Weapons" type="Node2D" parent="."]
 
-[node name="Pickables" type="Node2D" parent="."]
+[node name="Items" type="Node2D" parent="."]
 
-[node name="Torch" parent="Pickables" instance=ExtResource("5_8n0rt")]
+[node name="Torch" parent="Items" instance=ExtResource("5_8n0rt")]
 position = Vector2(587.99994, 414.99997)
+
+[node name="Torch2" parent="Items" instance=ExtResource("5_8n0rt")]
+position = Vector2(501, 538)
+
+[node name="Heal" parent="Items" instance=ExtResource("13_724yu")]
+position = Vector2(351, 428)
+
+[node name="Heal2" parent="Items" instance=ExtResource("13_724yu")]
+position = Vector2(393, 555)
 
 [node name="Markers" type="Node2D" parent="."]
 
@@ -1035,6 +1044,7 @@ _spawnable_scenes = PackedStringArray("uid://bquqisov20t1c")
 spawn_path = NodePath("..")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="SafeZone" parent="." instance=ExtResource("6_q14ly")]
@@ -1063,9 +1073,3 @@ position = Vector2(405, 490)
 
 [node name="BlueLS" parent="." instance=ExtResource("10_f1ina")]
 position = Vector2(552, 489)
-
-[node name="Torch" parent="." instance=ExtResource("5_8n0rt")]
-position = Vector2(501, 538)
-
-[node name="Heal" parent="." instance=ExtResource("13_724yu")]
-position = Vector2(351, 428)

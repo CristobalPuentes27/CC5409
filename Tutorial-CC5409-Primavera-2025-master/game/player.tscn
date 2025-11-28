@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://yct15o1oq06n"]
+[gd_scene load_steps=97 format=3 uid="uid://yct15o1oq06n"]
 
 [ext_resource type="Script" uid="uid://dijvwxniujrcv" path="res://ourscripts/player.gd" id="1_dadds"]
 [ext_resource type="PackedScene" uid="uid://c7l1q5e378kqe" path="res://game/weapon/lantern.tscn" id="2_xkjxy"]
@@ -12,12 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://dpfyuemvqrdxy" path="res://assets/Character/Character_UpLeft.png" id="10_8kp1l"]
 [ext_resource type="Texture2D" uid="uid://bsgywsns8kq6n" path="res://assets/Character/Character_UpRight.png" id="11_hobtg"]
 [ext_resource type="AudioStream" uid="uid://b738cwvth5icn" path="res://assets/SFX/16_human_walk_stone_1.wav" id="12_xkjxy"]
+[ext_resource type="PackedScene" uid="uid://c7wvrgijbr6ek" path="res://game/objects/heal.tscn" id="13_ppdnp"]
+[ext_resource type="StyleBox" uid="uid://bkc63beqnv5wf" path="res://game/ui/selected_inventory.tres" id="13_qdgg6"]
+[ext_resource type="PackedScene" uid="uid://cbkselvu6st1o" path="res://game/objects/torch.tscn" id="14_7vc3l"]
+[ext_resource type="StyleBox" uid="uid://d1ji6rbaitlbw" path="res://game/ui/unselect_inventory.tres" id="15_8kp1l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dadds"]
 radius = 8.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_du4nq"]
-light_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_du4nq"]
 
@@ -910,6 +911,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_du4nq"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7vc3l"]
+light_mode = 1
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xkjxy"]
 light_mode = 1
 
@@ -923,6 +930,8 @@ light_mode = 1
 motion_mode = 1
 floor_stop_on_slope = false
 script = ExtResource("1_dadds")
+selected_slot = ExtResource("13_qdgg6")
+unselected_slot = ExtResource("15_8kp1l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dadds")
@@ -939,15 +948,6 @@ scale = Vector2(2, 2)
 color = Color(0.078431375, 0.3137255, 0.47058824, 1)
 texture = ExtResource("4_2k1gg")
 texture_scale = 0.15
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-modulate = Color(1, 0, 0, 1)
-material = SubResource("CanvasItemMaterial_du4nq")
-offset_left = -35.0
-offset_top = -22.0
-offset_right = 35.0
-offset_bottom = -15.0
-show_percentage = false
 
 [node name="IFrames" type="Timer" parent="."]
 wait_time = 0.5
@@ -976,6 +976,66 @@ animation = &"down"
 stream = ExtResource("12_xkjxy")
 max_distance = 1000.0
 attenuation = 6.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_du4nq")
+offset_left = -35.0
+offset_top = -22.0
+offset_right = 35.0
+offset_bottom = -15.0
+show_percentage = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+material = SubResource("CanvasItemMaterial_7vc3l")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 8.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Panel1" type="Panel" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = ExtResource("13_qdgg6")
+
+[node name="Heal" parent="CanvasLayer/MarginContainer/HBoxContainer/Panel1" instance=ExtResource("13_ppdnp")]
+use_parent_material = true
+position = Vector2(50, 50)
+scale = Vector2(3, 3)
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = ExtResource("15_8kp1l")
+
+[node name="Heal" parent="CanvasLayer/MarginContainer/HBoxContainer/Panel2" instance=ExtResource("13_ppdnp")]
+visible = false
+use_parent_material = true
+
+[node name="Panel3" type="Panel" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+use_parent_material = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("15_8kp1l")
+
+[node name="Torch" parent="CanvasLayer/MarginContainer/HBoxContainer/Panel3" instance=ExtResource("14_7vc3l")]
+visible = false
+use_parent_material = true
 
 [node name="PauseMenu" type="VBoxContainer" parent="."]
 visible = false
@@ -1033,7 +1093,7 @@ anchor_bottom = 0.5
 offset_left = -41.0
 offset_top = 40.0
 offset_right = 41.0
-offset_bottom = 57.0
+offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
 

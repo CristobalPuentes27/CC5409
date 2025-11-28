@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7wvrgijbr6ek"]
 
 [ext_resource type="PackedScene" uid="uid://dr8trie37xqja" path="res://game/objects/item.tscn" id="1_e275j"]
-[ext_resource type="Script" uid="uid://bukr1eemupv3b" path="res://game/objects/heal.gd" id="1_ls7ab"]
+[ext_resource type="Script" uid="uid://bukr1eemupv3b" path="res://ourscripts/heal.gd" id="1_ls7ab"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="3_bg68t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5n74o"]
