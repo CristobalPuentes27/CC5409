@@ -2,18 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://dr8trie37xqja" path="res://game/objects/item.tscn" id="1_e275j"]
 [ext_resource type="Script" uid="uid://bukr1eemupv3b" path="res://ourscripts/heal.gd" id="1_ls7ab"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="3_bg68t"]
+[ext_resource type="Texture2D" uid="uid://clqupvq7k2xqu" path="res://assets/others/Potions by Onocentaur/Potions by Onocentaur/Potions - Full, Corked.png" id="3_e275j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5n74o"]
 radius = 144.22205
 
 [node name="Heal" instance=ExtResource("1_e275j")]
 script = ExtResource("1_ls7ab")
+to_heal = 100
 
 [node name="Sprite2D" parent="." index="0"]
-modulate = Color(0.050980393, 1, 0.043137256, 1)
-scale = Vector2(0.2, 0.186)
-texture = ExtResource("3_bg68t")
+texture = ExtResource("3_e275j")
+hframes = 10
+vframes = 16
+frame = 2
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 scale = Vector2(0.3, 0.3)

@@ -23,7 +23,6 @@ monitoring = false
 replication_config = SubResource("SceneReplicationConfig_hc806")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 shadow_enabled = true
 shadow_filter = 1
 
