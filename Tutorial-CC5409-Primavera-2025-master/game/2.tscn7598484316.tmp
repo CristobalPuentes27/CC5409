@@ -1893,7 +1893,7 @@ position = Vector2(879, 883)
 gizmo_extents = 60.0
 
 [node name="Marker2D2" type="Marker2D" parent="Markers"]
-position = Vector2(112, 124)
+position = Vector2(602, 543)
 gizmo_extents = 60.0
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
@@ -1933,4 +1933,4 @@ position = Vector2(462, 525)
 position = Vector2(552, 489)
 
 [node name="Chest" parent="." instance=ExtResource("16_1ux2k")]
-position = Vector2(612, 719)
+position = Vector2(919, 799)

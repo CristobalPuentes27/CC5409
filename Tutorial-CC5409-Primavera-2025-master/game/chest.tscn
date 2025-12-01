@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnum8b2i6yj7c"]
+
+[ext_resource type="Script" uid="uid://bgxqu4evwer74" path="res://ourscripts/chest.gd" id="1_iapbt"]
+[ext_resource type="Texture2D" uid="uid://b1ckktoxcpjx" path="res://assets/chest2.png" id="2_jxksg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cspan"]
+size = Vector2(85, 46)
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_iapbt")
+dict_item = {
+"Item1": "res://game/objects/big_heal.tscn",
+"Item2": "res://game/objects/heal.tscn",
+"Item3": "res://game/objects/torch.tscn"
+}
+dict_weapon = {
+"Item1": "res://game/weapon/blue_ls.tscn",
+"Item2": "res://game/weapon/green_ls.tscn",
+"Item3": "res://game/weapon/lantern.tscn"
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_cspan")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_jxksg")
+hframes = 2

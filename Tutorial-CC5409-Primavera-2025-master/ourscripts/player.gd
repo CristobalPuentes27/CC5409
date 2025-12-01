@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var pick_up_panel: Panel = $PickUpPanel
 @onready var stats_panel: Panel = $StatsPanel
+@onready var open_panel: Panel = $OpenPanel
 @onready var rich_text_label: RichTextLabel = $StatsPanel/RichTextLabel
 @onready var foot_steps: AudioStreamPlayer2D = $FootSteps
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
@@ -33,8 +34,10 @@ var pickable_weapon: Weapon
 var pickable_weapon_light: bool
 @onready var stats_template: String = rich_text_label.text
 var pickable_item: Item
+var openable_chest:Chest
 var pickable_item_template: String = "[b]Item[/b] 
 [b]Use:[/b] {use}"
+
 #var item: String
 var item_bag: Array[String] = ["", "", ""]
 var index := 0
@@ -103,7 +106,9 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("3") and not paused:
 		_change_slot(2)
-	
+	if Input.is_action_just_pressed("open") and not paused:
+		if openable_chest:
+			open_chest(openable_chest)
 	if life <= 0:
 		self.modulate = Color(1,0,0,1)
 	
@@ -225,7 +230,7 @@ func item_in_range(new_item: Item) -> void:
 	pickable_item = new_item
 	stats_panel.visible = true
 	rich_text_label.text = pickable_item_template.format({
-
+		"use":new_item.description
 	})
 	pick_up_panel.visible = true
 
@@ -290,3 +295,17 @@ func _change_slot(new_index: int) -> void:
 	var new_child = h_box_container.get_children()[new_index] as Panel
 	new_child["theme_override_styles/panel"] = selected_slot
 	index = new_index
+func chest_in_range(new_chest: Chest) -> void:
+	if !is_multiplayer_authority(): return
+	openable_chest = new_chest
+	open_panel.visible = true
+func chest_off_range(new_chest: Chest) -> void:
+	if !is_multiplayer_authority(): return
+	if openable_chest == new_chest:
+		openable_chest = null
+		open_panel.visible = false
+
+func open_chest(chest:Chest):
+	if !is_multiplayer_authority(): return
+	chest.open(self)
+	chest.rpc_queue_free.rpc()
