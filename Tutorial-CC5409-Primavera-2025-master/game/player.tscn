@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://yct15o1oq06n"]
+[gd_scene load_steps=96 format=3 uid="uid://yct15o1oq06n"]
 
 [ext_resource type="Script" uid="uid://dijvwxniujrcv" path="res://ourscripts/player.gd" id="1_dadds"]
 [ext_resource type="PackedScene" uid="uid://c7l1q5e378kqe" path="res://game/weapon/lantern.tscn" id="2_xkjxy"]
@@ -12,9 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dpfyuemvqrdxy" path="res://assets/Character/Character_UpLeft.png" id="10_8kp1l"]
 [ext_resource type="Texture2D" uid="uid://bsgywsns8kq6n" path="res://assets/Character/Character_UpRight.png" id="11_hobtg"]
 [ext_resource type="AudioStream" uid="uid://b738cwvth5icn" path="res://assets/SFX/16_human_walk_stone_1.wav" id="12_xkjxy"]
-[ext_resource type="PackedScene" uid="uid://c7wvrgijbr6ek" path="res://game/objects/heal.tscn" id="13_ppdnp"]
 [ext_resource type="StyleBox" uid="uid://bkc63beqnv5wf" path="res://game/ui/selected_inventory.tres" id="13_qdgg6"]
-[ext_resource type="PackedScene" uid="uid://cbkselvu6st1o" path="res://game/objects/torch.tscn" id="14_7vc3l"]
 [ext_resource type="StyleBox" uid="uid://d1ji6rbaitlbw" path="res://game/ui/unselect_inventory.tres" id="15_8kp1l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dadds"]
@@ -1025,12 +1023,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_styles/panel = ExtResource("13_qdgg6")
 
-[node name="Heal" parent="CanvasLayer/MarginContainer/HBoxContainer/Panel1" instance=ExtResource("13_ppdnp")]
-visible = false
-use_parent_material = true
-position = Vector2(50, 50)
-scale = Vector2(3, 3)
-
 [node name="Panel2" type="Panel" parent="CanvasLayer/MarginContainer/HBoxContainer"]
 use_parent_material = true
 custom_minimum_size = Vector2(100, 100)
@@ -1039,19 +1031,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_styles/panel = ExtResource("15_8kp1l")
 
-[node name="Heal" parent="CanvasLayer/MarginContainer/HBoxContainer/Panel2" instance=ExtResource("13_ppdnp")]
-visible = false
-use_parent_material = true
-
 [node name="Panel3" type="Panel" parent="CanvasLayer/MarginContainer/HBoxContainer"]
 use_parent_material = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("15_8kp1l")
-
-[node name="Torch" parent="CanvasLayer/MarginContainer/HBoxContainer/Panel3" instance=ExtResource("14_7vc3l")]
-visible = false
-use_parent_material = true
 
 [node name="PauseMenu" type="VBoxContainer" parent="."]
 visible = false

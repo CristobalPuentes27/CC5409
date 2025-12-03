@@ -1910,6 +1910,7 @@ _spawnable_scenes = PackedStringArray("uid://bquqisov20t1c")
 spawn_path = NodePath("..")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="SafeZone" parent="." instance=ExtResource("6_q14ly")]
@@ -1933,3 +1934,12 @@ autoplay = true
 
 [node name="Chest" parent="." instance=ExtResource("16_1ux2k")]
 position = Vector2(612, 719)
+
+[node name="Heal" parent="." instance=ExtResource("13_724yu")]
+position = Vector2(873, 887)
+
+[node name="Torch" parent="." instance=ExtResource("5_8n0rt")]
+position = Vector2(938, 822)
+
+[node name="Torch2" parent="." instance=ExtResource("5_8n0rt")]
+position = Vector2(816, 935)

@@ -285,11 +285,13 @@ func _use_new_item(scene: String) -> void:
 	else:
 		if !is_multiplayer_authority(): return
 		self.add_child(new_item, true)
+	
 	new_item.use()
 
 func _change_inventory(c_index: int) -> void:
 	var panel = h_box_container.get_children()[c_index]
-	panel.get_children()[0].queue_free()
+	var item_selected = panel.get_children()
+	if len(item_selected) != 0: item_selected[0].queue_free()
 	var new_item: Item = load(item_bag[c_index]).instantiate()
 	panel.add_child(new_item, true)
 
