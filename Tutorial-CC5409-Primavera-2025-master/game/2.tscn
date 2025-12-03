@@ -1867,6 +1867,15 @@ tile_set = SubResource("TileSet_1ux2k")
 
 [node name="Weapons" type="Node2D" parent="."]
 
+[node name="Lantern" parent="Weapons" instance=ExtResource("9_271y2")]
+position = Vector2(482, 447)
+
+[node name="GreenLS" parent="Weapons" instance=ExtResource("8_271y2")]
+position = Vector2(462, 525)
+
+[node name="BlueLS" parent="Weapons" instance=ExtResource("10_f1ina")]
+position = Vector2(552, 489)
+
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Torch" parent="Items" instance=ExtResource("5_8n0rt")]
@@ -1921,15 +1930,6 @@ volume_db = 1.0
 stream = ExtResource("8_i25cr")
 volume_db = 1.0
 autoplay = true
-
-[node name="Lantern" parent="." instance=ExtResource("9_271y2")]
-position = Vector2(482, 447)
-
-[node name="GreenLS" parent="." instance=ExtResource("8_271y2")]
-position = Vector2(462, 525)
-
-[node name="BlueLS" parent="." instance=ExtResource("10_f1ina")]
-position = Vector2(552, 489)
 
 [node name="Chest" parent="." instance=ExtResource("16_1ux2k")]
 position = Vector2(612, 719)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://yct15o1oq06n"]
+[gd_scene load_steps=98 format=3 uid="uid://yct15o1oq06n"]
 
 [ext_resource type="Script" uid="uid://dijvwxniujrcv" path="res://ourscripts/player.gd" id="1_dadds"]
 [ext_resource type="PackedScene" uid="uid://c7l1q5e378kqe" path="res://game/weapon/lantern.tscn" id="2_xkjxy"]
@@ -914,6 +914,20 @@ animations = [{
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_du4nq"]
 light_mode = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdgg6"]
+bg_color = Color(1, 0.11764706, 0.11764706, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.11764706, 0.11764706, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.5882353)
+shadow_offset = Vector2(0, -2)
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7vc3l"]
 light_mode = 1
 
@@ -981,9 +995,10 @@ attenuation = 6.0
 modulate = Color(1, 0, 0, 1)
 material = SubResource("CanvasItemMaterial_du4nq")
 offset_left = -35.0
-offset_top = -22.0
+offset_top = -30.0
 offset_right = 35.0
-offset_bottom = -15.0
+offset_bottom = -23.0
+theme_override_styles/background = SubResource("StyleBoxFlat_qdgg6")
 show_percentage = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -1011,6 +1026,7 @@ size_flags_vertical = 8
 theme_override_styles/panel = ExtResource("13_qdgg6")
 
 [node name="Heal" parent="CanvasLayer/MarginContainer/HBoxContainer/Panel1" instance=ExtResource("13_ppdnp")]
+visible = false
 use_parent_material = true
 position = Vector2(50, 50)
 scale = Vector2(3, 3)
