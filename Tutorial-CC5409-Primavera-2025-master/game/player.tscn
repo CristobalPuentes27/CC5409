@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=96 format=3 uid="uid://yct15o1oq06n"]
+
 
 [ext_resource type="Script" uid="uid://dijvwxniujrcv" path="res://ourscripts/player.gd" id="1_dadds"]
 [ext_resource type="PackedScene" uid="uid://c7l1q5e378kqe" path="res://game/weapon/lantern.tscn" id="2_xkjxy"]
@@ -14,6 +16,10 @@
 [ext_resource type="AudioStream" uid="uid://b738cwvth5icn" path="res://assets/SFX/16_human_walk_stone_1.wav" id="12_xkjxy"]
 [ext_resource type="StyleBox" uid="uid://bkc63beqnv5wf" path="res://game/ui/selected_inventory.tres" id="13_qdgg6"]
 [ext_resource type="StyleBox" uid="uid://d1ji6rbaitlbw" path="res://game/ui/unselect_inventory.tres" id="15_8kp1l"]
+[ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/fonts/kenneyUI-red.tres" id="17_a3s55"]
+[ext_resource type="FontFile" uid="uid://dkdvbocilslh8" path="res://assets/fonts/HomeVideoBold-R90Dv.ttf" id="18_opbur"]
+[ext_resource type="FontFile" uid="uid://c0i5kqdysam1v" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="19_fw65x"]
+[ext_resource type="Theme" uid="uid://bnhngmri4tfgr" path="res://assets/fonts/kenneyUI-green.tres" id="20_a3s55"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dadds"]
 radius = 8.0
@@ -1050,16 +1056,19 @@ offset_right = 75.0
 offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("17_a3s55")
 
 [node name="Label" type="Label" parent="PauseMenu"]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("18_opbur")
 text = "Paused"
 
 [node name="RageQuit" type="Button" parent="PauseMenu"]
 use_parent_material = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("19_fw65x")
 text = "RageQuit"
 
 [node name="PickUpPanel" type="Panel" parent="."]
@@ -1069,14 +1078,18 @@ material = SubResource("CanvasItemMaterial_2k1gg")
 offset_left = -13.0
 offset_top = 10.0
 offset_right = 17.0
-offset_bottom = 19.0
+offset_bottom = 30.0
+theme = ExtResource("17_a3s55")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PickUpPanel"]
 use_parent_material = true
 layout_mode = 0
-offset_right = 166.66667
-offset_bottom = 55.555557
+offset_left = 3.0000005
+offset_top = 4.0000005
+offset_right = 169.66667
+offset_bottom = 76.0
 scale = Vector2(0.18, 0.18)
+theme_override_fonts/normal_font = ExtResource("19_fw65x")
 text = "Pick Up (R)"
 fit_content = true
 scroll_active = false
@@ -1093,16 +1106,20 @@ anchor_bottom = 0.5
 offset_left = -41.0
 offset_top = 40.0
 offset_right = 41.0
-offset_bottom = 65.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("20_a3s55")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="StatsPanel"]
 use_parent_material = true
 layout_mode = 0
-offset_right = 472.0
-offset_bottom = 128.0
+offset_left = 4.0000005
+offset_top = 2.0000002
+offset_right = 476.0
+offset_bottom = 146.0
 scale = Vector2(0.18, 0.18)
+theme_override_fonts/normal_font = ExtResource("19_fw65x")
 bbcode_enabled = true
 text = "[b]Weapon[/b] 
 [b]Attack:[/b] {attack}
@@ -1116,15 +1133,24 @@ z_index = 9
 material = SubResource("CanvasItemMaterial_2k1gg")
 offset_left = -13.0
 offset_top = 10.0
-offset_right = 30.0
-offset_bottom = 19.0
+
+
+offset_right = 17.0
+offset_bottom = 33.0
+theme = ExtResource("20_a3s55")
+
 
 [node name="RichTextLabel" type="RichTextLabel" parent="OpenPanel"]
 use_parent_material = true
 layout_mode = 0
-offset_right = 227.77779
-offset_bottom = 55.555557
+
+offset_left = 3.0000005
+offset_top = 2.0000002
+offset_right = 169.66667
+offset_bottom = 110.0
 scale = Vector2(0.18, 0.18)
+theme_override_fonts/normal_font = ExtResource("19_fw65x")
 text = "Open chest (R)"
+
 fit_content = true
 scroll_active = false

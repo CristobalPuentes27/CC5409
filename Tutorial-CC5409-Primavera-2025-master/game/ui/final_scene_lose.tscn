@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2qp2kss17xal"]
+[gd_scene load_steps=3 format=3 uid="uid://b2qp2kss17xal"]
 
 [ext_resource type="Script" uid="uid://bbpviq4iqfrd1" path="res://ourscripts/final_screen.gd" id="1_tsdii"]
+[ext_resource type="Theme" uid="uid://bb6vwl0h1flws" path="res://assets/fonts/kenneyUI-blue.tres" id="2_fut7l"]
 
 [node name="FinalScene" type="PanelContainer"]
 anchors_preset = 15
@@ -14,6 +15,7 @@ script = ExtResource("1_tsdii")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("2_fut7l")
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
