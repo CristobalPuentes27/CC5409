@@ -6,7 +6,7 @@ func _init() -> void:
 	spawnable=true
 	description = "Torch that will help you illuminate a bigger area"
 
-func use() -> void:
+func _effect() -> void:
 	Debug.log(spawnable)
 	point_light_2d.visible = true
-	super.use()
+	area_2d.monitoring = false

@@ -295,6 +295,8 @@ func _change_inventory(c_index: int) -> void:
 	if len(item_selected) != 0: item_selected[0].queue_free()
 	var new_item: Item = load(item_bag[c_index]).instantiate()
 	panel.add_child(new_item, true)
+	new_item.scale = Vector2(3, 3)
+	new_item.position = Vector2(50, 50)
 
 func _change_slot(new_index: int) -> void:
 	var child = h_box_container.get_children()[index] as Panel

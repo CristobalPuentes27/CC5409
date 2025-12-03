@@ -1910,7 +1910,6 @@ _spawnable_scenes = PackedStringArray("uid://bquqisov20t1c")
 spawn_path = NodePath("..")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="SafeZone" parent="." instance=ExtResource("6_q14ly")]

@@ -5,6 +5,6 @@ extends Item
 func _ready() -> void:
 	description = "Potion that will heal you " + str(to_heal) + " life"
 
-func use() -> void:
+func _effect() -> void:
 	get_parent().take_damage(-to_heal,Vector2(0,0),0)
 	queue_free()

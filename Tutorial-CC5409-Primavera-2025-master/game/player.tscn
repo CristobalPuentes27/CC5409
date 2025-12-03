@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=96 format=3 uid="uid://yct15o1oq06n"]
-
+[gd_scene load_steps=101 format=3 uid="uid://yct15o1oq06n"]
 
 [ext_resource type="Script" uid="uid://dijvwxniujrcv" path="res://ourscripts/player.gd" id="1_dadds"]
 [ext_resource type="PackedScene" uid="uid://c7l1q5e378kqe" path="res://game/weapon/lantern.tscn" id="2_xkjxy"]
@@ -919,7 +917,7 @@ animations = [{
 light_mode = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdgg6"]
-bg_color = Color(1, 0.11764706, 0.11764706, 1)
+bg_color = Color(0.43137255, 0.05882353, 0.05882353, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -931,6 +929,13 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 shadow_color = Color(0, 0, 0, 0.5882353)
 shadow_offset = Vector2(0, -2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hobtg"]
+bg_color = Color(1, 0.11764706, 0.11764706, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7vc3l"]
 light_mode = 1
@@ -996,13 +1001,13 @@ max_distance = 1000.0
 attenuation = 6.0
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-modulate = Color(1, 0, 0, 1)
 material = SubResource("CanvasItemMaterial_du4nq")
 offset_left = -35.0
 offset_top = -30.0
 offset_right = 35.0
 offset_bottom = -23.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qdgg6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hobtg")
 show_percentage = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -1133,17 +1138,13 @@ z_index = 9
 material = SubResource("CanvasItemMaterial_2k1gg")
 offset_left = -13.0
 offset_top = 10.0
-
-
 offset_right = 17.0
 offset_bottom = 33.0
 theme = ExtResource("20_a3s55")
 
-
 [node name="RichTextLabel" type="RichTextLabel" parent="OpenPanel"]
 use_parent_material = true
 layout_mode = 0
-
 offset_left = 3.0000005
 offset_top = 2.0000002
 offset_right = 169.66667
@@ -1151,6 +1152,5 @@ offset_bottom = 110.0
 scale = Vector2(0.18, 0.18)
 theme_override_fonts/normal_font = ExtResource("19_fw65x")
 text = "Open chest (R)"
-
 fit_content = true
 scroll_active = false
