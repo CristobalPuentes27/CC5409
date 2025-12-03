@@ -6,6 +6,7 @@ extends Node2D
 
 var spawnable := false
 var description: String
+var user_player: Player
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	var player = body as Player
@@ -20,7 +21,6 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 @rpc("any_peer", "call_local", "reliable")
 func rpc_queue_free() -> void:
 	queue_free()
-
 
 func use() -> void:
 	audio_stream_player_2d.play()

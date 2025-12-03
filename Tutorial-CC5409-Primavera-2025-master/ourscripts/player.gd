@@ -272,16 +272,20 @@ func _create_new_item(scene: String) -> void:
 
 @rpc("any_peer", "call_local", "reliable")
 func _use_new_item(scene: String) -> void:
+	
 	if not scene:
 		return
+	
 	var panel =h_box_container.get_children()[index].get_children()
 	if len(panel):
 		panel[0].visible = false
+	
 	var new_item: Item = load(scene).instantiate()
 	if new_item.spawnable==true:
 		get_parent().add_child(new_item, true)
 		new_item.global_position = position
 		new_item.rotation = pivot.rotation
+		new_item.user_player = self
 	
 	else:
 		if !is_multiplayer_authority(): return
