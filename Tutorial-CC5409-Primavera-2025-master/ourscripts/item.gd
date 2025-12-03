@@ -1,5 +1,6 @@
 class_name Item
 extends Node2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var area_2d: Area2D = $Area2D
 var spawnable := false
@@ -22,3 +23,4 @@ func rpc_queue_free() -> void:
 #Hacer override a esta función 
 func use() -> void:
 	area_2d.monitoring = false
+	audio_stream_player_2d.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://buxla4a3c3k2"]
+[gd_scene load_steps=11 format=3 uid="uid://buxla4a3c3k2"]
 
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/fonts/kenneyUI.tres" id="1_ei257"]
 [ext_resource type="Script" uid="uid://cnbk17iq1x68f" path="res://ui/main_menu.gd" id="2_p6ygj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cqigu7w5cxgdw" path="res://assets/lights/square_light.jpg" id="5_ubpvv"]
 [ext_resource type="FontFile" uid="uid://dkdvbocilslh8" path="res://assets/fonts/HomeVideoBold-R90Dv.ttf" id="6_arv2f"]
 [ext_resource type="Texture2D" uid="uid://cm0tf7uwqlxt3" path="res://assets/lights/circle.png" id="7_arv2f"]
+[ext_resource type="AudioStream" uid="uid://bfdmd1igapqa1" path="res://assets/Minifantasy_Dungeon_Music/Lenny Pixels - The Beat of Nuts n Bolts - 8bit.mp3" id="10_5klac"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -126,3 +127,7 @@ text = "Flashlight & Smash"
 position = Vector2(173, 122.50001)
 scale = Vector2(1.735, 0.17499998)
 texture = ExtResource("5_ubpvv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_5klac")
+autoplay = true
