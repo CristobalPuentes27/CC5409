@@ -2,7 +2,8 @@ class_name Item
 extends Node2D
 
 @onready var area_2d: Area2D = $Area2D
-var spawnable=false
+var spawnable := false
+var description: String
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	var player = body as Player

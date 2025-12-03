@@ -25,6 +25,7 @@ extends CharacterBody2D
 @export var SPEED = 125
 @export var life: int = 500
 @export var max_life: int = 500
+
 var stored_data
 var knockback_velocity: Vector2 = Vector2.ZERO
 const max_knockback_frames: int = 4
@@ -38,7 +39,6 @@ var openable_chest:Chest
 var pickable_item_template: String = "[b]Item[/b] 
 [b]Use:[/b] {use}"
 
-#var item: String
 var item_bag: Array[String] = ["", "", ""]
 var index := 0
 
@@ -69,12 +69,14 @@ func _physics_process(_delta: float) -> void:
 		pivot.rotation = direction.angle()
 		velocity = direction * SPEED
 		animate.rpc(direction)
+	
 	elif knockback_velocity:
 		velocity = knockback_velocity / 5
 		knockback_frames += 1
 		if knockback_frames == max_knockback_frames:
 			knockback_velocity = Vector2.ZERO
 			knockback_frames = 0
+	
 	else:
 		velocity = Vector2.ZERO
 	
@@ -94,6 +96,9 @@ func _physics_process(_delta: float) -> void:
 		
 		elif pickable_item:
 			pick_item.rpc(pickable_item.scene_file_path)
+		
+		elif openable_chest:
+			open_chest(openable_chest)
 	
 	if Input.is_action_just_pressed("switch_light") and not paused:
 		weapon.switch_light.rpc()
@@ -106,9 +111,7 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("3") and not paused:
 		_change_slot(2)
-	if Input.is_action_just_pressed("open") and not paused:
-		if openable_chest:
-			open_chest(openable_chest)
+	
 	if life <= 0:
 		self.modulate = Color(1,0,0,1)
 	
@@ -278,6 +281,7 @@ func _use_new_item(scene: String) -> void:
 		get_parent().add_child(new_item, true)
 		new_item.global_position = position
 		new_item.rotation = pivot.rotation
+	
 	else:
 		if !is_multiplayer_authority(): return
 		self.add_child(new_item, true)
@@ -295,10 +299,12 @@ func _change_slot(new_index: int) -> void:
 	var new_child = h_box_container.get_children()[new_index] as Panel
 	new_child["theme_override_styles/panel"] = selected_slot
 	index = new_index
+
 func chest_in_range(new_chest: Chest) -> void:
 	if !is_multiplayer_authority(): return
 	openable_chest = new_chest
 	open_panel.visible = true
+
 func chest_off_range(new_chest: Chest) -> void:
 	if !is_multiplayer_authority(): return
 	if openable_chest == new_chest:

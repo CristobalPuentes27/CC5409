@@ -1116,15 +1116,15 @@ z_index = 9
 material = SubResource("CanvasItemMaterial_2k1gg")
 offset_left = -13.0
 offset_top = 10.0
-offset_right = 17.0
+offset_right = 30.0
 offset_bottom = 19.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="OpenPanel"]
 use_parent_material = true
 layout_mode = 0
-offset_right = 166.66667
+offset_right = 227.77779
 offset_bottom = 55.555557
 scale = Vector2(0.18, 0.18)
-text = "Open chest (K)"
+text = "Open chest (R)"
 fit_content = true
 scroll_active = false
