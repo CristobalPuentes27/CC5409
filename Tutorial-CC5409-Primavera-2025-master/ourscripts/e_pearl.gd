@@ -10,7 +10,7 @@ func _init() -> void:
 func _physics_process(_delta: float) -> void:
 	if throw: 
 		var dir = transform.x.normalized() 
-		position += dir
+		position += dir * 5
 
 func _effect() -> void:
 	throw = true

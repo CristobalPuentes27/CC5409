@@ -8,7 +8,7 @@
 radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v4h4e"]
-radius = 15.0
+radius = 5.0
 
 [node name="EPearl" instance=ExtResource("1_db8c4")]
 script = ExtResource("2_v4h4e")
