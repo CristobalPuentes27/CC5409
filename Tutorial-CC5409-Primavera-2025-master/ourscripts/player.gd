@@ -274,8 +274,9 @@ func _create_new_item(scene: String) -> void:
 func _use_new_item(scene: String) -> void:
 	if not scene:
 		return
-	
-	h_box_container.get_children()[index].get_children()[0].visible = false
+	var panel =h_box_container.get_children()[index].get_children()
+	if len(panel):
+		panel[0].visible = false
 	var new_item: Item = load(scene).instantiate()
 	if new_item.spawnable==true:
 		get_parent().add_child(new_item, true)

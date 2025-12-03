@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://buxla4a3c3k2"]
+[gd_scene load_steps=9 format=3 uid="uid://buxla4a3c3k2"]
 
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/fonts/kenneyUI.tres" id="1_ei257"]
 [ext_resource type="Script" uid="uid://cnbk17iq1x68f" path="res://ui/main_menu.gd" id="2_p6ygj"]
 [ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/fonts/kenneyUI-red.tres" id="3_p8ri8"]
 [ext_resource type="Texture2D" uid="uid://d07njrq4y4ctm" path="res://assets/game.png" id="3_wk0pr"]
 [ext_resource type="FontFile" uid="uid://c0i5kqdysam1v" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="4_ubpvv"]
+[ext_resource type="Texture2D" uid="uid://cqigu7w5cxgdw" path="res://assets/lights/square_light.jpg" id="5_ubpvv"]
 [ext_resource type="FontFile" uid="uid://dkdvbocilslh8" path="res://assets/fonts/HomeVideoBold-R90Dv.ttf" id="6_arv2f"]
+[ext_resource type="Texture2D" uid="uid://cm0tf7uwqlxt3" path="res://assets/lights/circle.png" id="7_arv2f"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -67,6 +69,11 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_ubpvv")
 text = "Quit"
 
+[node name="PointLight2D" type="PointLight2D" parent="MarginContainer"]
+position = Vector2(250, 142.5)
+scale = Vector2(1.5, 1.445)
+texture = ExtResource("5_ubpvv")
+
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -85,6 +92,11 @@ grow_vertical = 2
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 texture = ExtResource("3_wk0pr")
+
+[node name="PointLight2D" type="PointLight2D" parent="MarginContainer2"]
+position = Vector2(221, 195.5)
+scale = Vector2(2.22, 2.0849998)
+texture = ExtResource("7_arv2f")
 
 [node name="MarginContainer3" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -105,3 +117,8 @@ layout_mode = 2
 theme_type_variation = &"Title"
 theme_override_fonts/font = ExtResource("6_arv2f")
 text = "Flashlight & Smash"
+
+[node name="PointLight2D" type="PointLight2D" parent="MarginContainer3"]
+position = Vector2(173, 122.50001)
+scale = Vector2(1.735, 0.17499998)
+texture = ExtResource("5_ubpvv")
