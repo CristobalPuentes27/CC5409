@@ -4,6 +4,7 @@ extends Node2D
 @export var change_interval: float = 2.0           # segundos (promedio)
 @export var wander_radius: float = 300.0           # radio máximo del nuevo destino
 @export var stop_at_target_distance: float = 8.0   # distancia para considerar "llegado"
+@onready var lantern: Weapon = $Lantern
 
 var _target: Vector2 = Vector2.ZERO
 var _timer: float = 0.0
@@ -17,11 +18,18 @@ func _physics_process(delta: float) -> void:
 	var to_target = _target - global_position
 	if _timer <= 0.0 or to_target.length() <= stop_at_target_distance:
 		_pick_new_target()
-
+	var num = randf()
+	if num> .99:
+		
+		 
+		
+		lantern.get_child(4).visible = !lantern.get_child(4).visible
+		
 	if to_target.length() > 0.0:
 		var dir = to_target.normalized()
 		global_position += dir * speed * delta
-		rotation = dir.angle()
+		
+		rotation = dir.angle() 
 @export var bounds: Rect2 = Rect2(-400, -300, 800, 600)  # ajustar
 
 func _pick_new_target() -> void:
