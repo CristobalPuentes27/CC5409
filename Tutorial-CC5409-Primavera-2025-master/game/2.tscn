@@ -1911,7 +1911,7 @@ position = Vector2(879, 883)
 gizmo_extents = 60.0
 
 [node name="Marker2D2" type="Marker2D" parent="Markers"]
-position = Vector2(112, 124)
+position = Vector2(471, 483)
 gizmo_extents = 60.0
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
@@ -1922,7 +1922,7 @@ spawn_path = NodePath("..")
 color = Color(0, 0, 0, 1)
 
 [node name="SafeZone" parent="." instance=ExtResource("6_q14ly")]
-position = Vector2(495, 494)
+position = Vector2(491, 480)
 scale = Vector2(49, 49)
 
 [node name="Timer" type="Timer" parent="."]

@@ -5,7 +5,7 @@ var min_size: Vector2
 var shrinking: bool = false
 
 func _ready() -> void:
-	min_size = Vector2(19,19)
+	min_size = Vector2(18.8,18.8)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
