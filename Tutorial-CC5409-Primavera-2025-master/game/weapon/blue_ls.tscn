@@ -13,4 +13,6 @@ rotation_cone = 2.094
 texture = ExtResource("2_hh7al")
 
 [node name="PointLight2D" parent="." index="4"]
+position = Vector2(38, 0)
+scale = Vector2(0.955, 0.71500003)
 color = Color(0.19607843, 0.19607843, 0.78431374, 1)

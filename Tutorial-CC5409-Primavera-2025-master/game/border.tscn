@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c05yswd73eqex"]
+[gd_scene load_steps=4 format=3 uid="uid://c05yswd73eqex"]
 
+[ext_resource type="Texture2D" uid="uid://wlubvfld8o51" path="res://assets/nuvem.png" id="1_2mvdy"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_btubw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2mvdy"]
@@ -12,19 +13,20 @@ self_modulate = Color(1, 1, 1, 0.39215687)
 clip_children = 2
 
 [node name="Icon2" type="Sprite2D" parent="CanvasGroup"]
+texture_repeat = 2
 position = Vector2(2056.5, 275)
 scale = Vector2(23.851563, 20)
-texture = ExtResource("1_btubw")
+texture = ExtResource("1_2mvdy")
 
 [node name="Line2D" type="Line2D" parent="CanvasGroup"]
-visible = false
+modulate = Color(1, 0, 1, 1)
 texture_repeat = 2
 position = Vector2(-251.99997, 70.00001)
 scale = Vector2(1.1170752, 1.052017)
 points = PackedVector2Array(1383.5632, 540.86584, 1372, 2, 175.45816, 11.406654, 182.47781, 557.02527)
 closed = true
 width = 200.0
-texture = ExtResource("1_btubw")
+texture = ExtResource("1_2mvdy")
 texture_mode = 1
 
 [node name="Icon3" type="Sprite2D" parent="CanvasGroup"]
