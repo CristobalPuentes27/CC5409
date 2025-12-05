@@ -1,20 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://c05yswd73eqex"]
+[gd_scene load_steps=4 format=3 uid="uid://c05yswd73eqex"]
 
+[ext_resource type="Texture2D" uid="uid://wlubvfld8o51" path="res://assets/nuvem.png" id="1_2mvdy"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_btubw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2mvdy"]
+light_mode = 1
 
 [node name="Node2D" type="Node2D"]
+texture_repeat = 2
 material = SubResource("CanvasItemMaterial_2mvdy")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 self_modulate = Color(1, 1, 1, 0.39215687)
 clip_children = 2
+use_parent_material = true
 
 [node name="Icon2" type="Sprite2D" parent="CanvasGroup"]
-position = Vector2(2056.5, 275)
-scale = Vector2(23.851563, 20)
-texture = ExtResource("1_btubw")
+self_modulate = Color(1, 0.003921569, 1, 1)
+use_parent_material = true
+position = Vector2(3000, 161)
+scale = Vector2(35, 4.65375)
+texture = ExtResource("1_2mvdy")
+region_enabled = true
+region_rect = Rect2(0, 0, 140, 320)
+region_filter_clip_enabled = true
 
 [node name="Line2D" type="Line2D" parent="CanvasGroup"]
 visible = false
@@ -28,16 +37,30 @@ texture = ExtResource("1_btubw")
 texture_mode = 1
 
 [node name="Icon3" type="Sprite2D" parent="CanvasGroup"]
-position = Vector2(-1884, 314.49997)
-scale = Vector2(21.15625, 31.69531)
-texture = ExtResource("1_btubw")
+self_modulate = Color(1, 0, 1, 1)
+use_parent_material = true
+position = Vector2(-3003, 120.00001)
+scale = Vector2(34.814285, 4.68125)
+texture = ExtResource("1_2mvdy")
+region_enabled = true
+region_rect = Rect2(0, 0, 140, 320)
+region_filter_clip_enabled = true
 
 [node name="Icon4" type="Sprite2D" parent="CanvasGroup"]
-position = Vector2(640, -1232)
+self_modulate = Color(1, 0, 1, 1)
+use_parent_material = true
+position = Vector2(-25, -1200)
 scale = Vector2(30, 13.3125)
-texture = ExtResource("1_btubw")
+texture = ExtResource("1_2mvdy")
+region_enabled = true
+region_rect = Rect2(0, 0, 390, 120)
 
 [node name="Icon5" type="Sprite2D" parent="CanvasGroup"]
-position = Vector2(433.49988, 1891.5)
-scale = Vector2(31.539063, 18.929688)
-texture = ExtResource("1_btubw")
+self_modulate = Color(1, 0, 1, 1)
+use_parent_material = true
+position = Vector2(-109, 1500)
+scale = Vector2(28.783165, 14.819863)
+texture = ExtResource("1_2mvdy")
+region_enabled = true
+region_rect = Rect2(0, 0, 390, 120)
+region_filter_clip_enabled = true

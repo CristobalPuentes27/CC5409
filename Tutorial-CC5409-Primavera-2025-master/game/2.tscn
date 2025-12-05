@@ -1911,16 +1911,14 @@ _spawnable_scenes = PackedStringArray("uid://bquqisov20t1c")
 spawn_path = NodePath("..")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="SafeZone" parent="." instance=ExtResource("6_q14ly")]
-visible = false
 position = Vector2(495, 494)
 scale = Vector2(49, 49)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 40.0
+wait_time = 10.0
 one_shot = true
 autostart = true
 
