@@ -9,6 +9,7 @@ func _ready() -> void:
 	chest_area.body_entered.connect(_on_chest_area_entered)
 	chest_area.body_exited.connect(_on_chest_area_exited)
 	modulate = Color(0,1,1,1) if is_arma else Color(1,0,0,1)
+
 func _on_chest_area_entered(body: Node2D) -> void:
 	var player = body as Player
 	if player:

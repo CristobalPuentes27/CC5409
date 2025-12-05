@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3oadd6lsu7oc"]
+
+[ext_resource type="Script" uid="uid://dnshnj3vtorli" path="res://ourscripts/fire.gd" id="1_hlufa"]
+[ext_resource type="Texture2D" uid="uid://cm0tf7uwqlxt3" path="res://assets/lights/circle.png" id="2_l80n3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gm5qy"]
+radius = 30.0
+
+[node name="Fire" type="Area2D"]
+script = ExtResource("1_hlufa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gm5qy")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.39215687, 0.11764706, 1)
+texture = ExtResource("2_l80n3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

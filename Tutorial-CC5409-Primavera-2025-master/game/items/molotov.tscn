@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://j2gxwjfru0iu"]
+
+[ext_resource type="PackedScene" uid="uid://dr8trie37xqja" path="res://game/items/item.tscn" id="1_dmib7"]
+[ext_resource type="Script" uid="uid://bi2hxvvarkbny" path="res://ourscripts/molotov.gd" id="2_eg5lv"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="3_xqu2g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdf0w"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0dlm"]
+
+[node name="Molotov" instance=ExtResource("1_dmib7")]
+script = ExtResource("2_eg5lv")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_xqu2g")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_pdf0w")
+
+[node name="Collider" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider" index="0"]
+shape = SubResource("CircleShape2D_e0dlm")

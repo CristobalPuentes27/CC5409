@@ -7,6 +7,6 @@ func _init() -> void:
 	description = "Torch that will help you illuminate a bigger area"
 
 func _effect() -> void:
-	
+	area_2d.monitoring = false
 	point_light_2d.visible = true
-	
+	rotation = 0
