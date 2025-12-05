@@ -9,14 +9,14 @@ size = Vector2(85, 46)
 [node name="Chest" type="Node2D"]
 script = ExtResource("1_iapbt")
 dict_item = {
-"Item1": "res://game/objects/big_heal.tscn",
-"Item2": "res://game/objects/heal.tscn",
-"Item3": "res://game/objects/torch.tscn"
+"Item1": "res://game/items/big_heal.tscn",
+"Item2": "res://game/items/heal.tscn",
+"Item3": "res://game/items/torch.tscn"
 }
 dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
 }
 
 [node name="Area2D" type="Area2D" parent="."]

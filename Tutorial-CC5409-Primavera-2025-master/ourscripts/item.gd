@@ -3,8 +3,11 @@ extends Node2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var area_2d: Area2D = $Area2D
+
+
 var spawnable := false
 var description: String
+var user_player: Player
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	var player = body as Player
@@ -20,7 +23,11 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func rpc_queue_free() -> void:
 	queue_free()
 
-#Hacer override a esta función 
 func use() -> void:
-	area_2d.monitoring = false
+
 	audio_stream_player_2d.play()
+	_effect()
+
+#Hacer override a esta función 
+func _effect() -> void:
+	assert(false)

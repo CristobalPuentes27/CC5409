@@ -8,9 +8,9 @@ func _ready() -> void:
 	spawnable=false
 	description = "Potion that will heal you " + str(to_heal) + " life"
 
-func use() -> void:
+func _effect() -> void:
 	get_parent().take_damage(-to_heal,Vector2(0,0),0)
-	audio_stream_player_2d1.play()
+	
 	area_2d2.monitorable=false
 	area_2d2.monitoring = false
 	await audio_stream_player_2d1.finished

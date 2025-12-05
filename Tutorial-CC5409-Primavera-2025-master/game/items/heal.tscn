@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7wvrgijbr6ek"]
 
-[ext_resource type="PackedScene" uid="uid://dr8trie37xqja" path="res://game/objects/item.tscn" id="1_e275j"]
+[ext_resource type="PackedScene" uid="uid://dr8trie37xqja" path="res://game/items/item.tscn" id="1_e275j"]
 [ext_resource type="Script" uid="uid://bukr1eemupv3b" path="res://ourscripts/heal.gd" id="1_ls7ab"]
 [ext_resource type="Texture2D" uid="uid://clqupvq7k2xqu" path="res://assets/others/Potions by Onocentaur/Potions by Onocentaur/Potions - Full, Corked.png" id="3_e275j"]
 [ext_resource type="AudioStream" uid="uid://bkt543op08fvx" path="res://assets/SFX/object/drink-drinking.wav" id="4_bg68t"]
@@ -24,4 +24,3 @@ shape = SubResource("CircleShape2D_5n74o")
 
 [node name="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("4_bg68t")
-volume_db = 24.0
