@@ -1861,7 +1861,7 @@ tile_map_data = PackedByteArray("AAAtAAAAAAAGAAcAAAAsAAAAAAAGAAcAAAArAAAAAAAGAAc
 tile_set = SubResource("TileSet_271y2")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAApACIAAAAAAAAAAgApABwAAAAAAAAAAgAUACIAAAAAAAAAAgAUABwAAAAAAAAAAgAYACIAAAAAAAAAAgAvACkAAQALABwAAAA7ADsAAQAfAAMAAAA4AAUAAQAcAAcAAAAmACcAAQAfAAMAAAAXACcAAQAfAAMAAAAmABcAAQAeAAMAAAAXABcAAQAeAAMAAAAfAB8AAQAKABwAAAArABoAAQAfAAMAAAA6ABgAAQAKABwAAAA0ABwAAQAfAAMAAAAoADYAAAAAAAAAAgAGADcAAAAAAAAAAgADADcAAAAAAAAAAgAVADgAAAAAAAAAAgAUADgAAAAAAAAAAgAOAC8AAAAAAAAAAgAxADEAAAAAAAAAAgA2ACUAAAAAAAAAAgA0AB4AAAAAAAAAAgAnACgAAAAAAAAAAgAWACgAAAAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAAUAB8AAAAAAAAAAgApACIAAAAAAAAAAgApABwAAAAAAAAAAgAUACIAAAAAAAAAAgAUABwAAAAAAAAAAgAYACIAAAAAAAAAAgAvACkAAQALABwAAAA7ADsAAQAfAAMAAAA4AAUAAQAcAAcAAAAmACcAAQAfAAMAAAAXACcAAQAfAAMAAAAmABcAAQAeAAMAAAAXABcAAQAeAAMAAAAfAB8AAQAKABwAAAArABoAAQAfAAMAAAA6ABgAAQAKABwAAAA0ABwAAQAfAAMAAAA=")
 tile_set = SubResource("TileSet_1ux2k")
 
 [node name="Players" type="Node2D" parent="."]
@@ -1934,12 +1934,8 @@ volume_db = 1.0
 autoplay = true
 
 [node name="Chest" parent="." instance=ExtResource("16_1ux2k")]
-position = Vector2(616, 733)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
+position = Vector2(612, 729)
+is_arma = false
 
 [node name="Heal" parent="." instance=ExtResource("13_724yu")]
 position = Vector2(873, 887)

@@ -239,8 +239,9 @@ func item_in_range(new_item: Item) -> void:
 
 func item_off_range(new_item: Item) -> void:
 	if !is_multiplayer_authority(): return
+	Debug.log("SALIR DESDE PLY")
 	if pickable_item == new_item:
-		pickable_weapon = null
+		pickable_item = null
 		pick_up_panel.visible = false
 		stats_panel.visible = false
 
@@ -282,6 +283,7 @@ func _use_new_item(scene: String) -> void:
 		get_parent().add_child(new_item, true)
 		new_item.global_position = position
 		new_item.rotation = pivot.rotation
+		new_item.user_player =self
 	
 	else:
 		if !is_multiplayer_authority(): return
