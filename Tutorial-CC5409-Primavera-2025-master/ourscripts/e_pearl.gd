@@ -19,6 +19,5 @@ func _effect() -> void:
 
 func _on_collider_body_entered(body: Node2D) -> void:
 	if body == user_player: return
-	
 	user_player.position = position
 	rpc_queue_free.rpc()

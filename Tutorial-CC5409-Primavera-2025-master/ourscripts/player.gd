@@ -84,7 +84,6 @@ func _physics_process(_delta: float) -> void:
 		weapon.attack()
 	
 	if Input.is_action_just_pressed("use_item") and not paused:
-		Debug.log(item_bag[index])
 		_use_new_item.rpc(item_bag[index])
 		
 		item_bag[index] = ""
@@ -239,7 +238,6 @@ func item_in_range(new_item: Item) -> void:
 
 func item_off_range(new_item: Item) -> void:
 	if !is_multiplayer_authority(): return
-	Debug.log("SALIR DESDE PLY")
 	if pickable_item == new_item:
 		pickable_item = null
 		pick_up_panel.visible = false
@@ -275,15 +273,17 @@ func _create_new_item(scene: String) -> void:
 func _use_new_item(scene: String) -> void:
 	if not scene:
 		return
+	
 	var panel =h_box_container.get_children()[index].get_children()
 	if len(panel):
 		panel[0].visible = false
 	var new_item: Item = load(scene).instantiate()
+	
 	if new_item.spawnable==true:
 		get_parent().add_child(new_item, true)
 		new_item.global_position = position
 		new_item.rotation = pivot.rotation
-		new_item.user_player =self
+		new_item.user_player = self
 	
 	else:
 		if !is_multiplayer_authority(): return
@@ -296,8 +296,8 @@ func _change_inventory(c_index: int) -> void:
 	var item_selected = panel.get_children()
 	if len(item_selected) != 0: item_selected[0].queue_free()
 	var new_item: Item = load(item_bag[c_index]).instantiate()
-	new_item.position= Vector2(50,50)
-	new_item.scale =Vector2(3,3)
+	new_item.position= Vector2(50, 50)
+	new_item.scale = Vector2(3,3)
 	panel.add_child(new_item, true)
 
 func _change_slot(new_index: int) -> void:
