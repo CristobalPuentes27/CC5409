@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://0tqrjmrffpxo"]
+[gd_scene load_steps=8 format=3 uid="uid://0tqrjmrffpxo"]
 
 [ext_resource type="PackedScene" uid="uid://btpe6wrrdj1yg" path="res://game/weapon/weapon.tscn" id="1_8ljj1"]
 [ext_resource type="Texture2D" uid="uid://b872j0f0pstd0" path="res://assets/weapons/Swords (From PixelTime).png" id="2_55ot7"]
 [ext_resource type="Texture2D" uid="uid://cm0tf7uwqlxt3" path="res://assets/lights/circle.png" id="3_ebhms"]
+[ext_resource type="AudioStream" uid="uid://bbei3mugcku01" path="res://assets/SFX/10_human_special_atk_1.wav" id="4_55ot7"]
+[ext_resource type="AudioStream" uid="uid://cequhm666qlua" path="res://assets/SFX/20_orc_special_atk.wav" id="5_ebhms"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ljj1"]
 radius = 27.294687
@@ -33,5 +35,9 @@ scale = Vector2(0.48, 0.41999996)
 color = Color(0.39215687, 1, 1, 1)
 texture = ExtResource("3_ebhms")
 
+[node name="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("4_55ot7")
+
 [node name="SwitchLightSound" parent="." index="6"]
 position = Vector2(17, -2)
+stream = ExtResource("5_ebhms")

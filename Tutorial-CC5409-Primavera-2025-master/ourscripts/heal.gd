@@ -1,6 +1,6 @@
 extends Item
 
-@export var to_heal = 60
+@export var to_heal:int
 @onready var audio_stream_player_2d1: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var area_2d2: Area2D = $Area2D
 

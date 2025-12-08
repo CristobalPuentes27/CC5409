@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dr8trie37xqja" path="res://game/items/item.tscn" id="1_dmib7"]
 [ext_resource type="Script" uid="uid://bi2hxvvarkbny" path="res://ourscripts/molotov.gd" id="2_eg5lv"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="3_xqu2g"]
+[ext_resource type="Texture2D" uid="uid://clqupvq7k2xqu" path="res://assets/others/Potions by Onocentaur/Potions by Onocentaur/Potions - Full, Corked.png" id="3_dmib7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdf0w"]
 radius = 5.0
@@ -13,8 +13,10 @@ radius = 5.0
 script = ExtResource("2_eg5lv")
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_xqu2g")
+texture = ExtResource("3_dmib7")
+hframes = 10
+vframes = 16
+frame = 30
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_pdf0w")

@@ -1884,7 +1884,6 @@ position = Vector2(27, 47)
 
 [node name="Heal" parent="Items" instance=ExtResource("13_724yu")]
 position = Vector2(625, 628)
-to_heal = 60
 
 [node name="EPearl" parent="Items" instance=ExtResource("17_dwlns")]
 position = Vector2(736, 224)
@@ -1902,8 +1901,7 @@ position = Vector2(951, 947)
 position = Vector2(237, 772)
 
 [node name="Heal2" parent="Items" instance=ExtResource("13_724yu")]
-position = Vector2(372, 633)
-to_heal = 60
+position = Vector2(431, 548)
 
 [node name="Molotov" parent="Items" instance=ExtResource("18_qkk02")]
 position = Vector2(856, 908)
@@ -1930,7 +1928,7 @@ position = Vector2(491, 480)
 scale = Vector2(49, 49)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 120.0
 one_shot = true
 autostart = true
 
