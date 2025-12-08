@@ -1,5 +1,7 @@
 extends Area2D
 
+const damage := 2
+
 var frames = 0
 
 func _ready() -> void:
@@ -13,12 +15,12 @@ func _process(_delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var player = body as Player
-		player.damage_enabler.rpc(true)
+		player.damage_enabler.rpc(damage)
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		var player = body as Player
-		player.damage_enabler.rpc(false)
+		player.damage_enabler.rpc(-damage)
 
 @rpc("any_peer", "call_local", "reliable")
 func rpc_queue_free() -> void:

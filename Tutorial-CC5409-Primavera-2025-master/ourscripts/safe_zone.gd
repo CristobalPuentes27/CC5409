@@ -1,6 +1,8 @@
 class_name SafeZone
 extends Area2D
 
+const damage := 2
+
 var min_size: Vector2
 var shrinking: bool = false
 
@@ -15,12 +17,12 @@ func _physics_process(_delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var player = body as Player
-		player.damage_enabler.rpc(false)
+		player.damage_enabler.rpc(-damage)
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		var player = body as Player
-		player.damage_enabler.rpc(true)
+		player.damage_enabler.rpc(damage)
 
 func shrink() -> void:
 	shrinking = true

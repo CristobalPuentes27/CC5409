@@ -30,7 +30,6 @@ var stored_data
 var knockback_velocity: Vector2 = Vector2.ZERO
 const max_knockback_frames: int = 4
 var knockback_frames: int = 0
-var damage_enabled: bool = false
 var pickable_weapon: Weapon
 var pickable_weapon_light: bool
 @onready var stats_template: String = rich_text_label.text
@@ -38,9 +37,9 @@ var pickable_item: Item
 var openable_chest:Chest
 var pickable_item_template: String = "[b]Item[/b] 
 [b]Use:[/b] {use}"
-
 var item_bag: Array[String] = ["", "", ""]
 var index := 0
+var passive_damage = 0
 
 signal death_sign(is_player: bool)
 
@@ -57,8 +56,8 @@ func _physics_process(_delta: float) -> void:
 		pause_menu.visible = !pause_menu.visible
 	var paused = pause_menu.visible
 	
-	if damage_enabled:
-		life -= 2
+	if passive_damage:
+		life -= passive_damage#2
 		send_life.rpc(life)
 		if life <= 0:
 			death.rpc()
@@ -183,8 +182,8 @@ func send_life(new_life) -> void:
 	health_bar.value = new_life
 
 @rpc("any_peer", "call_local", "reliable")
-func damage_enabler(val: bool) -> void:
-	damage_enabled = val
+func damage_enabler(val: int) -> void:
+	passive_damage = max(0, passive_damage + val)
 
 func _on_rage_quit() -> void:
 	death.rpc()
