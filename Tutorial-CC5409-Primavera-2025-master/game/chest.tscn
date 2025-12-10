@@ -16,9 +16,10 @@ dict_item = {
 "Item5": "res://game/items/molotov.tscn"
 }
 dict_weapon = {
-"Item1": "res://game/items/blue_ls.tscn",
-"Item2": "res://game/items/green_ls.tscn",
-"Item3": "res://game/items/lantern.tscn"
+"Item1": "res://game/weapon/blue_ls.tscn",
+"Item2": "res://game/weapon/green_ls.tscn",
+"Item3": "res://game/weapon/lantern.tscn",
+"Item4": "res://game/weapon/red_ls.tscn"
 }
 
 [node name="Area2D" type="Area2D" parent="."]

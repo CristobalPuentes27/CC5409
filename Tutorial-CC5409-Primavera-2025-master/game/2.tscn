@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://df27ouxfeg32k"]
+[gd_scene load_steps=53 format=4 uid="uid://df27ouxfeg32k"]
 
 [ext_resource type="Script" uid="uid://djd6qfqjfysf1" path="res://scenes/main.gd" id="1_gpbrv"]
 [ext_resource type="PackedScene" uid="uid://yct15o1oq06n" path="res://game/player.tscn" id="2_truli"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://frnf70urkks6" path="res://assets/FG_Cellar.png" id="5_nghfh"]
 [ext_resource type="PackedScene" uid="uid://cg45jrcau0npi" path="res://game/safe_zone.tscn" id="6_q14ly"]
 [ext_resource type="AudioStream" uid="uid://2ke1p2hu1vl" path="res://assets/Minifantasy_Dungeon_Music/Music/Goblins_Dance_(Battle).wav" id="7_vcn5b"]
-[ext_resource type="PackedScene" uid="uid://bbxfsj6xacory" path="res://game/weapon/green_ls.tscn" id="8_271y2"]
 [ext_resource type="AudioStream" uid="uid://bycju7d4ukdvo" path="res://assets/Minifantasy_Dungeon_Music/Music/Goblins_Den_(Regular).wav" id="8_i25cr"]
 [ext_resource type="PackedScene" uid="uid://0tqrjmrffpxo" path="res://game/weapon/logo_weapon.tscn" id="9_1ux2k"]
 [ext_resource type="PackedScene" uid="uid://d4as1rf5qp8oa" path="res://game/items/big_heal.tscn" id="9_8d2co"]
@@ -1868,9 +1867,6 @@ tile_set = SubResource("TileSet_1ux2k")
 
 [node name="Weapons" type="Node2D" parent="."]
 
-[node name="GreenLS" parent="Weapons" instance=ExtResource("8_271y2")]
-position = Vector2(475, 502)
-
 [node name="LogoWeapon" parent="Weapons" instance=ExtResource("9_1ux2k")]
 position = Vector2(868, 88)
 
@@ -1912,177 +1908,77 @@ position = Vector2(856, 908)
 
 [node name="ChestA" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(949, 321)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 is_arma = false
 
 [node name="ChestA2" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(361, 951)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 is_arma = false
 
 [node name="ChestA3" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(23, 665)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 is_arma = false
 
 [node name="ChestA4" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(727, 952)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 is_arma = false
 
 [node name="ChestA5" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(600, 39)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 is_arma = false
 
 [node name="ChestA6" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(237, 40)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 is_arma = false
 
 [node name="ChestA7" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(263, 310)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 is_arma = false
 
 [node name="ChestA8" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(690, 677)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 is_arma = false
 
 [node name="ChestA9" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(388, 745)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 is_arma = false
 
 [node name="ChestA10" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(700, 422)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 is_arma = false
 
 [node name="ChestA11" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(571, 239)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 is_arma = false
 
 [node name="ChestA12" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(290, 417)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 is_arma = false
 
 [node name="WEAPON" type="Node2D" parent="CHEST"]
 
 [node name="Chest2" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(930, 392)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 
 [node name="Chest3" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(762, 662)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 
 [node name="Chest4" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(314, 950)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 
 [node name="Chest5" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(558, 953)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 
 [node name="Chest7" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(197, 330)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 
 [node name="Chest8" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(23, 581)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 
 [node name="Chest9" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(405, 38)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 
 [node name="Chest10" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(648, 42)
-dict_weapon = {
-"Item1": "res://game/weapon/blue_ls.tscn",
-"Item2": "res://game/weapon/green_ls.tscn",
-"Item3": "res://game/weapon/lantern.tscn"
-}
 
 [node name="Markers" type="Node2D" parent="."]
 
@@ -2091,7 +1987,7 @@ position = Vector2(879, 883)
 gizmo_extents = 60.0
 
 [node name="Marker2D2" type="Marker2D" parent="Markers"]
-position = Vector2(471, 483)
+position = Vector2(620, 80)
 gizmo_extents = 60.0
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]

@@ -1,9 +1,11 @@
-extends Node2D
 class_name Chest
-@export var dict_item: Dictionary
-@export var dict_weapon: Dictionary
-@export var is_arma: bool =true
+extends Node2D
+
 @onready var chest_area: Area2D = $Area2D
+
+@export var dict_item: Dictionary[String, String]
+@export var dict_weapon: Dictionary[String, String]
+@export var is_arma: bool = true
 
 func _ready() -> void:
 	chest_area.body_entered.connect(_on_chest_area_entered)
@@ -20,16 +22,17 @@ func _on_chest_area_exited(body: Node2D) -> void:
 	if player:
 		player.chest_off_range(self)
 
-func open(opener:Player) ->void:
+func open(opener:Player) -> void:
 	if not is_arma:
-		var index=randi() % dict_item.size()
+		var index = randi() % dict_item.size()
 		var item = dict_item.values()[index]
 		opener._create_new_item.rpc(item)
 	
 	else:
-		var index=randi() % dict_weapon.size()
-		var item=dict_weapon.values()[index]
-		opener._create_new_weapon.rpc(item,true)
+		var index = randi() % dict_weapon.size()
+		var item = dict_weapon.values()[index]
+		print(dict_weapon)
+		opener._create_new_weapon.rpc(item, false)
 
 @rpc("any_peer", "call_local", "reliable")
 func rpc_queue_free() -> void:
