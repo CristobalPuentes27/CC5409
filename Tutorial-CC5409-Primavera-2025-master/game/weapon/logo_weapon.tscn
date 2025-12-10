@@ -9,12 +9,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ljj1"]
 radius = 27.294687
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_55ot7"]
-size = Vector2(52.01364, 47.81124)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ebhms"]
+radius = 25.0
+height = 60.0
 
 [node name="LogoWeapon" instance=ExtResource("1_8ljj1")]
 attack_power = 240
-attack_speed = 0.8
+rotation_cone = 1.047
 
 [node name="Icon" parent="." index="0"]
 position = Vector2(30, 0)
@@ -26,8 +27,9 @@ position = Vector2(40, 1)
 shape = SubResource("CircleShape2D_8ljj1")
 
 [node name="CollisionShape2D" parent="PickUpArea" index="0"]
-position = Vector2(25, 2)
-shape = SubResource("RectangleShape2D_55ot7")
+position = Vector2(30, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ebhms")
 
 [node name="PointLight2D" parent="." index="4"]
 position = Vector2(53.999996, 1.0000019)
