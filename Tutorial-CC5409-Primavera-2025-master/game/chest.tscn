@@ -12,7 +12,8 @@ dict_item = {
 "Item1": "res://game/items/big_heal.tscn",
 "Item2": "res://game/items/heal.tscn",
 "Item3": "res://game/items/torch.tscn",
-"Item4": "res://game/items/e_pearl.tscn"
+"Item4": "res://game/items/e_pearl.tscn",
+"Item5": "res://game/items/molotov.tscn"
 }
 dict_weapon = {
 "Item1": "res://game/items/blue_ls.tscn",

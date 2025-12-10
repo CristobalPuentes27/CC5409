@@ -4,6 +4,7 @@
 
 [node name="GreenLS" instance=ExtResource("1_ax1i2")]
 attack_power = 200
+knockback = 1700.0
 attack_speed = 0.5
 rotation_cone = 0.785
 

@@ -20,7 +20,7 @@
 [ext_resource type="Theme" uid="uid://bnhngmri4tfgr" path="res://assets/fonts/kenneyUI-green.tres" id="20_a3s55"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dadds"]
-radius = 8.0
+radius = 7.8
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_du4nq"]
 
