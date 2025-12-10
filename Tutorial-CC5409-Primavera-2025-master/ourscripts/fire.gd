@@ -1,4 +1,5 @@
 extends Area2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 const damage := 2
 
@@ -11,6 +12,7 @@ func _process(_delta: float) -> void:
 	if not is_multiplayer_authority(): return
 	if frames >= 500: rpc_queue_free.rpc()
 	frames += 1
+	animated_sprite_2d.play("default")
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
