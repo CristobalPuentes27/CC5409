@@ -29,7 +29,7 @@ func open(opener:Player) ->void:
 	else:
 		var index=randi() % dict_weapon.size()
 		var item=dict_weapon.values()[index]
-		opener._create_new_weapon.rpc(item,true)
+		opener._create_new_weapon.rpc(item,false)
 
 @rpc("any_peer", "call_local", "reliable")
 func rpc_queue_free() -> void:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3oadd6lsu7oc"]
+[gd_scene load_steps=15 format=3 uid="uid://b3oadd6lsu7oc"]
 
 [ext_resource type="Script" uid="uid://dnshnj3vtorli" path="res://ourscripts/fire.gd" id="1_hlufa"]
 [ext_resource type="Texture2D" uid="uid://cm0tf7uwqlxt3" path="res://assets/lights/circle.png" id="2_l80n3"]
 [ext_resource type="Texture2D" uid="uid://dct5gasoqcdav" path="res://assets/others/burning_loop_1.png" id="3_l80n3"]
+[ext_resource type="AudioStream" uid="uid://de40drmx4k4hg" path="res://assets/SFX/object/fire.wav" id="4_gm5qy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gm5qy"]
 atlas = ExtResource("3_l80n3")
@@ -102,6 +103,7 @@ texture = ExtResource("2_l80n3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-13, -25)
 sprite_frames = SubResource("SpriteFrames_6fhxj")
+autoplay = "default"
 frame_progress = 0.2878411
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
@@ -109,6 +111,9 @@ position = Vector2(-1, -12)
 sprite_frames = SubResource("SpriteFrames_6fhxj")
 autoplay = "default"
 frame_progress = 0.027458323
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gm5qy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
