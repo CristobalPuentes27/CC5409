@@ -8,7 +8,6 @@ attack_speed = 0.5
 rotation_cone = 0.785
 
 [node name="PointLight2D" parent="." index="4"]
-visible = true
 position = Vector2(37, 0)
 scale = Vector2(0.905, 0.69000006)
 color = Color(0.19607843, 0.78431374, 0.19607843, 1)
