@@ -1906,41 +1906,6 @@ position = Vector2(431, 548)
 [node name="Molotov" parent="Items" instance=ExtResource("18_qkk02")]
 position = Vector2(856, 908)
 
-[node name="Markers" type="Node2D" parent="."]
-
-[node name="Marker2D" type="Marker2D" parent="Markers"]
-position = Vector2(879, 883)
-gizmo_extents = 60.0
-
-[node name="Marker2D2" type="Marker2D" parent="Markers"]
-position = Vector2(471, 483)
-gizmo_extents = 60.0
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://bquqisov20t1c")
-spawn_path = NodePath("..")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
-
-[node name="SafeZone" parent="." instance=ExtResource("6_q14ly")]
-position = Vector2(491, 480)
-scale = Vector2(49, 49)
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 120.0
-one_shot = true
-autostart = true
-
-[node name="BattleMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_vcn5b")
-volume_db = 1.0
-
-[node name="RegularMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_i25cr")
-volume_db = 1.0
-autoplay = true
-
 [node name="CHEST" type="Node2D" parent="."]
 
 [node name="ITEMS" type="Node2D" parent="CHEST"]
@@ -2118,3 +2083,38 @@ dict_weapon = {
 "Item2": "res://game/weapon/green_ls.tscn",
 "Item3": "res://game/weapon/lantern.tscn"
 }
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Markers"]
+position = Vector2(879, 883)
+gizmo_extents = 60.0
+
+[node name="Marker2D2" type="Marker2D" parent="Markers"]
+position = Vector2(471, 483)
+gizmo_extents = 60.0
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bquqisov20t1c")
+spawn_path = NodePath("..")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="SafeZone" parent="." instance=ExtResource("6_q14ly")]
+position = Vector2(491, 480)
+scale = Vector2(49, 49)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
+autostart = true
+
+[node name="BattleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vcn5b")
+volume_db = 1.0
+
+[node name="RegularMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_i25cr")
+volume_db = 1.0
+autoplay = true
