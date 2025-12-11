@@ -131,10 +131,12 @@ texture = ExtResource("5_ubpvv")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_5klac")
+volume_db = -5.0
 autoplay = true
 
 [node name="AbsConfirm1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_lsdqh")
+volume_db = -5.0
 
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 0.4

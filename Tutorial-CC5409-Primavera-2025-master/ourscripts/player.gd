@@ -220,6 +220,7 @@ func weapon_off_range(new_weapon: Weapon) -> void:
 
 @rpc("any_peer", "call_local", "reliable")
 func _create_new_weapon(scene: String, light_on: bool) -> void:
+	
 	var new_weapon: Weapon = load(scene).instantiate()
 	get_parent().add_child(new_weapon, true)
 	new_weapon.global_position = position

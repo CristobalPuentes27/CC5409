@@ -15,6 +15,7 @@ height = 60.0
 
 [node name="LogoWeapon" instance=ExtResource("1_8ljj1")]
 attack_power = 240
+attack_speed = 0.65
 rotation_cone = 1.047
 
 [node name="Icon" parent="." index="0"]
