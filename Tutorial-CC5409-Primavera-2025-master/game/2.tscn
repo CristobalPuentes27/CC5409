@@ -11,11 +11,11 @@
 [ext_resource type="AudioStream" uid="uid://bycju7d4ukdvo" path="res://assets/Minifantasy_Dungeon_Music/Music/Goblins_Den_(Regular).wav" id="8_i25cr"]
 [ext_resource type="PackedScene" uid="uid://0tqrjmrffpxo" path="res://game/weapon/logo_weapon.tscn" id="9_1ux2k"]
 [ext_resource type="PackedScene" uid="uid://d4as1rf5qp8oa" path="res://game/items/big_heal.tscn" id="9_8d2co"]
+[ext_resource type="PackedScene" path="res://game/weapon/red_ls.tscn" id="9_dwlns"]
 [ext_resource type="PackedScene" uid="uid://c7wvrgijbr6ek" path="res://game/items/heal.tscn" id="13_724yu"]
 [ext_resource type="PackedScene" uid="uid://b5m82q6en21xr" path="res://game/floor_torch.tscn" id="14_sglr6"]
 [ext_resource type="PackedScene" uid="uid://dnum8b2i6yj7c" path="res://game/chest.tscn" id="16_1ux2k"]
 [ext_resource type="PackedScene" uid="uid://cso1r6q1nbh0s" path="res://game/items/e_pearl.tscn" id="17_dwlns"]
-[ext_resource type="PackedScene" uid="uid://j2gxwjfru0iu" path="res://game/items/molotov.tscn" id="18_qkk02"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_i25cr"]
 tile_data = PackedInt32Array(0, 262144, 13, 65536, 262144, 14, 131072, 262144, 14, 196608, 262144, 14, 262144, 524288, 7, 327680, 1769472, 2, 393216, 1769472, 2, 458752, 1769472, 2, 524288, 1769472, 2, 589824, 1769472, 3, 1048576, 65536, 7, 1114112, 65536, 8, 1179648, 65536, 8, 1245184, 65536, 8, 1310720, 65536, 8, 1376256, 65536, 8, 1441792, 65536, 9, 1507328, 65536, 10, 1, 327680, 13, 65537, 327680, 14, 131073, 327680, 14, 196609, 327680, 14, 262145, 327680, 15, 327681, 131072, 10, 589825, 524288, 26, 983041, 524288, 26, 1048577, 131072, 7, 1114113, 131072, 8, 1179649, 131072, 8, 1245185, 131072, 8, 1310721, 131072, 8, 1376257, 131072, 8, 1441793, 131072, 9, 1507329, 131072, 10, 2, 327680, 13, 65538, 458752, 13, 131074, 327680, 8, 196610, 393216, 14, 262146, 589824, 7, 327682, 589824, 8, 1048578, 196608, 7, 1114114, 196608, 8, 1179650, 196608, 8, 1245186, 196608, 8, 1310722, 196608, 8, 1376258, 196608, 8, 1441794, 196608, 9, 1507330, 196608, 10, 3, 327680, 13, 65539, 131072, 9, 131075, 131072, 10, 786435, 1769472, 2, 851971, 1769472, 3, 1376259, 524288, 26, 1441795, 1769472, 2, 1507331, 1769472, 3, 4, 327680, 13, 65540, 327680, 15, 131076, 131072, 10, 786436, 1769472, 2, 851972, 1769472, 3, 1114116, 1769472, 2, 1179652, 1769472, 2, 1245188, 1769472, 3, 1441796, 1769472, 2, 1507332, 1769472, 3, 5, 327680, 13, 65541, 327680, 15, 131077, 131072, 10, 262149, 1441792, 2, 327685, 1441792, 3, 458757, 65536, 7, 524293, 262144, 14, 589829, 65536, 9, 655365, 65536, 10, 786437, 1769472, 2, 851973, 1769472, 3, 1441797, 1769472, 2, 1507333, 1769472, 3, 6, 327680, 13, 65542, 327680, 15, 131078, 131072, 10, 458758, 131072, 7, 524294, 327680, 14, 589830, 131072, 9, 655366, 131072, 10, 786438, 1769472, 2, 851974, 1769472, 3, 1048582, 1441792, 2, 1114118, 1441792, 3, 1179654, 1441792, 2, 1245190, 1441792, 3, 1310726, 1441792, 2, 1376262, 1441792, 3, 1441798, 1769472, 2, 1507334, 1769472, 3, 7, 327680, 13, 65543, 327680, 15, 131079, 131072, 10, 458759, 196608, 7, 524295, 393216, 14, 589831, 196608, 9, 655367, 196608, 10, 720903, 524288, 26, 786439, 1769472, 2, 851975, 1769472, 3, 1441799, 1769472, 2, 1507335, 1769472, 3, 8, 327680, 13, 65544, 327680, 15, 131080, 131072, 10, 1441800, 1769472, 2, 1507336, 1769472, 3, 9, 393216, 13, 65545, 393216, 15, 131081, 196608, 10, 917513, 1441792, 2, 983049, 1441792, 3, 1114121, 65536, 7, 1179657, 65536, 8, 1245193, 196608, 11, 1310729, 196608, 12, 1376265, 196608, 13, 196618, 65536, 7, 262154, 65536, 8, 327690, 65536, 9, 393226, 65536, 10, 524298, 1441792, 2, 589834, 1441792, 3, 1114122, 131072, 7, 1179658, 131072, 8, 1245194, 131072, 8, 1310730, 131072, 9, 1376266, 131072, 10, 196619, 131072, 7, 262155, 131072, 8, 327691, 131072, 9, 393227, 131072, 10, 1114123, 327680, 13, 1179659, 327680, 14, 1245195, 327680, 14, 1310731, 131072, 9, 1376267, 131072, 10)
@@ -1873,6 +1873,9 @@ position = Vector2(868, 88)
 [node name="LogoWeapon2" parent="Weapons" instance=ExtResource("9_1ux2k")]
 position = Vector2(53, 886)
 
+[node name="RedLS" parent="Weapons" instance=ExtResource("9_dwlns")]
+position = Vector2(470, 505)
+
 [node name="Items" type="Node2D" parent="."]
 
 [node name="Torch" parent="Items" instance=ExtResource("5_8n0rt")]
@@ -1897,10 +1900,7 @@ position = Vector2(951, 947)
 position = Vector2(237, 772)
 
 [node name="Heal2" parent="Items" instance=ExtResource("13_724yu")]
-position = Vector2(431, 548)
-
-[node name="Molotov" parent="Items" instance=ExtResource("18_qkk02")]
-position = Vector2(856, 908)
+position = Vector2(380, 627)
 
 [node name="CHEST" type="Node2D" parent="."]
 
@@ -1908,77 +1908,177 @@ position = Vector2(856, 908)
 
 [node name="ChestA" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(949, 321)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 is_arma = false
 
 [node name="ChestA2" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(361, 951)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 is_arma = false
 
 [node name="ChestA3" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(23, 665)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 is_arma = false
 
 [node name="ChestA4" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(727, 952)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 is_arma = false
 
 [node name="ChestA5" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(600, 39)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 is_arma = false
 
 [node name="ChestA6" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(237, 40)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 is_arma = false
 
 [node name="ChestA7" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(263, 310)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 is_arma = false
 
 [node name="ChestA8" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(690, 677)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 is_arma = false
 
 [node name="ChestA9" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(388, 745)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 is_arma = false
 
 [node name="ChestA10" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(700, 422)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 is_arma = false
 
 [node name="ChestA11" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(571, 239)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 is_arma = false
 
 [node name="ChestA12" parent="CHEST/ITEMS" instance=ExtResource("16_1ux2k")]
 position = Vector2(290, 417)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 is_arma = false
 
 [node name="WEAPON" type="Node2D" parent="CHEST"]
 
 [node name="Chest2" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(930, 392)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 
 [node name="Chest3" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(762, 662)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 
 [node name="Chest4" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(314, 950)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 
 [node name="Chest5" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(558, 953)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 
 [node name="Chest7" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(197, 330)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 
 [node name="Chest8" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(23, 581)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 
 [node name="Chest9" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(405, 38)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 
 [node name="Chest10" parent="CHEST/WEAPON" instance=ExtResource("16_1ux2k")]
 position = Vector2(648, 42)
+dict_weapon = Dictionary[String, String]({
+"Item1": "res://game/items/blue_ls.tscn",
+"Item2": "res://game/items/green_ls.tscn",
+"Item3": "res://game/items/lantern.tscn"
+})
 
 [node name="Markers" type="Node2D" parent="."]
 
@@ -1987,7 +2087,7 @@ position = Vector2(879, 883)
 gizmo_extents = 60.0
 
 [node name="Marker2D2" type="Marker2D" parent="Markers"]
-position = Vector2(620, 80)
+position = Vector2(104, 131)
 gizmo_extents = 60.0
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]

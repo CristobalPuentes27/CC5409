@@ -1,6 +1,7 @@
 extends Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 
 const damage := 2
 
@@ -8,6 +9,7 @@ var frames = 0
 
 func _ready() -> void:
 	set_multiplayer_authority(1, false)
+	audio_stream_player_2d_2.play()
 	audio_stream_player_2d.play()
 
 func _process(_delta: float) -> void:

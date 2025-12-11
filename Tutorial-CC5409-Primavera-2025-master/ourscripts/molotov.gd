@@ -2,6 +2,7 @@ extends Item
 
 @onready var collider: Area2D = $Collider
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
 
 var throw := false
 var frames := 0
@@ -27,6 +28,7 @@ func _effect() -> void:
 
 func _on_collider_body_entered(body: Node2D) -> void:
 	if body == user_player: return
+	
 	_explode.rpc()
 
 @rpc("any_peer", "call_local", "reliable")

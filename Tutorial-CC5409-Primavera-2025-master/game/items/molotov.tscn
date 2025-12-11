@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://j2gxwjfru0iu"]
+[gd_scene load_steps=7 format=3 uid="uid://j2gxwjfru0iu"]
 
 [ext_resource type="PackedScene" uid="uid://dr8trie37xqja" path="res://game/items/item.tscn" id="1_dmib7"]
 [ext_resource type="Script" uid="uid://bi2hxvvarkbny" path="res://ourscripts/molotov.gd" id="2_eg5lv"]
 [ext_resource type="Texture2D" uid="uid://clqupvq7k2xqu" path="res://assets/others/Potions by Onocentaur/Potions by Onocentaur/Potions - Full, Corked.png" id="3_dmib7"]
+[ext_resource type="AudioStream" uid="uid://dsufefxu1nvpv" path="res://assets/SFX/weapon/521342__zxaudiocraft__zxaudiocraft-glass-break-003.wav" id="4_eg5lv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdf0w"]
 radius = 12.0
@@ -26,3 +27,6 @@ shape = SubResource("CircleShape2D_pdf0w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider" index="0"]
 shape = SubResource("CircleShape2D_e0dlm")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("4_eg5lv")
