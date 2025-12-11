@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cf8ype3b0y31w"]
+[gd_scene load_steps=13 format=3 uid="uid://cf8ype3b0y31w"]
 
 [ext_resource type="PackedScene" uid="uid://cgsspji18smle" path="res://lobby/lobby_screen.tscn" id="1_xldsp"]
 [ext_resource type="Script" uid="uid://cr2abnsynvkkq" path="res://lobby/join_screen.gd" id="2_0bjwb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="4_q5f0x"]
 [ext_resource type="FontFile" uid="uid://c0i5kqdysam1v" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="5_qn5pl"]
 [ext_resource type="Texture2D" uid="uid://d07njrq4y4ctm" path="res://assets/game.png" id="7_w1xf7"]
+[ext_resource type="AudioStream" uid="uid://cduqnq40ki7j7" path="res://assets/SFX/menu/WAV/Abstract/abs-cancel-1.wav" id="9_kwecp"]
 
 [sub_resource type="Animation" id="Animation_c2ij0"]
 length = 0.001
@@ -224,3 +225,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_kd86l")
 }
 autoplay = "loading"
+
+[node name="AbsCancel1" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("9_kwecp")
+
+[node name="Timer" type="Timer" parent="." index="4"]

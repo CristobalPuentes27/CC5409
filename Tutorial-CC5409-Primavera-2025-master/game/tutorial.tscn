@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dj5eaq5fb34qx"]
+[gd_scene load_steps=5 format=3 uid="uid://dj5eaq5fb34qx"]
 
 [ext_resource type="Script" uid="uid://d0m7oblj654nv" path="res://ourscripts/tutorial.gd" id="1_45ryd"]
 [ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/fonts/kenneyUI-red.tres" id="2_dujda"]
 [ext_resource type="FontFile" uid="uid://c0i5kqdysam1v" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="3_42b7p"]
+[ext_resource type="AudioStream" uid="uid://cduqnq40ki7j7" path="res://assets/SFX/menu/WAV/Abstract/abs-cancel-1.wav" id="4_42b7p"]
 
 [node name="Tutorial" type="Panel"]
 anchors_preset = 15
@@ -92,3 +93,8 @@ R
 Use Item
 Shift"
 horizontal_alignment = 1
+
+[node name="AbsCancel1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_42b7p")
+
+[node name="Timer" type="Timer" parent="."]
