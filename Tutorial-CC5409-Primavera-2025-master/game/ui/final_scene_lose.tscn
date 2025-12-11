@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2qp2kss17xal"]
+[gd_scene load_steps=4 format=3 uid="uid://b2qp2kss17xal"]
 
 [ext_resource type="Script" uid="uid://bbpviq4iqfrd1" path="res://ourscripts/final_screen.gd" id="1_tsdii"]
 [ext_resource type="Theme" uid="uid://bb6vwl0h1flws" path="res://assets/fonts/kenneyUI-blue.tres" id="2_fut7l"]
+[ext_resource type="AudioStream" uid="uid://cduqnq40ki7j7" path="res://assets/SFX/menu/WAV/Abstract/abs-cancel-1.wav" id="3_rmikn"]
 
 [node name="FinalScene" type="PanelContainer"]
 anchors_preset = 15
@@ -26,3 +27,9 @@ text = "You Lose!"
 layout_mode = 2
 size_flags_vertical = 4
 text = "Main Menu"
+
+[node name="AbsCancel1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rmikn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4

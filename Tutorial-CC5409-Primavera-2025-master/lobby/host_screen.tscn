@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bb87qnq3164s5"]
+[gd_scene load_steps=7 format=3 uid="uid://bb87qnq3164s5"]
 
 [ext_resource type="PackedScene" uid="uid://cgsspji18smle" path="res://lobby/lobby_screen.tscn" id="1_uvmm6"]
 [ext_resource type="Script" uid="uid://layh08o4sto4" path="res://lobby/host_screen.gd" id="2_l54gy"]
 [ext_resource type="Theme" uid="uid://h1f7iqhh7ycb" path="res://assets/fonts/kenneyUI-yellow.tres" id="3_50f1p"]
 [ext_resource type="FontFile" uid="uid://dkdvbocilslh8" path="res://assets/fonts/HomeVideoBold-R90Dv.ttf" id="4_l36ea"]
 [ext_resource type="FontFile" uid="uid://c0i5kqdysam1v" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="5_l36ea"]
+[ext_resource type="AudioStream" uid="uid://cduqnq40ki7j7" path="res://assets/SFX/menu/WAV/Abstract/abs-cancel-1.wav" id="6_2ob3k"]
 
 [node name="HostScreen" instance=ExtResource("1_uvmm6")]
 script = ExtResource("2_l54gy")
@@ -62,3 +63,8 @@ horizontal_alignment = 1
 [node name="ErrorTimer" type="Timer" parent="." index="1"]
 wait_time = 3.0
 one_shot = true
+
+[node name="AbsCancel1" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource("6_2ob3k")
+
+[node name="Timer" type="Timer" parent="." index="3"]
