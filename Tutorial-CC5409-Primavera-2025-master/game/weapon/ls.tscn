@@ -37,7 +37,8 @@ texture = ExtResource("3_2noew")
 
 [node name="AudioStreamPlayer2D" parent="." index="5"]
 stream = ExtResource("4_s5ds4")
-volume_db = -5.0
+volume_db = -10.0
+pitch_scale = 1.4
 
 [node name="SwitchLightSound" parent="." index="6"]
 stream = ExtResource("5_cnnxl")
