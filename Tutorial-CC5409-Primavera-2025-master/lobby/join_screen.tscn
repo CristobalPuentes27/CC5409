@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf8ype3b0y31w"]
+[gd_scene load_steps=12 format=3 uid="uid://cf8ype3b0y31w"]
 
 [ext_resource type="PackedScene" uid="uid://cgsspji18smle" path="res://lobby/lobby_screen.tscn" id="1_xldsp"]
 [ext_resource type="Script" uid="uid://cr2abnsynvkkq" path="res://lobby/join_screen.gd" id="2_0bjwb"]
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/fonts/kenneyUI.tres" id="3_1bvia"]
 [ext_resource type="Theme" uid="uid://bwgdrcgopd0s1" path="res://lobby/lobby_theme.tres" id="3_i53lg"]
 [ext_resource type="FontFile" uid="uid://dkdvbocilslh8" path="res://assets/fonts/HomeVideoBold-R90Dv.ttf" id="4_kwecp"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="4_q5f0x"]
 [ext_resource type="FontFile" uid="uid://c0i5kqdysam1v" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="5_qn5pl"]
 [ext_resource type="Texture2D" uid="uid://d07njrq4y4ctm" path="res://assets/game.png" id="7_w1xf7"]
 [ext_resource type="AudioStream" uid="uid://cduqnq40ki7j7" path="res://assets/SFX/menu/WAV/Abstract/abs-cancel-1.wav" id="9_kwecp"]
@@ -62,7 +61,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(64, 64)]
+"values": [Vector2(160, 160)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kd86l"]
@@ -215,9 +214,10 @@ horizontal_alignment = 1
 
 [node name="LoadingIcon" type="TextureRect" parent="CanvasLayer/MessageContainer/ConnectionFailed/VBoxContainer" index="1"]
 modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("4_q5f0x")
+texture = ExtResource("7_w1xf7")
 stretch_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" index="1"]

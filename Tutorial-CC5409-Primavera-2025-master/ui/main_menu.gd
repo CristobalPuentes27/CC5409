@@ -1,6 +1,7 @@
 class_name MainMenu
 extends Control
 
+@onready var node_2d: Node2D = $Node2D
 
 @onready var host: Button = %Host
 @onready var join: Button = %Join
@@ -10,7 +11,11 @@ extends Control
 @onready var abs_confirm_1: AudioStreamPlayer = $AbsConfirm1
 @onready var timer_2: Timer = $Timer2
 
-
+func _process(delta: float) -> void:
+	var view_size = get_viewport_rect().size.x * 1.4 / 1280.0
+	#Debug.log()
+	
+	node_2d.scale = Vector2.ONE * view_size
 func _ready() -> void:
 	if Game.multiplayer_test:
 		get_tree().change_scene_to_file("res://lobby/lobby_test.tscn")
