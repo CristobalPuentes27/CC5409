@@ -1044,16 +1044,20 @@ Elías Zelada
 [/center]
 [center]
 [b]Potions Assets[/b]
-Onocentaur
+Potions by Onocentaur
 https://onocentaur.itch.io/potions
+License:Atribution 4.0:https://creativecommons.org/licenses/by/4.0/
 [/center]
 
 [center]
 [b]music[/b]
 Menu
-Lenny Pixels - The Beat of Nuts n Bolts - 8bit
+Lenny Pixels - The Beat of Nuts n Bolts - 8bit 
+License: Atribution 4.0:https://creativecommons.org/licenses/by/4.0/
 [/center]
 SFX Menu Sound FX Pack + More! by Hitrison
+lg fire5.wav by lgarrett -- https://freesound.org/s/17150/ -- License: Attribution 3.0:https://creativecommons.org/licenses/by/3.0/
+[/center]
 "
 
 [node name="AbsCancel1" type="AudioStreamPlayer" parent="." index="3"]
