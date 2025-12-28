@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cf8ype3b0y31w"]
+[gd_scene load_steps=12 format=3 uid="uid://cf8ype3b0y31w"]
 
 [ext_resource type="PackedScene" uid="uid://cgsspji18smle" path="res://lobby/lobby_screen.tscn" id="1_xldsp"]
 [ext_resource type="Script" uid="uid://cr2abnsynvkkq" path="res://lobby/join_screen.gd" id="2_0bjwb"]
+[ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/fonts/kenneyUI.tres" id="3_1bvia"]
 [ext_resource type="Theme" uid="uid://bwgdrcgopd0s1" path="res://lobby/lobby_theme.tres" id="3_i53lg"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="4_q5f0x"]
+[ext_resource type="FontFile" uid="uid://dkdvbocilslh8" path="res://assets/fonts/HomeVideoBold-R90Dv.ttf" id="4_kwecp"]
+[ext_resource type="FontFile" uid="uid://c0i5kqdysam1v" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="5_qn5pl"]
+[ext_resource type="Texture2D" uid="uid://d07njrq4y4ctm" path="res://assets/game.png" id="7_w1xf7"]
+[ext_resource type="AudioStream" uid="uid://cduqnq40ki7j7" path="res://assets/SFX/menu/WAV/Abstract/abs-cancel-1.wav" id="9_kwecp"]
 
 [sub_resource type="Animation" id="Animation_c2ij0"]
 length = 0.001
@@ -57,7 +61,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(64, 64)]
+"values": [Vector2(160, 160)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kd86l"]
@@ -69,7 +73,12 @@ _data = {
 [node name="JoinScreen" instance=ExtResource("1_xldsp")]
 script = ExtResource("2_0bjwb")
 
+[node name="MarginContainer2" parent="." index="0"]
+theme = ExtResource("3_1bvia")
+
 [node name="Label" parent="MarginContainer2/VBoxContainer/Panel" index="0"]
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_kwecp")
 text = "Join"
 
 [node name="Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" index="0"]
@@ -86,12 +95,14 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/HBoxContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_qn5pl")
 text = "Player"
 
 [node name="PlayerName" type="LineEdit" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/HBoxContainer" index="1"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_qn5pl")
 alignment = 1
 max_length = 14
 
@@ -101,12 +112,14 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/HBoxContainer2" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_qn5pl")
 text = "IP"
 
 [node name="IP" type="LineEdit" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_qn5pl")
 placeholder_text = "127.0.0.1"
 alignment = 1
 
@@ -162,24 +175,28 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/MessageContainer/JoiningServer/VBoxContainer" index="0"]
 layout_mode = 2
-text = "Joinning server"
+theme = ExtResource("3_1bvia")
+theme_override_fonts/font = ExtResource("5_qn5pl")
+text = "Joining Server"
 horizontal_alignment = 1
 
 [node name="LoadingIcon" type="TextureRect" parent="CanvasLayer/MessageContainer/JoiningServer/VBoxContainer" index="1"]
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("4_q5f0x")
+texture = ExtResource("7_w1xf7")
 stretch_mode = 2
 
 [node name="CancelButton" type="Button" parent="CanvasLayer/MessageContainer/JoiningServer/VBoxContainer" index="2"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("3_1bvia")
+theme_override_fonts/font = ExtResource("5_qn5pl")
 text = "Cancel"
 
 [node name="ConnectionFailed" type="MarginContainer" parent="CanvasLayer/MessageContainer" index="1"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
+layout_mode = 0
 offset_left = 433.5
 offset_top = 213.5
 offset_right = 846.5
@@ -197,9 +214,10 @@ horizontal_alignment = 1
 
 [node name="LoadingIcon" type="TextureRect" parent="CanvasLayer/MessageContainer/ConnectionFailed/VBoxContainer" index="1"]
 modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("4_q5f0x")
+texture = ExtResource("7_w1xf7")
 stretch_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" index="1"]
@@ -207,3 +225,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_kd86l")
 }
 autoplay = "loading"
+
+[node name="AbsCancel1" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("9_kwecp")
+
+[node name="Timer" type="Timer" parent="." index="4"]

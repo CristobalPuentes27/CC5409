@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://btpe6wrrdj1yg"]
+
+[ext_resource type="Script" uid="uid://cx18gh202huoc" path="res://ourscripts/weapon.gd" id="1_xo5fp"]
+[ext_resource type="AudioStream" uid="uid://d3nbqqbdaxe2" path="res://assets/SFX/10_human_special_atk_2.wav" id="2_2ogej"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_hc806"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_xo5fp")
+
+[node name="Icon" type="Sprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="PickUpArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_hc806")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+shadow_enabled = true
+shadow_filter = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+attenuation = 10.0
+
+[node name="SwitchLightSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_2ogej")
+attenuation = 10.0

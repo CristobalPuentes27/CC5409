@@ -1,14 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://byny6bp0olu78"]
+[gd_scene load_steps=8 format=3 uid="uid://byny6bp0olu78"]
 
 [ext_resource type="PackedScene" uid="uid://cgsspji18smle" path="res://lobby/lobby_screen.tscn" id="1_1g6tu"]
 [ext_resource type="Script" uid="uid://d1urh7pr0l6lh" path="res://lobby/waiting_screen.gd" id="2_a2sqk"]
 [ext_resource type="PackedScene" uid="uid://iobnvr8f3tkm" path="res://lobby/lobby_player.tscn" id="2_wjc1o"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="3_0nkhr"]
+[ext_resource type="Theme" uid="uid://bnhngmri4tfgr" path="res://assets/fonts/kenneyUI-green.tres" id="3_itdcl"]
+[ext_resource type="FontFile" uid="uid://c0i5kqdysam1v" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="4_ibwqf"]
+[ext_resource type="Texture2D" uid="uid://d07njrq4y4ctm" path="res://assets/game.png" id="6_dh5rl"]
+[ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/fonts/kenneyUI.tres" id="7_iult6"]
 
 [node name="WaitingScreen" instance=ExtResource("1_1g6tu")]
 script = ExtResource("2_a2sqk")
 
+[node name="Panel" parent="MarginContainer2/VBoxContainer" index="0"]
+theme = ExtResource("3_itdcl")
+
 [node name="Label" parent="MarginContainer2/VBoxContainer/Panel" index="0"]
+theme_override_fonts/font = ExtResource("4_ibwqf")
 text = "Lobby"
 
 [node name="MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control" index="0"]
@@ -20,6 +27,7 @@ offset_bottom = 375.0
 
 [node name="Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer" index="0"]
 layout_mode = 2
+theme = ExtResource("3_itdcl")
 
 [node name="PlayerList" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" index="0"]
 unique_name_in_owner = true
@@ -56,6 +64,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_ibwqf")
 text = "Wating for players ..."
 horizontal_alignment = 1
 
@@ -76,6 +85,7 @@ size_flags_vertical = 4
 [node name="Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2" index="0"]
 custom_minimum_size = Vector2(0, 375)
 layout_mode = 2
+theme = ExtResource("3_itdcl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer" index="0"]
 layout_mode = 2
@@ -87,19 +97,21 @@ theme_type_variation = &"Zero"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("3_0nkhr")
+texture = ExtResource("6_dh5rl")
 stretch_mode = 2
 
 [node name="PlayerName" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_ibwqf")
 text = "Player"
 horizontal_alignment = 1
 
 [node name="RoleButton" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="2"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ibwqf")
 text = "Role?"
 
 [node name="Control" type="Control" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer/RoleButton" index="0"]
@@ -138,6 +150,7 @@ theme_type_variation = &"Zero"
 [node name="ReadyButton" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer/Control/MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer2/Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel_MarginContainer2_VBoxContainer_MarginContainer_Panel#PanelContainer#MarginContainer/VBoxContainer" index="3"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ibwqf")
 disabled = true
 text = "Ready"
 
@@ -164,15 +177,18 @@ theme_type_variation = &"Tight"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameStartContainer/MarginContainer" index="0"]
 layout_mode = 2
+theme = ExtResource("7_iult6")
 
 [node name="Label" type="Label" parent="GameStartContainer/MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ibwqf")
 text = "Game starting"
 horizontal_alignment = 1
 
 [node name="GameStartCounter" type="Label" parent="GameStartContainer/MarginContainer/VBoxContainer" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ibwqf")
 text = "X"
 horizontal_alignment = 1
 

@@ -12,6 +12,8 @@ extends Control
 @onready var joining_server: MarginContainer = %JoiningServer
 @onready var connection_failed: MarginContainer = %ConnectionFailed
 @onready var cancel_button: Button = %CancelButton
+@onready var abs_cancel_1: AudioStreamPlayer = $AbsCancel1
+@onready var timer: Timer = $Timer
 
 
 func _ready() -> void:
@@ -20,7 +22,7 @@ func _ready() -> void:
 	join_button.pressed.connect(_join)
 	error_timer.timeout.connect(func(): error_label.hide())
 	error_label.hide()
-	back_button.pressed.connect(func(): Lobby.go_to_menu())
+	back_button.pressed.connect(on_back_pressed)
 	multiplayer.connected_to_server.connect(_handle_connected_to_server)
 	multiplayer.connection_failed.connect(_handle_connection_failed)
 	
@@ -29,7 +31,15 @@ func _ready() -> void:
 	connection_failed.hide()
 	
 	cancel_button.pressed.connect(_handle_cancel_pressed)
-
+func on_back_pressed()->void:
+	abs_cancel_1.play()
+	timer.start()
+	disable_all_buttons()
+	await timer.timeout
+	Lobby.go_to_menu()
+func disable_all_buttons() -> void:
+		join_button.disabled=true
+		back_button.disabled=true
 func _join() -> void:
 	var peer = ENetMultiplayerPeer.new()
 	var err = peer.create_client(ip.text if ip.text else "localhost", Statics.PORT)

@@ -6,6 +6,8 @@ extends Control
 @onready var back_button: Button = %BackButton
 @onready var error_label: Label = %ErrorLabel
 @onready var error_timer: Timer = $ErrorTimer
+@onready var abs_cancel_1: AudioStreamPlayer = $AbsCancel1
+@onready var timer: Timer = $Timer
 
 
 func _ready() -> void:
@@ -16,7 +18,16 @@ func _ready() -> void:
 	host_button.pressed.connect(_host)
 	error_timer.timeout.connect(func(): error_label.hide())
 	error_label.hide()
-	back_button.pressed.connect(func(): Lobby.go_to_menu())
+	back_button.pressed.connect(on_back_pressed)
+func on_back_pressed()->void:
+	abs_cancel_1.play()
+	timer.start()
+	disable_all_buttons()
+	await timer.timeout
+	Lobby.go_to_menu()
+func disable_all_buttons() -> void:
+		host_button.disabled=true
+		back_button.disabled=true
 
 
 func _host() -> void:

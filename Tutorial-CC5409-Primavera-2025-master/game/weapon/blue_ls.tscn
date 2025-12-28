@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://0exddmve6jfu"]
+
+[ext_resource type="PackedScene" uid="uid://dbk3xxs5p7skb" path="res://game/weapon/ls.tscn" id="1_70hfc"]
+[ext_resource type="Texture2D" uid="uid://dn6vsx0ec1k6w" path="res://assets/weapons/Sabers-03.png" id="2_hh7al"]
+
+[node name="BlueLS" instance=ExtResource("1_70hfc")]
+attack_power = 50
+knockback = 1000.0
+attack_speed = 0.25
+rotation_cone = 2.094
+
+[node name="Icon" parent="." index="0"]
+texture = ExtResource("2_hh7al")
+
+[node name="PointLight2D" parent="." index="4"]
+position = Vector2(38, 0)
+scale = Vector2(0.955, 0.71500003)
+color = Color(0.19607843, 0.19607843, 0.78431374, 1)
